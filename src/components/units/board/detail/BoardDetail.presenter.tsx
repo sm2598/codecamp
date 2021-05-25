@@ -34,6 +34,7 @@ import {
   CommentEditDelete,
   WrapperRowCommentEditDelete,
   WrapperCommentEdit,
+  DislikeIcon,
 } from "./BoardDetail.styles";
 
 export default function BoardDetailUI({
@@ -44,7 +45,9 @@ export default function BoardDetailUI({
   characterCount,
   onClickRouting,
   onClickDeleteComment,
-  onClickEdit
+  onClickEdit,
+  onClickLike,
+  onClickDislike
 }) {
   return (
     <Wrapper>
@@ -71,11 +74,11 @@ export default function BoardDetailUI({
           <WrapperColumn>
             <WrapperRow>
               <WrapperColumn>
-                <LikeIcon src="/likebutton.png" />
+                <LikeIcon src='/likebutton.png' onClick={onClickLike}/>
                 <div>{data?.fetchBoard.likeCount}</div>
               </WrapperColumn>
               <WrapperColumn>
-                <LikeIcon src="/dislikebutton.png" />
+                <DislikeIcon src="/dislikebutton.png" onClick={onClickDislike}/>
                 <div>{data?.fetchBoard.dislikeCount}</div>
               </WrapperColumn>
             </WrapperRow>
@@ -158,45 +161,6 @@ export default function BoardDetailUI({
                     </CommentDate>
                   </WrapperColumnCommentTop>
                 </WrapperRow>
-                {/* 댓글 수정하기 */}
-                {/* <WrapperCommentEdit>
-                    <WrapperColumn>
-                        <WrapperRow>
-                        <InputCommentAuthor
-                            type="text"
-                            name="writer"
-                            placeholder="작성자"
-                            onChange={onChangeInput}
-                        ></InputCommentAuthor>
-                        <InputCommentPassword
-                            type="password"
-                            name="password"
-                            placeholder="비밀번호"
-                            onChange={onChangeInput}
-                        ></InputCommentPassword>
-                        <InputCommentRating
-                            type="number"
-                            name="rating"
-                            placeholder="1-5"
-                        ></InputCommentRating>
-                        </WrapperRow>
-                    </WrapperColumn>
-                    <WrapperColumn>
-                        <InputCommentText
-                        name="contents"
-                        placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
-                        onChange={onChangeInput}
-                        ></InputCommentText>
-                    </WrapperColumn>
-                    <WrapperColumn>
-                        <WrapperRow>
-                        <InputCommentMaxText>{characterCount}/100</InputCommentMaxText>
-                        <InputCommentTextButton onClick={onClickRegister}>
-                            등록하기
-                        </InputCommentTextButton>
-                        </WrapperRow>
-                    </WrapperColumn>
-                </WrapperCommentEdit> */}
               </WrapperColumnComment>
             ))}
           </WrapperColumn>

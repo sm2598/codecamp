@@ -113,6 +113,10 @@ export const LikeIcon = styled.img`
   height: 40px;
   width: 40px;
 `;
+export const DislikeIcon = styled.img`
+  height: 40px;
+  width: 40px;
+`;
 export const Video = styled.img`
     width: 486px;
     height 240px;

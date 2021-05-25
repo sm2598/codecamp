@@ -4,6 +4,8 @@ import {
   CREATE_COMMENT,
   EDIT_COMMENT,
   DELETE_COMMENT,
+  LIKE_BOARD,
+  DISLIKE_BOARD,
 } from "./BoardDetail.queries";
 import { useRouter } from "next/router";
 import { useQuery, useMutation } from "@apollo/client";
@@ -30,6 +32,8 @@ export default function BoardDetail() {
   const [createBoardComment] = useMutation(CREATE_COMMENT);
   const [updateBoardComment] = useMutation(EDIT_COMMENT);
   const [deleteBoardComment] = useMutation(DELETE_COMMENT);
+  const [likeBoard] = useMutation(LIKE_BOARD);
+  const [dislikeBoard] = useMutation(DISLIKE_BOARD);
 
   //Board자체를 Query
   const { data } = useQuery(FETCH_BOARD, {
@@ -46,7 +50,9 @@ export default function BoardDetail() {
         createBoardCommentInput: { ...inputs },
         boardId: router.query.id,
       },
-      // refetchQueries: [{query: aaa}]
+      refetchQueries: [{query: FETCH_COMMENTS,
+        variables: { boardId: router.query.id },
+      }]
     });
       alert("댓글이 성공적으로 등록되었습니다.");
     } catch (error) {
@@ -89,13 +95,43 @@ export default function BoardDetail() {
         password: "1234",
         boardCommentId: event.target.id
       },
-      // refetchQueries: [{query: aaa}]
+      refetchQueries: [{query: FETCH_COMMENTS,
+        variables: { boardId: router.query.id },
+      }]
       });
       alert("성공적으로 삭제하셨습니다.")
     } catch (error) {
       alert(error.message);
     }
   } 
+  const onClickLike = async (event) => {
+    try {
+      const result = await likeBoard({variables: {
+        boardId: router.query.id,
+      },
+      refetchQueries: [{query: FETCH_BOARD,
+        variables: { boardId: router.query.id },
+      }]
+    });
+      alert("성공적으로 좋아요를 누르셨습니다.");
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+  const onClickDislike = async (event) => {
+    try {
+      const result = await dislikeBoard({variables: {
+        boardId: router.query.id,
+      },
+      refetchQueries: [{query: FETCH_BOARD,
+        variables: { boardId: router.query.id },
+      }]
+    });
+      alert("성공적으로 싫어요를 누르셨습니다.");
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   return (
     <BoardDetailUI
@@ -108,6 +144,8 @@ export default function BoardDetail() {
       // onClickEditComment={onClickEditComment}
       onClickDeleteComment={onClickDeleteComment}
       onClickEdit={onClickEdit}
+      onClickLike={onClickLike}
+      onClickDislike={onClickDislike}
     />
   );
 }

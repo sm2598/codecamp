@@ -75,6 +75,10 @@ export default function BoardDetail() {
   const onClickRouting = () => {
     router.push(`/boards/list`)
   }
+  //수정하기 -> BoardEdit
+  const onClickEdit = () => {
+    router.push(`/boards/edit/${router.query.id}`)
+  }
   //댓글 수정 -> mutation
   const onClickEditComment = (event) => {
   }
@@ -103,6 +107,7 @@ export default function BoardDetail() {
       onClickRouting={onClickRouting}
       // onClickEditComment={onClickEditComment}
       onClickDeleteComment={onClickDeleteComment}
+      onClickEdit={onClickEdit}
     />
   );
 }

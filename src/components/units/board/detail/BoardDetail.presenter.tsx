@@ -44,6 +44,7 @@ export default function BoardDetailUI({
   characterCount,
   onClickRouting,
   onClickDeleteComment,
+  onClickEdit
 }) {
   return (
     <Wrapper>
@@ -54,7 +55,7 @@ export default function BoardDetailUI({
             <ProfileIcon src="/ProfileIcon.png" />
             <WrapperUserInfoColumn>
               <Name>{data?.fetchBoard.writer}</Name>
-              <DateCreated>Date: {data?.fetchBoard.createdAt}</DateCreated>
+              <DateCreated>Date: {data?.fetchBoard.createdAt.slice(0, 10).replaceAll("-", ".")}</DateCreated>
             </WrapperUserInfoColumn>
           </WrapperRow>
         </WrapperRow>
@@ -87,7 +88,7 @@ export default function BoardDetailUI({
           <WrapperGoToList onClick={onClickRouting}>
             <strong>목록으로</strong>
           </WrapperGoToList>
-          <WrapperEditBoard>
+          <WrapperEditBoard onClick={onClickEdit}>
             <strong>수정하기</strong>
           </WrapperEditBoard>
         </WrapperRow>

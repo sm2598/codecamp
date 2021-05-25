@@ -241,3 +241,5 @@ export const WrapperRowCommentEditDelete = styled.div`
   flex-direction: row;
   justify-items: row-reverse;
 `;
+export const WrapperCommentEdit = styled.div`
+`;

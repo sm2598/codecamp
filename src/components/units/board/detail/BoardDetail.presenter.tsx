@@ -35,6 +35,8 @@ import {
   WrapperRowCommentEditDelete,
   WrapperCommentEdit,
   DislikeIcon,
+  LikeColor,
+  DislikeColor,
 } from "./BoardDetail.styles";
 
 export default function BoardDetailUI({
@@ -74,12 +76,10 @@ export default function BoardDetailUI({
           <WrapperColumn>
             <WrapperRow>
               <WrapperColumn>
-                <LikeIcon src='/likebutton.png' onClick={onClickLike}/>
-                <div>{data?.fetchBoard.likeCount}</div>
+                <LikeIcon src='/likebutton.png' onClick={onClickLike}/><LikeColor>{data?.fetchBoard.likeCount}</LikeColor>
               </WrapperColumn>
               <WrapperColumn>
-                <DislikeIcon src="/dislikebutton.png" onClick={onClickDislike}/>
-                <div>{data?.fetchBoard.dislikeCount}</div>
+                <DislikeIcon src="/dislikebutton.png" onClick={onClickDislike}/><DislikeColor>{data?.fetchBoard.dislikeCount}</DislikeColor>
               </WrapperColumn>
             </WrapperRow>
           </WrapperColumn>

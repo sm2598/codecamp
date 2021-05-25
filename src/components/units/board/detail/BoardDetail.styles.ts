@@ -39,14 +39,12 @@ export const WrapperColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 15px;
 `;
 export const WrapperColumnButton = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 15px;
   margin: 100px;
 `;
 export const WrapperGoToList = styled.button`
@@ -110,12 +108,12 @@ export const ProfileIconComment = styled.img`
   width: 40px;
 `;
 export const LikeIcon = styled.img`
-  height: 40px;
-  width: 40px;
+  height: 20px;
+  width: 20px;
 `;
 export const DislikeIcon = styled.img`
-  height: 40px;
-  width: 40px;
+  height: 20px;
+  width: 20px;
 `;
 export const Video = styled.img`
     width: 486px;
@@ -137,8 +135,13 @@ export const PostContent = styled.div`
   font-size: 16px;
   height: 140px;
 `;
-export const CommentIcon = styled.img``;
-export const CommentText = styled.div``;
+export const CommentIcon = styled.img`
+  margin-bottom: 20px;
+  margin-right: 14px;
+`;
+export const CommentText = styled.div`
+  margin-bottom: 20px;
+`;
 export const InputCommentAuthor = styled.input`
   width: 180px;
   height: 52px;
@@ -149,6 +152,8 @@ export const InputCommentAuthor = styled.input`
 
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
+  margin-right: 24px;
+  margin-bottom: 20px;
 `;
 export const InputCommentPassword = styled.input`
   width: 180px;
@@ -160,6 +165,8 @@ export const InputCommentPassword = styled.input`
 
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
+  margin-right: 24px;
+  margin-bottom: 20px;
 `;
 export const InputCommentRating = styled.input`
   width: 180px;
@@ -171,10 +178,11 @@ export const InputCommentRating = styled.input`
 
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
+  margin-bottom: 20px;
 `;
 export const InputCommentText = styled.textarea`
   width: 1200px;
-  height: 120px;
+  height: 109px;
   /* White */
 
   background: #ffffff;
@@ -193,24 +201,23 @@ export const InputCommentMaxText = styled.div`
   height: 52px;
   width: 1109px;
   border: 1px solid #bdbdbd;
+  user-select: none;
+  margin-bottom: 40px;
 `;
 export const CommentName = styled.div`
   font-size: 16px;
-  padding-top: 10px;
   padding-left: 16px;
 `;
 export const CommentReview = styled.div`
-  padding-top: 10px;
   padding-left: 16px;
+  margin-right: 800px;
 `;
 export const CommentContent = styled.div`
   font-size: 16px;
-  padding-top: 10px;
   padding-left: 16px;
 `;
 export const CommentDate = styled.div`
   font-size: 12px;
-  padding-top: 10px;
   padding-left: 16px;
 `;
 export const WrapperColumnComment = styled.div`
@@ -246,4 +253,10 @@ export const WrapperRowCommentEditDelete = styled.div`
   justify-items: row-reverse;
 `;
 export const WrapperCommentEdit = styled.div`
+`;
+export const LikeColor = styled.div`
+  color: #FFD600;
+`;
+export const DislikeColor = styled.div`
+  color: #828282;
 `;

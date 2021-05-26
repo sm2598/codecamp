@@ -14,25 +14,32 @@ export const WrapperContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   border: none;
   box-shadow: 0px 0px 10px gray;
 `;
 export const WrapperComments = styled.div`
   width: 1200px;
   height: auto;
-  padding-left: 107px;
+  margin-left: 100px;
 `;
 export const Title = styled.div`
   font-family: Arial, Helvetica, sans-serif;
   font-size: 36px;
   font-weight: bold;
 `;
-
 export const WrapperRow = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+`;
+export const WrapperRowBoardCreator = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #BDBDBD;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 `;
 export const WrapperColumn = styled.div`
   width: 100%;
@@ -44,7 +51,7 @@ export const WrapperColumnButton = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   margin: 100px;
 `;
 export const WrapperGoToList = styled.button`
@@ -55,7 +62,10 @@ export const WrapperGoToList = styled.button`
 
   background: #ffffff;
   /* Gray 4 */
+  
+  padding: 12px;
 
+  margin: 12px;
   border: 1px solid #bdbdbd;
 `;
 export const WrapperEditBoard = styled.button`
@@ -67,6 +77,9 @@ export const WrapperEditBoard = styled.button`
   background: #ffffff;
   /* Gray 4 */
 
+  padding: 12px;
+  
+  margin: 12px;
   border: 1px solid #bdbdbd;
 `;
 export const WrapperUserInfoColumn = styled.div`
@@ -82,6 +95,7 @@ export const Name = styled.div`
 export const DateCreated = styled.div`
   color: #828282;
   font-size: 16px;
+  margin-bottom: 20px;
 `;
 export const Password = styled.input`
   width: 486px;
@@ -190,31 +204,38 @@ export const InputCommentText = styled.textarea`
 
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
+  resize: none;
 `;
 export const InputCommentTextButton = styled.button`
   background: #000000;
   width: 91px;
   height: 52px;
   color: white;
+
+  border-bottom: 1px solid #F2F2F2;
 `;
 export const InputCommentMaxText = styled.div`
   height: 52px;
   width: 1109px;
   border: 1px solid #bdbdbd;
+  border-top: none;
   user-select: none;
   margin-bottom: 40px;
 `;
 export const CommentName = styled.div`
   font-size: 16px;
   padding-left: 16px;
+  margin-bottom: 4px;
 `;
 export const CommentReview = styled.div`
   padding-left: 16px;
   margin-right: 800px;
+  margin-bottom: 4px;
 `;
 export const CommentContent = styled.div`
   font-size: 16px;
   padding-left: 16px;
+  margin-bottom: 20px;
 `;
 export const CommentDate = styled.div`
   font-size: 12px;
@@ -260,3 +281,5 @@ export const LikeColor = styled.div`
 export const DislikeColor = styled.div`
   color: #828282;
 `;
+export const WrapperYouTubePlayer = styled.div`
+`

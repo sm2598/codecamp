@@ -47,6 +47,7 @@ export default function BoardWrite() {
             password: inputs.password,
             title: inputs.title,
             contents: inputs.contents,
+            youtubeUrl: inputs.youtube,
           },
         },
       });

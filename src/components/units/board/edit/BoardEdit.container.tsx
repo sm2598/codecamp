@@ -3,13 +3,14 @@ import { EDIT_BOARD } from "./BoardEdit.queries";
 import { useRouter } from "next/router";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import { useMutation } from "@apollo/client";
+import { IMutation, IMutationUpdateBoardArgs } from "../../../../commons/types/generated/types.s";
 
 const inputsInit = {
   writer: "",
   title: "",
   contents: "",
   zipcode: "",
-  youtubeUrl: "",
+  youtube: "",
   password: "",
 };
 
@@ -17,14 +18,13 @@ export default function BoardWrite() {
   const router = useRouter();
   const [inputs, setInputs] = useState(inputsInit);
   const [isActive, setIsActive] = useState(false);
-  const [updateBoard] = useMutation(EDIT_BOARD);
+  const [updateBoard] = useMutation<IMutation, IMutationUpdateBoardArgs>(EDIT_BOARD);
 
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
     setInputs(newInputs);
 
     const isFullInputs =
-      newInputs.youtubeUrl &&
       newInputs.title &&
       newInputs.password &&
       newInputs.contents;
@@ -40,10 +40,10 @@ export default function BoardWrite() {
           updateBoardInput: {
             title: inputs.title,
             contents: inputs.contents,
-            youtubeUrl: inputs.youtubeUrl,
+            youtubeUrl: inputs.youtube,
           },
           password: inputs.password,
-          boardId: router.query.id
+          boardId: String(router.query.id)
         },
       });
       const id = result.data.updateBoard._id;

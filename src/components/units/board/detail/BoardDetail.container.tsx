@@ -24,11 +24,12 @@ export default function BoardDetail() {
     contents: "",
     rating: "",
   };
-  //Stating variables
+  //Stating state variables
   const [inputs, setInputs] = useState(inputsComment);
   const [inputsEdit, setInputsCommentEdit] = useState(inputsCommentEdit);
   const [password, setPassword] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
+  //Stating gql components
   const [createBoardComment] = useMutation(CREATE_COMMENT);
   const [updateBoardComment] = useMutation(EDIT_COMMENT);
   const [deleteBoardComment] = useMutation(DELETE_COMMENT);

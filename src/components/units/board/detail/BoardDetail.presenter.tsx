@@ -37,7 +37,11 @@ import {
   DislikeIcon,
   LikeColor,
   DislikeColor,
+  WrapperRowBoardCreator,
+  WrapperYouTubePlayer,
 } from "./BoardDetail.styles";
+import React from 'react'
+import ReactPlayer from 'react-player/youtube'
 
 export default function BoardDetailUI({
   data,
@@ -53,16 +57,15 @@ export default function BoardDetailUI({
 }) {
   return (
     <Wrapper>
-      {/* 게시물 text */}
       <WrapperContent>
         <WrapperRow>
-          <WrapperRow>
+          <WrapperRowBoardCreator>
             <ProfileIcon src="/ProfileIcon.png" />
             <WrapperUserInfoColumn>
               <Name>{data?.fetchBoard.writer}</Name>
               <DateCreated>Date: {data?.fetchBoard.createdAt.slice(0, 10).replaceAll("-", ".")}</DateCreated>
             </WrapperUserInfoColumn>
-          </WrapperRow>
+          </WrapperRowBoardCreator>
         </WrapperRow>
         <WrapperRow>
           <WrapperColumn>
@@ -74,6 +77,9 @@ export default function BoardDetailUI({
         </WrapperRow>
         <WrapperRow>
           <WrapperColumn>
+            <WrapperYouTubePlayer>
+              <ReactPlayer controls={true} width={486} height={240} url={data?.fetchBoard.youtubeUrl} />
+            </WrapperYouTubePlayer>
             <WrapperRow>
               <WrapperColumn>
                 <LikeIcon src='/likebutton.png' onClick={onClickLike}/><LikeColor>{data?.fetchBoard.likeCount}</LikeColor>
@@ -130,6 +136,7 @@ export default function BoardDetailUI({
             <InputCommentText
               name="contents"
               placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
+              maxLength={100}
               onChange={onChangeInput}
             ></InputCommentText>
           </WrapperColumn>

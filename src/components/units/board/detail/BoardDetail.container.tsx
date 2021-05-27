@@ -18,7 +18,7 @@ export default function BoardDetail() {
   const inputsComment = {
     writer: "",
     contents: "",
-    rating: 0,
+    rating: Number(0),
   };
   const inputsCommentEdit = {
     contents: "",
@@ -72,6 +72,31 @@ export default function BoardDetail() {
   //         })
   //     }
   // }
+
+  const [rating, setRating] = useState([true, true, true, true, true])
+  //별 Review
+  const StarReview = () => {
+    // Button1 -> [true, ...false]
+    // Button2 -> [true, true, ...false]
+    // Button3 -> [true, true, true, ...false]
+    setRating([true, false, false, false, false])
+  }
+  const onClickStar1 = (event) => {
+    setRating([true, true, false, false, false])
+  }
+  const onClickStar2 = (event) => {
+    setRating([true, false, false, false, false])
+  }
+  const onClickStar3 = (event) => {
+    setRating([true, false, false, false, false])
+  }
+  const onClickStar4 = (event) => {
+    setRating([true, false, false, false, false])
+  }
+  const onClickStar5 = (event) => {
+    setRating([true, false, false, false, false])
+  }
+
   //Input값들을 state상태에 set
   const onChangeInput = (event) => {
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
@@ -147,6 +172,11 @@ export default function BoardDetail() {
       onClickEdit={onClickEdit}
       onClickLike={onClickLike}
       onClickDislike={onClickDislike}
+      onClickStar1={onClickStar1}
+      onClickStar2={onClickStar2}
+      onClickStar3={onClickStar3}
+      onClickStar4={onClickStar4}
+      onClickStar5={onClickStar5}
     />
   );
 }

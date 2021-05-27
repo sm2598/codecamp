@@ -39,6 +39,13 @@ import {
   DislikeColor,
   WrapperRowBoardCreator,
   WrapperYouTubePlayer,
+  WrapperNameReview,
+  WrapperRowCommentLeftRight,
+  WrapperCommentEditDelete,
+  WrapperRowLikeButtons,
+  WrapperColumnBoardBottom,
+  WrapperRowButtons,
+  Star
 } from "./BoardDetail.styles";
 import React from 'react'
 import ReactPlayer from 'react-player/youtube'
@@ -53,7 +60,12 @@ export default function BoardDetailUI({
   onClickDeleteComment,
   onClickEdit,
   onClickLike,
-  onClickDislike
+  onClickDislike,
+  onClickStar1,
+  onClickStar2,
+  onClickStar3,
+  onClickStar4,
+  onClickStar5,
 }) {
   return (
     <Wrapper>
@@ -76,31 +88,31 @@ export default function BoardDetailUI({
           </WrapperColumn>
         </WrapperRow>
         <WrapperRow>
-          <WrapperColumn>
+          <WrapperColumnBoardBottom>
             <WrapperYouTubePlayer>
               <ReactPlayer controls={true} width={486} height={240} url={data?.fetchBoard.youtubeUrl} />
             </WrapperYouTubePlayer>
-            <WrapperRow>
+            <WrapperRowLikeButtons>
               <WrapperColumn>
                 <LikeIcon src='/likebutton.png' onClick={onClickLike}/><LikeColor>{data?.fetchBoard.likeCount}</LikeColor>
               </WrapperColumn>
               <WrapperColumn>
                 <DislikeIcon src="/dislikebutton.png" onClick={onClickDislike}/><DislikeColor>{data?.fetchBoard.dislikeCount}</DislikeColor>
               </WrapperColumn>
-            </WrapperRow>
-          </WrapperColumn>
+            </WrapperRowLikeButtons>
+          </WrapperColumnBoardBottom>
         </WrapperRow>
       </WrapperContent>
       {/* 목록으로/수정하기 */}
       <WrapperColumnButton>
-        <WrapperRow>
+        <WrapperRowButtons>
           <WrapperGoToList onClick={onClickRouting}>
             <strong>목록으로</strong>
           </WrapperGoToList>
           <WrapperEditBoard onClick={onClickEdit}>
             <strong>수정하기</strong>
           </WrapperEditBoard>
-        </WrapperRow>
+        </WrapperRowButtons>
       </WrapperColumnButton>
       {/* 댓글 text */}
       <WrapperComments>
@@ -125,11 +137,13 @@ export default function BoardDetailUI({
                 placeholder="비밀번호"
                 onChange={onChangeInput}
               ></InputCommentPassword>
-              <InputCommentRating
-                type="number"
-                name="rating"
-                placeholder="1-5"
-              ></InputCommentRating>
+              <div>
+                <InputCommentRating src="/StarEmpty.png"/>
+                <InputCommentRating src="/StarEmpty.png" />
+                <InputCommentRating src="/StarEmpty.png" />
+                <InputCommentRating src="/StarEmpty.png" />
+                <InputCommentRating src="/StarEmpty.png" />
+              </div>
             </WrapperRow>
           </WrapperColumn>
           <WrapperColumn>
@@ -154,26 +168,30 @@ export default function BoardDetailUI({
                 <WrapperRow>
                   <ProfileIconComment src="/ProfileIcon.png" />
                   <WrapperColumnCommentTop>
-                    <WrapperRow>
-                      <CommentName>
-                        <strong>{data.writer}</strong>
-                      </CommentName>
-                      <CommentReview>평점: {data.rating}</CommentReview>
-                      <CommentEditDelete src="/commentedit.png"></CommentEditDelete>
-                      <CommentEditDelete src="/commentdelete.png" id={data._id} onClick={onClickDeleteComment}></CommentEditDelete>
-                    </WrapperRow>
+                    <WrapperRowCommentLeftRight>
+                      <WrapperNameReview>
+                        <CommentName>
+                          <strong>{data.writer}</strong>
+                        </CommentName>
+                        <CommentReview>
+                            {/* 별표시 */}
+                            {[data.rating, data.rating, data.rating, data.rating, data.rating].map((rating, index) => (
+                              index < rating ? <Star src="/StarFilled.png" /> : <Star src="/StarEmpty.png" />))}
+                        </CommentReview>
+                      </WrapperNameReview>
+                      <WrapperCommentEditDelete>
+                        <CommentEditDelete src="/commentedit.png"></CommentEditDelete>
+                        <CommentEditDelete src="/commentdelete.png" id={data._id} onClick={onClickDeleteComment}/>
+                      </WrapperCommentEditDelete>
+                    </WrapperRowCommentLeftRight>
                     <CommentContent>{data.contents}</CommentContent>
-                    <CommentDate>
-                      날짜: {data.createdAt.slice(0, 10).replaceAll("-", ".")}
-                    </CommentDate>
+                    <CommentDate>{data.createdAt.slice(0, 10).replaceAll("-", ".")}</CommentDate>
                   </WrapperColumnCommentTop>
                 </WrapperRow>
               </WrapperColumnComment>
             ))}
           </WrapperColumn>
         </WrapperColumn>
-        <WrapperColumn>{/* 등록하기 */}</WrapperColumn>
-        <WrapperColumn>{/* 실제 댓글 */}</WrapperColumn>
       </WrapperComments>
     </Wrapper>
   );

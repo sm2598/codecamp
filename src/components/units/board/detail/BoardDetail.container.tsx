@@ -84,18 +84,6 @@ export default function BoardDetail() {
   const onClickStar1 = (event) => {
     setRating([true, true, false, false, false])
   }
-  const onClickStar2 = (event) => {
-    setRating([true, false, false, false, false])
-  }
-  const onClickStar3 = (event) => {
-    setRating([true, false, false, false, false])
-  }
-  const onClickStar4 = (event) => {
-    setRating([true, false, false, false, false])
-  }
-  const onClickStar5 = (event) => {
-    setRating([true, false, false, false, false])
-  }
 
   //Input값들을 state상태에 set
   const onChangeInput = (event) => {
@@ -173,10 +161,6 @@ export default function BoardDetail() {
       onClickLike={onClickLike}
       onClickDislike={onClickDislike}
       onClickStar1={onClickStar1}
-      onClickStar2={onClickStar2}
-      onClickStar3={onClickStar3}
-      onClickStar4={onClickStar4}
-      onClickStar5={onClickStar5}
     />
   );
 }

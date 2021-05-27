@@ -45,7 +45,9 @@ import {
   WrapperRowLikeButtons,
   WrapperColumnBoardBottom,
   WrapperRowButtons,
-  Star
+  Star,
+  WrapperColumnLikeButtons,
+  WrapperCenterLike
 } from "./BoardDetail.styles";
 import React from 'react'
 import ReactPlayer from 'react-player/youtube'
@@ -62,10 +64,6 @@ export default function BoardDetailUI({
   onClickLike,
   onClickDislike,
   onClickStar1,
-  onClickStar2,
-  onClickStar3,
-  onClickStar4,
-  onClickStar5,
 }) {
   return (
     <Wrapper>
@@ -92,14 +90,16 @@ export default function BoardDetailUI({
             <WrapperYouTubePlayer>
               <ReactPlayer controls={true} width={486} height={240} url={data?.fetchBoard.youtubeUrl} />
             </WrapperYouTubePlayer>
-            <WrapperRowLikeButtons>
-              <WrapperColumn>
-                <LikeIcon src='/likebutton.png' onClick={onClickLike}/><LikeColor>{data?.fetchBoard.likeCount}</LikeColor>
-              </WrapperColumn>
-              <WrapperColumn>
-                <DislikeIcon src="/dislikebutton.png" onClick={onClickDislike}/><DislikeColor>{data?.fetchBoard.dislikeCount}</DislikeColor>
-              </WrapperColumn>
-            </WrapperRowLikeButtons>
+            <WrapperCenterLike>
+              <WrapperRowLikeButtons>
+                <WrapperColumnLikeButtons>
+                  <LikeIcon src='/likebutton.png' onClick={onClickLike}/><LikeColor>{data?.fetchBoard.likeCount}</LikeColor>
+                </WrapperColumnLikeButtons>
+                <WrapperColumn>
+                  <DislikeIcon src="/dislikebutton.png" onClick={onClickDislike}/><DislikeColor>{data?.fetchBoard.dislikeCount}</DislikeColor>
+                </WrapperColumn>
+              </WrapperRowLikeButtons>
+            </WrapperCenterLike>
           </WrapperColumnBoardBottom>
         </WrapperRow>
       </WrapperContent>
@@ -138,7 +138,7 @@ export default function BoardDetailUI({
                 onChange={onChangeInput}
               ></InputCommentPassword>
               <div>
-                <InputCommentRating src="/StarEmpty.png"/>
+                <InputCommentRating src="/StarEmpty.png" />
                 <InputCommentRating src="/StarEmpty.png" />
                 <InputCommentRating src="/StarEmpty.png" />
                 <InputCommentRating src="/StarEmpty.png" />

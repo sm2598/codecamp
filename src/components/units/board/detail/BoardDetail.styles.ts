@@ -51,7 +51,7 @@ export const WrapperColumnButton = styled.div`
   width: 100%;
   max-width: 1200px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   margin: 100px;
 `;
@@ -63,7 +63,7 @@ export const WrapperGoToList = styled.button`
 
   background: #ffffff;
   /* Gray 4 */
-  
+  font-size: 16px;
   padding: 12px;
 
   margin: 12px;
@@ -78,7 +78,7 @@ export const WrapperEditBoard = styled.button`
 
   background: #ffffff;
   /* Gray 4 */
-
+  font-size: 16px;
   padding: 12px;
   
   margin: 12px;
@@ -135,8 +135,6 @@ export const DislikeIcon = styled.img`
   cursor: pointer;
 `;
 export const Video = styled.img`
-    width: 486px;
-    height 240px;
 `;
 export const Concert = styled.img`
   height: 480px;
@@ -309,7 +307,6 @@ export const WrapperRowLikeButtons = styled.div`
   justify-content: center;
 `;
 export const WrapperRowButtons = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -318,3 +315,15 @@ export const Star = styled.img`
   height: 20px;
   width: 20px;
 `
+export const WrapperColumnLikeButtons = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+export const WrapperCenterLike = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;

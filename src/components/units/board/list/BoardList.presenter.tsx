@@ -7,42 +7,119 @@ import {
   ID,
   Title,
   CreatedAt,
-  SelectDelete,
+  WrapperBestColumn,
+  WrapperBestRow,
+  WrapperBestColumnChild,
+  WrapperBest,
+  TitleBest,
+  Best,
+  Page,
+  LikeIcon,
+  LikeColor,
+  BestDate,
+  BestImg,
+  WrapperRowBestOfBest,
+  WrapperRowBestCards,
+  WrapperBestText,
+  WrapperList,
+  WrapperRowPagination,
+  WrapperColumnList,
+  WrapperSearch,
+  WrapperRowSearch,
+  ButtonSearch,
+  Search,
+  SearchImg,
+  WrapperSearchInputDiv,
+  WrapperTitle
 } from "./BoardList.styles";
 
-export default function BoardListUI({ data }) {
-  console.log(data?.fetchBoards);
+export default function BoardListUI({ data, onClickToBoard, onClickPage, currentPage, best, onClickToCard }) {
   return (
     <Wrapper>
-      <WrapperColumn>
-        <WrapperRow>
-          <HeaderRow>
-            <ID>
-              <strong>번호</strong>
-            </ID>
-            <Title>
-              <strong>제목</strong>
-            </Title>
-            <Author>
-              <strong>작성자</strong>
-            </Author>
-            <CreatedAt>
-              <strong>날짜</strong>
-            </CreatedAt>
-          </HeaderRow>
-        </WrapperRow>
-        {data?.fetchBoards.map((data) => (
-          <WrapperRow>
-            <ID>{data.number}</ID>
-            <Title>{data.title}</Title>
-            <Author>{data.writer}</Author>
-            <CreatedAt>
-              {data.createdAt.slice(0, 10).replaceAll("-", ".")}
-            </CreatedAt>
-          </WrapperRow>
-        ))}
-        <SelectDelete>선택 삭제</SelectDelete>
-      </WrapperColumn>
+      {/* 베스트 게시물 4개 */}
+      <WrapperBestText>
+        <Best>베스트 게시글</Best>
+      </WrapperBestText>
+      <WrapperRowBestOfBest>
+        {best?.fetchBoardsOfTheBest.map((best) => 
+          <WrapperColumn >
+          {console.log(best._id)}
+          <WrapperRowBestCards  >
+            <WrapperBest>
+              <WrapperBestColumn>
+                <BestImg src="/temp.png"/>
+              </WrapperBestColumn>
+              <WrapperBestColumn>
+                <WrapperTitle>
+                  <TitleBest id={best._id} onClick={onClickToCard} >{best.title}</TitleBest>
+                </WrapperTitle>
+                <WrapperBestRow>
+                  <WrapperBestColumnChild>
+                    <WrapperBestRow>
+                      {best.writer}
+                    </WrapperBestRow>
+                    <WrapperBestRow>
+                      <BestDate>Date: {best.createdAt.slice(0, 10).replaceAll("-", ".")}</BestDate>
+                    </WrapperBestRow>
+                  </WrapperBestColumnChild>
+                  <WrapperBestColumnChild>
+                    <LikeIcon src='/likebutton.png'/><LikeColor>{best.likeCount}</LikeColor>                
+                  </WrapperBestColumnChild>
+                </WrapperBestRow>
+              </WrapperBestColumn>
+            </WrapperBest>
+          </WrapperRowBestCards>
+        </WrapperColumn>
+        )}
+      </WrapperRowBestOfBest>
+      {/* 게시판 목록 검색 */}
+      <WrapperSearch>
+        <WrapperRowSearch>
+          <WrapperSearchInputDiv>
+            <SearchImg src="/search.png"/>
+            <Search placeholder="제목을 검색해주세요."></Search>
+          </WrapperSearchInputDiv>
+          <ButtonSearch>검색하기</ButtonSearch>
+        </WrapperRowSearch>
+      </WrapperSearch>
+      {/* 게시판 목록 */}
+      
+        <WrapperColumn>
+            <WrapperList>
+              <WrapperColumnList>
+                <WrapperRow>
+                  <HeaderRow>
+                    <ID><strong>번호</strong></ID>
+                    <Title><strong>제목</strong></Title>
+                    <Author><strong>작성자</strong></Author>
+                    <CreatedAt><strong>날짜</strong></CreatedAt>
+                  </HeaderRow>
+                </WrapperRow>
+                {data?.fetchBoards.map((data) => (
+                  <WrapperRow>
+                    <ID>15</ID>
+                    <Title id={data._id} onClick={onClickToBoard}>{data.title}</Title>
+                    <Author>{data.writer}</Author>
+                    <CreatedAt>
+                      {data.createdAt.slice(0, 10).replaceAll("-", ".")}
+                    </CreatedAt>
+                  </WrapperRow>
+                ))}
+              </WrapperColumnList>
+            </WrapperList>
+          <WrapperRowPagination>
+          {new Array(10).fill(1).map((_, index) => 
+                <Page
+                id = {String(index + 1)} 
+                style={{
+                    
+                }} 
+                onClick={onClickPage}
+                isActive={currentPage == index+1}>
+                {index+1}</Page>)}
+          </WrapperRowPagination>
+        </WrapperColumn>
+      
     </Wrapper>
   );
 }

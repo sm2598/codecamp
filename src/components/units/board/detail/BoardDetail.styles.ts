@@ -1,11 +1,16 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export const WrapperContent = styled.div`
   width: 1200px;
   height: 1602px;
   border: 1px solid black;
-  margin: 100px;
 
   padding-top: 80px;
   padding-left: 107px;
@@ -20,12 +25,14 @@ export const WrapperContent = styled.div`
 export const WrapperComments = styled.div`
   width: 1200px;
   height: auto;
-  margin-left: 100px;
+  margin-bottom: 100px;
 `;
 export const Title = styled.div`
   font-family: Arial, Helvetica, sans-serif;
   font-size: 36px;
   font-weight: bold;
+
+  cursor: pointer;
 `;
 export const WrapperRow = styled.div`
   width: 100%;
@@ -69,6 +76,7 @@ export const WrapperGoToList = styled.button`
   margin: 12px;
   border: 1px solid #bdbdbd;
   cursor: pointer;
+  &:active {background: #FFD600;}
 `;
 export const WrapperEditBoard = styled.button`
   width: 179px;
@@ -84,6 +92,7 @@ export const WrapperEditBoard = styled.button`
   margin: 12px;
   border: 1px solid #bdbdbd;
   cursor: pointer;
+  &:active {background: #FFD600;}
 `;
 export const WrapperUserInfoColumn = styled.div`
   width: 100%;
@@ -105,6 +114,8 @@ export const Password = styled.input`
   height: 52px;
   padding-left: 16px;
   border: 1px solid #bdbdbd;
+
+  outline: none;
 `;
 export const PostTitle = styled.div`
   font-style: normal;
@@ -164,8 +175,13 @@ export const InputCommentAuthor = styled.input`
   height: 52px;
   /* White */
 
+  font-size: 16px;
+  
   background: #ffffff;
   /* Gray 4 */
+
+  padding-left: 20px;
+  outline: none;
 
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
@@ -177,9 +193,13 @@ export const InputCommentPassword = styled.input`
   height: 52px;
   /* White */
 
+  font-size: 16px;
+
   background: #ffffff;
   /* Gray 4 */
-
+  outline: none;
+  padding-left: 20px;
+  
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
   margin-right: 24px;
@@ -192,11 +212,15 @@ export const InputCommentRating = styled.img`
 `;
 export const InputCommentText = styled.textarea`
   width: 1200px;
-  height: 109px;
+  height: 108px;
   /* White */
 
   background: #ffffff;
   /* Gray 4 */
+  outline: none;
+  padding-left: 20px;
+  padding-top: 20px;
+  font-size: 16px;
 
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
@@ -208,7 +232,10 @@ export const InputCommentTextButton = styled.button`
   height: 52px;
   color: white;
 
-  border-bottom: 1px solid #F2F2F2;
+  font-size: 16px;
+  border: none;
+  border-right: 1px solid #BDBDBD;
+  border-bottom: 1px solid #BDBDBD;
 `;
 export const InputCommentMaxText = styled.div`
   height: 52px;
@@ -217,6 +244,11 @@ export const InputCommentMaxText = styled.div`
   border-top: none;
   user-select: none;
   margin-bottom: 40px;
+
+  padding-left: 20px;
+  align-items: center;
+  color: #BDBDBD;
+  font-size: 16px;
 `;
 export const CommentName = styled.div`
   font-size: 16px;
@@ -239,7 +271,8 @@ export const CommentDate = styled.div`
 export const WrapperColumnComment = styled.div`
   width: 100%;
   max-width: 1200px;
-  height: 120px;
+  min-height: 120px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -293,6 +326,7 @@ export const WrapperCommentEditDelete = styled.div`
 export const WrapperRowCommentLeftRight = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 `;
 export const WrapperNameReview = styled.div`
   display: flex;
@@ -320,10 +354,43 @@ export const WrapperColumnLikeButtons = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left:30px;
+  padding-right:30px;
 `;
 export const WrapperCenterLike = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+`;
+export const InputCommentTextEdit = styled.textarea`
+  width: 1200px;
+  height: 64px;
+  /* White */
+
+  background: #ffffff;
+  /* Gray 4 */
+
+  outline: none;
+  padding-left: 20px;
+  padding-top: 20px;
+  font-size: 16px;
+
+  border: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  resize: none;
+`;
+export const InputCommentTextButtonEdit = styled.button`
+  background: #FFD600;
+  width: 91px;
+  height: 52px;
+  color: black;
+
+  font-size: 16px;
+  
+  
+  border-top: none;
+  border-left: none;
+  border-right: 1px solid #BDBDBD;
+  border-bottom: 1px solid #BDBDBD;
 `;

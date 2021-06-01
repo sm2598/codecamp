@@ -27,6 +27,7 @@ export default function BoardEditUI({
   isActive,
   onChangeInput,
   onClickRegister,
+  onClickBack
 }) {
   return (
     <Wrapper>
@@ -104,7 +105,7 @@ export default function BoardEditUI({
         <RadioLabel htmlFor="image">사진</RadioLabel>
       </OptionWrapper>
       <ButtonWrapper>
-        <CancelButton>취소하기</CancelButton>
+        <CancelButton onClick={onClickBack}>취소하기</CancelButton>
         <SubmitButton onClick={onClickRegister} disabled={!isActive}>
           등록하기
         </SubmitButton>

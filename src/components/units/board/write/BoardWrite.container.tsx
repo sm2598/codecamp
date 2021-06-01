@@ -24,6 +24,7 @@ export default function BoardWrite() {
   const [createBoard] =
     useMutation<IMutation, IMutationCreateBoardArgs>(CREATE_BOARD);
 
+  // Input했을떄 값 -> state저장 | input required된게 채워졌을 경우 버튼 활성화
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
     setInputs(newInputs);
@@ -35,7 +36,7 @@ export default function BoardWrite() {
       newInputs.contents;
     isFullInputs ? setIsActive(true) : setIsActive(false);
   };
-
+  // Push board -> mutation
   const onClickRegister = async (
     event: MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {

@@ -2,8 +2,6 @@ import {
   FETCH_BOARD,
   FETCH_COMMENTS,
   CREATE_COMMENT,
-  EDIT_COMMENT,
-  DELETE_COMMENT,
   LIKE_BOARD,
   DISLIKE_BOARD,
 } from "./BoardDetail.queries";
@@ -18,33 +16,28 @@ export default function BoardDetail() {
   const inputsComment = {
     writer: "",
     contents: "",
-    rating: Number(0),
+    rating: 0,
   };
-  const inputsCommentEdit = {
-    contents: "",
-    rating: "",
-  };
-  //Stating state variables
+  // Stating state variables
   const [inputs, setInputs] = useState(inputsComment);
-  const [inputsEdit, setInputsCommentEdit] = useState(inputsCommentEdit);
-  const [password, setPassword] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
-  //Stating gql components
+
+  // Stating gql components
   const [createBoardComment] = useMutation(CREATE_COMMENT);
-  const [updateBoardComment] = useMutation(EDIT_COMMENT);
-  const [deleteBoardComment] = useMutation(DELETE_COMMENT);
   const [likeBoard] = useMutation(LIKE_BOARD);
   const [dislikeBoard] = useMutation(DISLIKE_BOARD);
 
-  //Board자체를 Query
+  // Board자체를 Query
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.id },
   });
-  //Board에 있는 댓글 Query
-  const { data: aaa } = useQuery(FETCH_COMMENTS, {
+
+  // Board에 있는 댓글 Query
+  const { data: comments, refetch } = useQuery(FETCH_COMMENTS, {
     variables: { boardId: router.query.id },
   });
-  //댓글 PUSH -> mutation
+
+  // 댓글 PUSH -> mutation
   const onClickRegister = async (event) => {
     try {
       const result = await createBoardComment({variables: {
@@ -60,64 +53,25 @@ export default function BoardDetail() {
       alert(error.message);
     }
   };
-  //댓글 수정 -> mutation
-  // const onClickEdit = async (event) => {
-  //     try {
-  //         const result = await updateBoardComment({
-  //             variables: {
-  //                 updateBoardCommentInput: {...inputsCommentEdit},
-  //                 password: password,
-  //                 boardCommentId:
-  //             }
-  //         })
-  //     }
-  // }
 
-  const [rating, setRating] = useState([true, true, true, true, true])
-  //별 Review
-  const StarReview = () => {
-    // Button1 -> [true, ...false]
-    // Button2 -> [true, true, ...false]
-    // Button3 -> [true, true, true, ...false]
-    setRating([true, false, false, false, false])
-  }
-  const onClickStar1 = (event) => {
-    setRating([true, true, false, false, false])
-  }
-
-  //Input값들을 state상태에 set
+  // Input값들을 state상태에 set
   const onChangeInput = (event) => {
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
     setCharacterCount(event.target.value.length)
-    setInputs(newInputs);
+    setInputs({ ...newInputs, rating: Number(newInputs.rating) });
   };
-  //목록보기 -> list
+
+  // 목록보기 Router -> BoardList
   const onClickRouting = () => {
     router.push(`/boards/list`)
-  }
-  //수정하기 -> BoardEdit
+  };
+
+  // 수정하기 Router -> BoardEdit
   const onClickEdit = () => {
     router.push(`/boards/edit/${router.query.id}`)
-  }
-  //댓글 수정 -> mutation
-  const onClickEditComment = (event) => {
-  }
-  //댓글 삭제 -> mutation
-  const onClickDeleteComment = async (event) => {
-    try {
-      const result = await deleteBoardComment({variables: {
-        password: "1234",
-        boardCommentId: event.target.id
-      },
-      refetchQueries: [{query: FETCH_COMMENTS,
-        variables: { boardId: router.query.id },
-      }]
-      });
-      alert("성공적으로 삭제하셨습니다.")
-    } catch (error) {
-      alert(error.message);
-    }
-  } 
+  };
+
+  // 좋아요 기능  
   const onClickLike = async (event) => {
     try {
       const result = await likeBoard({variables: {
@@ -131,7 +85,9 @@ export default function BoardDetail() {
     } catch (error) {
       alert(error.message);
     }
-  }
+  };
+
+  // 싫어요 기능
   const onClickDislike = async (event) => {
     try {
       const result = await dislikeBoard({variables: {
@@ -145,22 +101,20 @@ export default function BoardDetail() {
     } catch (error) {
       alert(error.message);
     }
-  }
+  };
 
   return (
     <BoardDetailUI
       data={data}
       onClickRegister={onClickRegister}
       onChangeInput={onChangeInput}
-      aaa={aaa}
+      comments={comments}
       characterCount={characterCount}
       onClickRouting={onClickRouting}
-      // onClickEditComment={onClickEditComment}
-      onClickDeleteComment={onClickDeleteComment}
       onClickEdit={onClickEdit}
       onClickLike={onClickLike}
       onClickDislike={onClickDislike}
-      onClickStar1={onClickStar1}
+      refetch={refetch}
     />
   );
 }

@@ -1,4 +1,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { Footer } from "../src/components/commons/footer/Footer.container";
+import NavigationTop from '../src/components/commons/navigation/top/NavigationTop.container'
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -9,7 +11,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} />
+      <NavigationTop />
+        <Component {...pageProps} />
+      <Footer/>
     </ApolloProvider>
   );
 }

@@ -21,7 +21,7 @@ import {
   CancelButton,
   SubmitButton,
   ButtonWrapper,
-} from "../../../../../styles/Board.write";
+} from "./BoardWrite.styles";
 
 export default function BoardWriteUI({
   isActive,

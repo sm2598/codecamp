@@ -6,17 +6,13 @@ export default function NavigationTop () {
   const router = useRouter();
 
   // OnClick Router-to-Board
-  const onClickToHome = (event) => {
+  const onClickToBoard = (event) => {
     router.push(`/boards/list`)
-  }
-
-  // CSS to show what page we are on
-  const onPage = () => {
   }
 
   return ( 
     <NavigationTopUI 
-      onClickToHome={onClickToHome}
+      onClickToBoard={onClickToBoard}
     />
   )
 }

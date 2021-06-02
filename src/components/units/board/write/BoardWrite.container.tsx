@@ -59,12 +59,16 @@ export default function BoardWrite() {
       alert(error.message);
     }
   };
+  const onClickBack = (event: MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    router.back()
+  }
 
   return (
     <BoardWriteUI
       isActive={isActive}
       onChangeInput={onChangeInput}
       onClickRegister={onClickRegister}
+      onClickBack={onClickBack}
     />
   );
 }

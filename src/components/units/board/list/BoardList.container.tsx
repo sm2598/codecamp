@@ -12,6 +12,11 @@ export default function BoardList() {
     router.push(`/boards/${event.target.id}`)
   }
 
+  // onClick Router-to-BoardWrite
+  const onClickRouterToNewBoard = (event) => {
+    router.push('/boards/new')
+  }
+
   // Pagination/Query Board
   const [ currentPage, setCurrentPage ] = useState(1)
   const { data } = useQuery(FETCH_BOARDS, 
@@ -36,6 +41,7 @@ export default function BoardList() {
       onClickPage={onClickPage}
       onClickToBoard={onClickToBoard}
       onClickToCard={onClickToCard}
+      onClickRouterToNewBoard={onClickRouterToNewBoard}
      />
   )
 }

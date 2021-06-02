@@ -34,6 +34,10 @@ import {
   WrapperRowButtons,
   WrapperColumnLikeButtons,
   WrapperCenterLike,
+  WrapperProfileIcon,
+  WrapperLinkMap,
+  ImgLink,
+  ImgMap
 } from "./BoardDetail.styles";
 import React from 'react'
 import ReactPlayer from 'react-player/youtube'
@@ -57,11 +61,17 @@ export default function BoardDetailUI({
       <WrapperContent>
         <WrapperRow>
           <WrapperRowBoardCreator>
-            <ProfileIcon src="/ProfileIcon.png" />
+            <WrapperProfileIcon>
+              <ProfileIcon src="/ProfileIcon.png" />
+            </WrapperProfileIcon>
             <WrapperUserInfoColumn>
               <Name>{data?.fetchBoard.writer}</Name>
               <DateCreated>Date: {data?.fetchBoard.createdAt.slice(0, 10).replaceAll("-", ".")}</DateCreated>
             </WrapperUserInfoColumn>
+            <WrapperLinkMap>
+              <ImgLink src="/link.png" />
+              <ImgMap src="/map.png" />
+            </WrapperLinkMap>
           </WrapperRowBoardCreator>
         </WrapperRow>
         <WrapperRow>

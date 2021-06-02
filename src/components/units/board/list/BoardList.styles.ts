@@ -28,6 +28,8 @@ export const WrapperRow = styled.div`
   border-top: none;
   border-left: none;
   border-right: none;
+  
+  &:hover {background-color: #F2F2F2; transition: 0.2s}
 `;
 export const WrapperRowBestCards = styled.div`
   display: flex;
@@ -73,6 +75,7 @@ export const Title = styled.div`
   align-items: center;
   justify-content: center;
   color: #4F4F4F;
+  cursor: pointer;
 `;
 export const Author = styled.div`
   width: 224px;
@@ -120,9 +123,10 @@ export const WrapperBest = styled.div`
   border-radius: 20px;
 
   &:hover {
-    background: lightgrey;
-    transition: 0.6s;
-    opacity: 0.4;
+    background: #E0E0E0;
+    transition: all 0.3s;
+    opacity: 0.9;
+    transform: scale(1.05, 1.05);
   }
 `
 export const BestImg = styled.img`
@@ -275,7 +279,10 @@ export const WrapperRowPagination = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  max-width: 1200px;
+  width: 100%;
 
   margin-bottom: 450px;
 `;
@@ -288,5 +295,61 @@ export const Page = styled.span`
   cursor: pointer; 
   
   color: ${(props: IProps) => props.isActive ? '#FFD600' : 'black'};
-  font-weight: ${(props: IProps) => props.isActive ? 'bold' : 'normal'}
+  font-weight: ${(props: IProps) => props.isActive ? 'bold' : 'normal'};
+`
+export const ButtonWriteNewBoard = styled.button`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 16px;
+
+  width: 171px;
+  height: 52px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+
+  background: #FFFFFF;
+  /* Gray 6 */
+
+  border: 1px solid #F2F2F2;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  &:active {
+    background-color: #BDBDBD;
+  }
+`;
+export const ButtonFilter = styled.button`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 16px;
+
+  width: 171px;
+  height: 52px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+
+  background: #FFFFFF;
+  /* Gray 6 */
+
+  border: 1px solid #F2F2F2;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  &:active {
+    background-color: #BDBDBD;
+  }
+`;
+export const WrapperPaginationButtons = styled.div`
 `

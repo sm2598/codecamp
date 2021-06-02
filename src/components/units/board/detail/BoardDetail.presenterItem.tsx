@@ -29,6 +29,7 @@ import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { HalfRating, HalfRatingEdit, HalfRatingRead } from "../../../commons/star";
+import DeleteModal from "../../../../components/commons/modal/modal"
 
 export default function BoardDetailItemUI ({comments, refetch})  {
 
@@ -46,8 +47,6 @@ export default function BoardDetailItemUI ({comments, refetch})  {
   const [showEditComment, setShowEditComment] = useState(false);
   //Stating gql components
   const [updateBoardComment] = useMutation(EDIT_COMMENT);
-  const [deleteBoardComment] = useMutation(DELETE_COMMENT);
-
   //Input값들을 state상태에 set
   const onChangeInputComment = (event) => {
     const result = { ...inputsEdit, [event.target.name]: event.target.value };
@@ -81,22 +80,6 @@ export default function BoardDetailItemUI ({comments, refetch})  {
       alert(error.message);
     }
   };
-  //댓글 삭제 -> mutation
-  const onClickDeleteComment = async (event) => {
-    try {
-      const result = await deleteBoardComment({variables: {
-        password: "1234",
-        boardCommentId: event.target.id
-      },
-      refetchQueries: [{query: FETCH_COMMENTS,
-        variables: { boardId: router.query.id },
-      }]
-      });
-      alert("성공적으로 삭제하셨습니다.")
-    } catch (error) {
-      alert(error.message);
-    }
-  };
 
   return (
     <WrapperColumnComment>
@@ -115,8 +98,8 @@ export default function BoardDetailItemUI ({comments, refetch})  {
               </CommentReview>
             </WrapperNameReview>
             <WrapperCommentEditDelete>
-              <CommentEditDelete src="/commentedit.png" id={comments._id} onClick={onClickShowEditComment}></CommentEditDelete>
-              <CommentEditDelete src="/commentdelete.png" id={comments._id} onClick={onClickDeleteComment}/>
+              <CommentEditDelete src="/commentedit.png" id={comments._id} onClick={onClickShowEditComment} />
+              <DeleteModal comments={comments} />
             </WrapperCommentEditDelete>
           </WrapperRowCommentLeftRight>
           <CommentContent>{comments.contents}</CommentContent>
@@ -133,7 +116,9 @@ export default function BoardDetailItemUI ({comments, refetch})  {
           <InputCommentAuthor
             type="text"
             name="writer"
-            placeholder="작성자"
+            disabled
+            style={{backgroundColor: 'lightgrey'}}
+            placeholder={comments.writer}
           ></InputCommentAuthor>
           <InputCommentPassword
             type="password"
@@ -147,6 +132,7 @@ export default function BoardDetailItemUI ({comments, refetch})  {
       <WrapperColumn>
         <InputCommentTextEdit
           name="contents"
+          defaultValue={comments.contents}
           placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
           maxLength={100}
           onChange={onChangeInputComment}

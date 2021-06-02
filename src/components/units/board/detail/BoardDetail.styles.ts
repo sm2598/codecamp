@@ -253,11 +253,10 @@ export const InputCommentMaxText = styled.div`
 export const CommentName = styled.div`
   font-size: 16px;
   padding-left: 16px;
-  margin-bottom: 4px;
+  padding-bottom: 2px;
 `;
 export const CommentReview = styled.div`
   padding-left: 16px;
-  margin-bottom: 4px;
 `;
 export const CommentContent = styled.div`
   font-size: 16px;
@@ -265,14 +264,19 @@ export const CommentContent = styled.div`
   margin-bottom: 20px;
 `;
 export const CommentDate = styled.div`
-  font-size: 12px;
   padding-left: 16px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  /* Gray 4 */
+
+  color: #BDBDBD;
 `;
 export const WrapperColumnComment = styled.div`
   width: 100%;
   max-width: 1200px;
-  min-height: 120px;
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -286,10 +290,10 @@ export const WrapperColumnComment = styled.div`
 export const WrapperColumnCommentTop = styled.div`
   width: 100%;
   max-width: 1200px;
-  height: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-bottom: 20px;
 `;
 export const CommentEditDelete = styled.img`
   height: 14px;
@@ -322,6 +326,13 @@ export const WrapperYouTubePlayer = styled.div`
   padding-bottom: 163px;
 `
 export const WrapperCommentEditDelete = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 44px;
+  width: 100%;
 `
 export const WrapperRowCommentLeftRight = styled.div`
   display: flex;
@@ -349,17 +360,38 @@ export const Star = styled.img`
   height: 20px;
   width: 20px;
 `
+export const ImgLink = styled.img`
+  height: 13px;
+  width: 27px;
+`
+export const ImgMap = styled.img`
+  height: 27px;
+  width: 19px;
+`
 export const WrapperColumnLikeButtons = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding-left:30px;
   padding-right:30px;
 `;
 export const WrapperCenterLike = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+export const WrapperLinkMap = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const WrapperProfileIcon = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;

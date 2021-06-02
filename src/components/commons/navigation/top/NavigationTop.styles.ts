@@ -20,9 +20,6 @@ export const WrapperRowTop = styled.div`
   background-color: white;
 `;
 export const WrapperRowMiddle = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
 `;
 export const WrapperRow = styled.div`
   width: 100%;
@@ -43,7 +40,7 @@ export const WrapperRowBottom = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top:-4px;
+  margin-top:-6px;
   background-color: #FFD600;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
 
@@ -55,6 +52,9 @@ export const Logo = styled.img`
 
   cursor: pointer;
 `
+interface IProps {
+  isActive: boolean;
+}
 export const Button = styled.button`
   color: #514400;
   background-color: #FFD600;
@@ -70,8 +70,8 @@ export const Button = styled.button`
 
   &:hover {
     background: lightgrey;
-    transition: 0.3s;
-    opacity: 0.4;
+    transition: 0.2s;
+    opacity: 0.6;
   }
 `
 export const ButtonLogIn = styled.button`
@@ -117,6 +117,3 @@ export const ButtonSignUp = styled.button`
     opacity: 0.4;
   }
 `
-interface IProps {
-  onPage: boolean;
-}

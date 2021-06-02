@@ -30,10 +30,13 @@ import {
   Search,
   SearchImg,
   WrapperSearchInputDiv,
-  WrapperTitle
+  WrapperTitle,
+  ButtonWriteNewBoard,
+  WrapperPaginationButtons,
+  ButtonFilter
 } from "./BoardList.styles";
 
-export default function BoardListUI({ data, onClickToBoard, onClickPage, currentPage, best, onClickToCard }) {
+export default function BoardListUI({ data, onClickRouterToNewBoard, onClickToBoard, onClickPage, currentPage, best, onClickToCard }) {
   return (
     <Wrapper>
       {/* 베스트 게시물 4개 */}
@@ -83,43 +86,44 @@ export default function BoardListUI({ data, onClickToBoard, onClickPage, current
         </WrapperRowSearch>
       </WrapperSearch>
       {/* 게시판 목록 */}
-      
-        <WrapperColumn>
-            <WrapperList>
-              <WrapperColumnList>
+      <WrapperColumn>
+          <WrapperList>
+            <WrapperColumnList>
+              <WrapperRow>
+                <HeaderRow>
+                  <ID><strong>번호</strong></ID>
+                  <Title><strong>제목</strong></Title>
+                  <Author><strong>작성자</strong></Author>
+                  <CreatedAt><strong>날짜</strong></CreatedAt>
+                </HeaderRow>
+              </WrapperRow>
+              {data?.fetchBoards.map((data) => (
                 <WrapperRow>
-                  <HeaderRow>
-                    <ID><strong>번호</strong></ID>
-                    <Title><strong>제목</strong></Title>
-                    <Author><strong>작성자</strong></Author>
-                    <CreatedAt><strong>날짜</strong></CreatedAt>
-                  </HeaderRow>
+                  <ID>15</ID>
+                  <Title id={data._id} onClick={onClickToBoard}>{data.title}</Title>
+                  <Author>{data.writer}</Author>
+                  <CreatedAt>
+                    {data.createdAt.slice(0, 10).replaceAll("-", ".")}
+                  </CreatedAt>
                 </WrapperRow>
-                {data?.fetchBoards.map((data) => (
-                  <WrapperRow>
-                    <ID>15</ID>
-                    <Title id={data._id} onClick={onClickToBoard}>{data.title}</Title>
-                    <Author>{data.writer}</Author>
-                    <CreatedAt>
-                      {data.createdAt.slice(0, 10).replaceAll("-", ".")}
-                    </CreatedAt>
-                  </WrapperRow>
-                ))}
-              </WrapperColumnList>
-            </WrapperList>
-          <WrapperRowPagination>
-          {new Array(10).fill(1).map((_, index) => 
-                <Page
+              ))}
+            </WrapperColumnList>
+          </WrapperList>
+        <WrapperRowPagination>
+          <ButtonFilter><img src='/filter.png' style={{height: 18, width: 18}}/>정렬</ButtonFilter>
+          <WrapperPaginationButtons>
+            {new Array(10).fill(1).map((_, index) => 
+              <Page
                 id = {String(index + 1)} 
-                style={{
-                    
-                }} 
                 onClick={onClickPage}
                 isActive={currentPage == index+1}>
-                {index+1}</Page>)}
-          </WrapperRowPagination>
-        </WrapperColumn>
-      
+                {index+1}
+              </Page>
+            )}
+          </WrapperPaginationButtons>
+          <ButtonWriteNewBoard onClick={onClickRouterToNewBoard}><img src='/writeNew.png' style={{height: 18, width: 18}}/>게시물 등록하기</ButtonWriteNewBoard>
+        </WrapperRowPagination>
+      </WrapperColumn>
     </Wrapper>
   );
 }

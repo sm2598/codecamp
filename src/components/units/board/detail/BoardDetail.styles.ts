@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 export const WrapperContent = styled.div`
   width: 1200px;
-  height: 1602px;
+  height: 100%;
   border: 1px solid black;
 
   padding-top: 80px;
@@ -43,7 +43,7 @@ export const WrapperRowBoardCreator = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  border: 1px solid #BDBDBD;
+  border: 1px solid #bdbdbd;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -54,6 +54,18 @@ export const WrapperColumn = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+export const WrapperColumnCommentOne = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+export const WrapperRowCommentNew = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+
 export const WrapperColumnButton = styled.div`
   width: 100%;
   max-width: 1200px;
@@ -76,7 +88,9 @@ export const WrapperGoToList = styled.button`
   margin: 12px;
   border: 1px solid #bdbdbd;
   cursor: pointer;
-  &:active {background: #FFD600;}
+  &:active {
+    background: #ffd600;
+  }
 `;
 export const WrapperEditBoard = styled.button`
   width: 179px;
@@ -88,11 +102,13 @@ export const WrapperEditBoard = styled.button`
   /* Gray 4 */
   font-size: 16px;
   padding: 12px;
-  
+
   margin: 12px;
   border: 1px solid #bdbdbd;
   cursor: pointer;
-  &:active {background: #FFD600;}
+  &:active {
+    background: #ffd600;
+  }
 `;
 export const WrapperUserInfoColumn = styled.div`
   width: 100%;
@@ -145,8 +161,7 @@ export const DislikeIcon = styled.img`
   width: 20px;
   cursor: pointer;
 `;
-export const Video = styled.img`
-`;
+export const Video = styled.img``;
 export const Concert = styled.img`
   height: 480px;
   width: 996px;
@@ -176,7 +191,7 @@ export const InputCommentAuthor = styled.input`
   /* White */
 
   font-size: 16px;
-  
+
   background: #ffffff;
   /* Gray 4 */
 
@@ -199,7 +214,7 @@ export const InputCommentPassword = styled.input`
   /* Gray 4 */
   outline: none;
   padding-left: 20px;
-  
+
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
   margin-right: 24px;
@@ -234,8 +249,8 @@ export const InputCommentTextButton = styled.button`
 
   font-size: 16px;
   border: none;
-  border-right: 1px solid #BDBDBD;
-  border-bottom: 1px solid #BDBDBD;
+  border-right: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
 `;
 export const InputCommentMaxText = styled.div`
   height: 52px;
@@ -247,7 +262,7 @@ export const InputCommentMaxText = styled.div`
 
   padding-left: 20px;
   align-items: center;
-  color: #BDBDBD;
+  color: #bdbdbd;
   font-size: 16px;
 `;
 export const CommentName = styled.div`
@@ -271,8 +286,13 @@ export const CommentDate = styled.div`
   font-size: 12px;
   /* Gray 4 */
 
-  color: #BDBDBD;
+  color: #bdbdbd;
 `;
+
+interface IProps {
+  index: number;
+  isClicked: boolean;
+}
 export const WrapperColumnComment = styled.div`
   width: 100%;
   max-width: 1200px;
@@ -280,12 +300,48 @@ export const WrapperColumnComment = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   border: 1px solid #bdbdbd;
   border-top: none;
   border-left: none;
   border-right: none;
   padding-top: 10px;
+
+  ${({ index }: IProps) =>
+    index === 0
+      ? `
+    animation-duration: 3s;
+    animation-name: show;
+
+    @keyframes show {
+      from{
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      to{
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  `
+      : ""}
+  ${({ isClicked }: IProps) =>
+    isClicked
+      ? `
+    animation-duration: 3s;
+    animation-name: delete;
+
+    @keyframes delete {
+      from{
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to{
+        transform: translateX(300px);
+        opacity: 0;
+      }
+    }
+  `
+      : ""}
 `;
 export const WrapperColumnCommentTop = styled.div`
   width: 100%;
@@ -305,10 +361,9 @@ export const WrapperRowCommentEditDelete = styled.div`
   flex-direction: row;
   justify-items: row-reverse;
 `;
-export const WrapperCommentEdit = styled.div`
-`;
+export const WrapperCommentEdit = styled.div``;
 export const LikeColor = styled.div`
-  color: #FFD600;
+  color: #ffd600;
 `;
 export const DislikeColor = styled.div`
   color: #828282;
@@ -319,12 +374,12 @@ export const WrapperColumnBoardBottom = styled.div`
   justify-content: center;
   max-width: 996px;
   width: 100%;
-`
+`;
 export const WrapperYouTubePlayer = styled.div`
   display: flex;
   justify-content: center;
   padding-bottom: 163px;
-`
+`;
 export const WrapperCommentEditDelete = styled.div`
   display: flex;
   flex-direction: row;
@@ -333,7 +388,7 @@ export const WrapperCommentEditDelete = styled.div`
 
   max-width: 44px;
   width: 100%;
-`
+`;
 export const WrapperRowCommentLeftRight = styled.div`
   display: flex;
   flex-direction: row;
@@ -343,7 +398,7 @@ export const WrapperNameReview = styled.div`
   display: flex;
   flex-direction: row;
   justify-items: space-around;
-`
+`;
 export const WrapperRowLikeButtons = styled.div`
   width: 100%;
   max-width: 40px;
@@ -359,23 +414,23 @@ export const WrapperRowButtons = styled.div`
 export const Star = styled.img`
   height: 20px;
   width: 20px;
-`
+`;
 export const ImgLink = styled.img`
   height: 13px;
   width: 27px;
-`
+`;
 export const ImgMap = styled.img`
   height: 27px;
   width: 19px;
-`
+`;
 export const WrapperColumnLikeButtons = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left:30px;
-  padding-right:30px;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 export const WrapperCenterLike = styled.div`
   display: flex;
@@ -413,16 +468,15 @@ export const InputCommentTextEdit = styled.textarea`
   resize: none;
 `;
 export const InputCommentTextButtonEdit = styled.button`
-  background: #FFD600;
+  background: #ffd600;
   width: 91px;
   height: 52px;
   color: black;
 
   font-size: 16px;
-  
-  
+
   border-top: none;
   border-left: none;
-  border-right: 1px solid #BDBDBD;
-  border-bottom: 1px solid #BDBDBD;
+  border-right: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
 `;

@@ -40,15 +40,13 @@ export default function BoardDetail() {
   // 댓글 PUSH -> mutation
   const onClickRegister = async (event) => {
     try {
-      const result = await createBoardComment({variables: {
-        createBoardCommentInput: { ...inputs },
-        boardId: router.query.id,
-      },
-      refetchQueries: [{query: FETCH_COMMENTS,
-        variables: { boardId: router.query.id },
-      }]
-    });
-      alert("댓글이 성공적으로 등록되었습니다.");
+      const result = await createBoardComment({
+        variables: {
+          createBoardCommentInput: { ...inputs },
+          boardId: router.query.id,
+        },
+      });
+      refetch();
     } catch (error) {
       alert(error.message);
     }
@@ -57,30 +55,31 @@ export default function BoardDetail() {
   // Input값들을 state상태에 set
   const onChangeInput = (event) => {
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
-    setCharacterCount(event.target.value.length)
+    setCharacterCount(event.target.value.length);
     setInputs({ ...newInputs, rating: Number(newInputs.rating) });
   };
 
   // 목록보기 Router -> BoardList
   const onClickRouting = () => {
-    router.push(`/boards/list`)
+    router.push(`/boards/list`);
   };
 
   // 수정하기 Router -> BoardEdit
   const onClickEdit = () => {
-    router.push(`/boards/edit/${router.query.id}`)
+    router.push(`/boards/edit/${router.query.id}`);
   };
 
-  // 좋아요 기능  
+  // 좋아요 기능
   const onClickLike = async (event) => {
     try {
-      const result = await likeBoard({variables: {
-        boardId: router.query.id,
-      },
-      refetchQueries: [{query: FETCH_BOARD,
-        variables: { boardId: router.query.id },
-      }]
-    });
+      const result = await likeBoard({
+        variables: {
+          boardId: router.query.id,
+        },
+        refetchQueries: [
+          { query: FETCH_BOARD, variables: { boardId: router.query.id } },
+        ],
+      });
       alert("성공적으로 좋아요를 누르셨습니다.");
     } catch (error) {
       alert(error.message);
@@ -90,13 +89,14 @@ export default function BoardDetail() {
   // 싫어요 기능
   const onClickDislike = async (event) => {
     try {
-      const result = await dislikeBoard({variables: {
-        boardId: router.query.id,
-      },
-      refetchQueries: [{query: FETCH_BOARD,
-        variables: { boardId: router.query.id },
-      }]
-    });
+      const result = await dislikeBoard({
+        variables: {
+          boardId: router.query.id,
+        },
+        refetchQueries: [
+          { query: FETCH_BOARD, variables: { boardId: router.query.id } },
+        ],
+      });
       alert("성공적으로 싫어요를 누르셨습니다.");
     } catch (error) {
       alert(error.message);

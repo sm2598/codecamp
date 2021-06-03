@@ -77,7 +77,6 @@ export default function BoardDetailUI({
         <WrapperRow>
           <WrapperColumn>
             <PostTitle>{data?.fetchBoard.title}</PostTitle>
-            <Concert src="/Concert.png" />
             <PostContent>{data?.fetchBoard.contents}</PostContent>
             <Video src={data?.fetchBoard.video}></Video>
           </WrapperColumn>
@@ -156,8 +155,8 @@ export default function BoardDetailUI({
             </WrapperColumn>
           </div>
           <WrapperColumn>
-            {comments?.fetchBoardComments.map((comments) => (
-              <BoardDetailItemUI comments={comments} refetch={refetch}/>
+            {comments?.fetchBoardComments.map((comments,index) => (
+              <BoardDetailItemUI key={comments._id} index={index} comments={comments} refetch={refetch}/>
             ))}
           </WrapperColumn>
         </WrapperColumn>

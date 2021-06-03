@@ -178,6 +178,8 @@ export const Best = styled.div`
   /* Black */
 
   color: #000000;
+  
+ 
 `
 export const BestDate = styled.div`
   color: #828282;
@@ -190,6 +192,7 @@ export const LikeIcon = styled.img`
   margin-bottom: 6px;
 `;
 export const LikeColor = styled.div`
+  
   color: black;
   font-style: normal;
   font-weight: normal;
@@ -200,12 +203,24 @@ export const WrapperRowBestOfBest = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   max-width: 1200px;
   width: 100%;
+  /* flex-wrap: wrap; */
   margin-bottom: 80px;
-
   cursor: pointer;
+  animation-duration: 3s;
+  animation-name: show;
+
+  @keyframes show {
+    from{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to{
+      transform: translateY(0px);
+        opacity: 1;
+    }
+  }
 `;
 export const WrapperSearch = styled.div`
   width: 100%;
@@ -357,4 +372,24 @@ export const WrapperPaginationButtons = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+`
+export const WrapperListItems = styled.div`
+  height: 580px;
+  z-index: 3;
+  background-color: white;
+`
+export const WrapperLoading = styled.div`
+  height: 580px;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+export const WrapperRowHashtag = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+export const ButtonHashtag = styled.div`
+  max-width: 20px;
 `

@@ -41,7 +41,7 @@ import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 
 
-export default function BoardListUI({ onLeftFirstArrowClick, onRightLastArrowClick, data, holder, onLeftArrowClick, boardscount, onRightArrowClick, onClickRouterToNewBoard, onClickToBoard, onClickPage, currentPage, best, onClickToCard }) {
+export default function BoardListUI({ onClickSearch, onChangeSearch, onLeftFirstArrowClick, onRightLastArrowClick, data, holder, onLeftArrowClick, boardscount, onRightArrowClick, onClickRouterToNewBoard, onClickToBoard, onClickPage, currentPage, best, onClickToCard }) {
   return (
     <Wrapper>
       {/* 베스트 게시물 4개 */}
@@ -84,9 +84,9 @@ export default function BoardListUI({ onLeftFirstArrowClick, onRightLastArrowCli
         <WrapperRowSearch>
           <WrapperSearchInputDiv>
             <SearchImg src="/search.png"/>
-            <Search placeholder="제목을 검색해주세요."></Search>
+            <Search type="input" placeholder="제목을 검색해주세요." onChange={onChangeSearch}></Search>
           </WrapperSearchInputDiv>
-          <ButtonSearch>검색하기</ButtonSearch>
+          <ButtonSearch onClick={onClickSearch}>검색하기</ButtonSearch>
         </WrapperRowSearch>
       </WrapperSearch>
       {/* 게시판 목록 */}

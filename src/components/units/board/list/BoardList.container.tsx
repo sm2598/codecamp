@@ -17,12 +17,36 @@ export default function BoardList() {
     router.push('/boards/new')
   }
 
+  // onClick card Router-to-Board
+  const onClickToCard = (event) => {
+    router.push(`/boards/${event.target.id}`)
+  }
+
+///////////////////////////////////////////////////////////
+
+  // Search Items
+  const [ search, setSearch ] = useState<string>("")
+  const [ storeSearch, setStoreSearch ] = useState<string>(search)
+
+  // onChange store search item to state
+  const onChangeSearch = (event) => {
+    setSearch(event.target.value)
+  }
+
+  // onClick search item
+  const onClickSearch = () => {
+    setStoreSearch(search)
+  }
+
+///////////////////////////////////////////////////////////
+
   // Pagination/Query Board
   const [ currentPage, setCurrentPage ] = useState(1)
   const { data } = useQuery(FETCH_BOARDS, 
-      {variables: {page: currentPage}})
+      {variables: {search: storeSearch, page: currentPage}})
   const { data: best } = useQuery(FETCH_BOARDSOFTHEBEST)
-  const { data: boardscount } = useQuery(FETCH_BOARDSCOUNT)
+  const { data: boardscount } = useQuery(FETCH_BOARDSCOUNT,
+      {variables: {search: storeSearch}})
 
   // Pagination constants
   const result = boardscount?.fetchBoardsCount // ex: 1364
@@ -65,11 +89,8 @@ export default function BoardList() {
   const onClickPage = (event) => {
       setCurrentPage(Number(event.target.id))
   }
-
-  // onClick card Router-to-Board
-  const onClickToCard = (event) => {
-    router.push(`/boards/${event.target.id}`)
-  }
+  
+///////////////////////////////////////////////////////////
 
   return (
     <BoardListUI 
@@ -78,6 +99,8 @@ export default function BoardList() {
       boardscount={boardscount}
       holder={holder}
       currentPage={currentPage}
+      onClickSearch={onClickSearch}
+      onChangeSearch={onChangeSearch}
       onClickPage={onClickPage}
       onClickToBoard={onClickToBoard}
       onClickToCard={onClickToCard}

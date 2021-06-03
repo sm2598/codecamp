@@ -41,7 +41,7 @@ import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 
 
-export default function BoardListUI({ onLeftFirstArrowClick, onRightLastArrowClick, data, disabled, pageArr, holder, onLeftArrowClick, boardscount, onRightArrowClick, onClickRouterToNewBoard, onClickToBoard, onClickPage, currentPage, best, onClickToCard }) {
+export default function BoardListUI({ onLeftFirstArrowClick, onRightLastArrowClick, data, holder, onLeftArrowClick, boardscount, onRightArrowClick, onClickRouterToNewBoard, onClickToBoard, onClickPage, currentPage, best, onClickToCard }) {
   return (
     <Wrapper>
       {/* 베스트 게시물 4개 */}
@@ -101,9 +101,9 @@ export default function BoardListUI({ onLeftFirstArrowClick, onRightLastArrowCli
                   <CreatedAt><strong>날짜</strong></CreatedAt>
                 </HeaderRow>
               </WrapperRow>
-              {data?.fetchBoards.map((data) => (
+              {data?.fetchBoards.map((data, index) => (
                 <WrapperRow>
-                  <ID>15</ID>
+                  <ID>{index + 1}</ID>
                   <Title id={data._id} onClick={onClickToBoard}>{data.title}</Title>
                   <Author>{data.writer}</Author>
                   <CreatedAt>

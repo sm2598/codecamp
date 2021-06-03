@@ -7,13 +7,13 @@ import { FETCH_BOARDS, FETCH_BOARDSOFTHEBEST, FETCH_BOARDSCOUNT } from "./BoardL
 export default function BoardList() {
   const router = useRouter();
 
-  // OnClick Router-to-Board
+  // onClick Router-to-Board
   const onClickToBoard = (event) => {
     router.push(`/boards/${event.target.id}`)
   }
 
   // onClick Router-to-BoardWrite
-  const onClickRouterToNewBoard = (event) => {
+  const onClickRouterToNewBoard = () => {
     router.push('/boards/new')
   }
 
@@ -23,7 +23,6 @@ export default function BoardList() {
       {variables: {page: currentPage}})
   const { data: best } = useQuery(FETCH_BOARDSOFTHEBEST)
   const { data: boardscount } = useQuery(FETCH_BOARDSCOUNT)
-  const [disabled, setDisabled] = useState(false)
 
   // Pagination constants
   const result = boardscount?.fetchBoardsCount // ex: 1364
@@ -34,7 +33,11 @@ export default function BoardList() {
 
   // Pagination buttons
   const onLeftArrowClick = () => {
-    if(holder === 1) return;
+    if(holder === 1 && currentPage === 1) return;
+    if(holder === 1 && currentPage !== 1) {
+      setCurrentPage(1)
+      return;
+    }
     setHolder(holder-10)
     let newArr = pageArr.map(data => data-10)
     setPageArr(newArr)
@@ -54,9 +57,9 @@ export default function BoardList() {
   }
   const onRightLastArrowClick = () => {
     const holderSetter = Math.floor(result2/10)*10+1
+    setHolder(holderSetter)
     let newArr = basiclist.map(data => data + holderSetter)
     setPageArr(newArr)
-    setHolder(holderSetter)
     setCurrentPage(result2)
   }
   const onClickPage = (event) => {
@@ -70,12 +73,10 @@ export default function BoardList() {
 
   return (
     <BoardListUI 
-    pageArr={pageArr}
       data={data}
       best={best}
       boardscount={boardscount}
       holder={holder}
-      disabled={disabled}
       currentPage={currentPage}
       onClickPage={onClickPage}
       onClickToBoard={onClickToBoard}

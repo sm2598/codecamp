@@ -233,7 +233,8 @@ export const Search = styled.input`
   outline: none;
 `
 export const WrapperSearchInputDiv = styled.div`
-  width: 588px;
+  max-width: 1200px;
+  width: 65%;
   height: 52px;
 
   display: flex;

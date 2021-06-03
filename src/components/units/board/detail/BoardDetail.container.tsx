@@ -81,7 +81,6 @@ export default function BoardDetail() {
         variables: { boardId: router.query.id },
       }]
     });
-      alert("성공적으로 좋아요를 누르셨습니다.");
     } catch (error) {
       alert(error.message);
     }

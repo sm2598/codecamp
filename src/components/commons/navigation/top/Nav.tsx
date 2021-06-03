@@ -20,8 +20,6 @@ export const Button = styled.button`
   color: #514400;
   background-color: #FFD600;
   border: none;
-  padding-left: 41px;
-  padding-right: 41px;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -29,18 +27,19 @@ export const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #ffea7a;
     transition: 0.2s;
-    opacity: 0.6;
+    font-size: 20px;
   }
   z-index: 99;
+  max-width: 170px;
+  width: 100%;
+  max-height: 64px;
+  height: 100%;
 `
 export const ButtonBoard = styled.button`
   color: #514400;
   background-color: #FFD600;
   border: none;
-  padding-left: 41px;
-  padding-right: 41px;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -48,9 +47,8 @@ export const ButtonBoard = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: #ffea7a;
     transition: 0.2s;
-    opacity: 0.6;
+    font-size: 20px;
   }
 
   z-index: 99;
@@ -64,7 +62,7 @@ interface IProps {
 export const ButtonWrite = styled.button`
   color: #514400;
   background: lightgrey;
-  opacity: 0.6;
+  opacity: 1;
   border: none;
   border-radius: 0px 0px 20px 20px;
   padding-left: 41px;
@@ -73,7 +71,7 @@ export const ButtonWrite = styled.button`
   font-weight: bold;
   font-size: 18px;
 
-  transition: 1s;
+  transition: 0.5s;
 
   cursor: pointer;
   z-index: 0;

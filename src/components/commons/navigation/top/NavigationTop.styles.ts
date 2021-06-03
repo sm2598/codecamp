@@ -32,20 +32,7 @@ export const WrapperRowButtonsTop = styled.div`
   display: flex;
   flex-direction: row;
 `;
-export const WrapperRowBottom = styled.div`
 
-  width: 100%;
-  height: 64px;
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top:-6px;
-  background-color: #FFD600;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
-
-  margin-bottom: 80px;
-`;
 export const Logo = styled.img`
   width: 210px;
   height: 32px;
@@ -55,41 +42,18 @@ export const Logo = styled.img`
 interface IProps {
   isActive: boolean;
 }
-export const Button = styled.button`
-  color: #514400;
-  background-color: #FFD600;
-  border: none;
-  padding-left: 41px;
-  padding-right: 41px;
-
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-
-  cursor: pointer;
-
-  &:hover {
-    background: lightgrey;
-    transition: 0.2s;
-    opacity: 0.6;
-  }
-`
 export const ButtonLogIn = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 10px 16px;
-
   background: white;
   border: none;
-
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-
   border-radius: 10px;
-
   &:hover {
     background: lightgrey;
     transition: 0.3s;

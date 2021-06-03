@@ -352,4 +352,8 @@ export const ButtonFilter = styled.button`
   }
 `;
 export const WrapperPaginationButtons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `

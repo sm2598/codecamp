@@ -21,3 +21,8 @@ export const FETCH_BOARDSOFTHEBEST = gql`
     }
   }
 `
+export const FETCH_BOARDSCOUNT = gql`
+  query FETCHCOUNT {
+    fetchBoardsCount
+  }
+`

@@ -35,8 +35,13 @@ import {
   WrapperPaginationButtons,
   ButtonFilter
 } from "./BoardList.styles";
+import FirstPageRoundedIcon from '@material-ui/icons/FirstPageRounded';
+import LastPageRoundedIcon from '@material-ui/icons/LastPageRounded';
+import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
+import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 
-export default function BoardListUI({ data, onClickRouterToNewBoard, onClickToBoard, onClickPage, currentPage, best, onClickToCard }) {
+
+export default function BoardListUI({ onLeftFirstArrowClick, onRightLastArrowClick, data, disabled, pageArr, holder, onLeftArrowClick, boardscount, onRightArrowClick, onClickRouterToNewBoard, onClickToBoard, onClickPage, currentPage, best, onClickToCard }) {
   return (
     <Wrapper>
       {/* 베스트 게시물 4개 */}
@@ -46,7 +51,6 @@ export default function BoardListUI({ data, onClickRouterToNewBoard, onClickToBo
       <WrapperRowBestOfBest>
         {best?.fetchBoardsOfTheBest.map((best) => 
           <WrapperColumn >
-          {console.log(best._id)}
           <WrapperRowBestCards  >
             <WrapperBest>
               <WrapperBestColumn>
@@ -112,14 +116,15 @@ export default function BoardListUI({ data, onClickRouterToNewBoard, onClickToBo
         <WrapperRowPagination>
           <ButtonFilter><img src='/filter.png' style={{height: 18, width: 18}}/>정렬</ButtonFilter>
           <WrapperPaginationButtons>
-            {new Array(10).fill(1).map((_, index) => 
-              <Page
-                id = {String(index + 1)} 
-                onClick={onClickPage}
-                isActive={currentPage == index+1}>
-                {index+1}
+            <FirstPageRoundedIcon onClick={onLeftFirstArrowClick}/>
+            <ChevronLeftRoundedIcon onClick={onLeftArrowClick}/>
+            {new Array(10).fill(1).filter((_,index) => index+holder <= Math.ceil(boardscount?.fetchBoardsCount/10)).map((_, index) => (
+              <Page id={String(index + holder)} onClick={onClickPage} isActive={currentPage == index+holder}>
+                {index+holder}
               </Page>
-            )}
+            ))}
+            <ChevronRightRoundedIcon onClick={onRightArrowClick}/>
+            <LastPageRoundedIcon onClick={onRightLastArrowClick}/>
           </WrapperPaginationButtons>
           <ButtonWriteNewBoard onClick={onClickRouterToNewBoard}><img src='/writeNew.png' style={{height: 18, width: 18}}/>게시물 등록하기</ButtonWriteNewBoard>
         </WrapperRowPagination>

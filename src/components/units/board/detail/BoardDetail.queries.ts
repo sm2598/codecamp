@@ -57,14 +57,8 @@ export const EDIT_COMMENT = gql`
   }
 `;
 export const DELETE_COMMENT = gql`
-  mutation deleteBoardComment(
-    $password: String, 
-    $boardCommentId: ID!
-  ) {
-    deleteBoardComment(
-      password: $password
-      boardCommentId: $boardCommentId
-    )
+  mutation deleteBoardComment($password: String, $boardCommentId: ID!) {
+    deleteBoardComment(password: $password, boardCommentId: $boardCommentId)
   }
 `;
 export const LIKE_BOARD = gql`

@@ -51,18 +51,15 @@ export default function DeleteModal({ comments, isClicked, setIsClicked }) {
   // 댓글 삭제 -> mutation
   const onClickDeleteComment = async (event) => {
     try {
-      setTimeout(async function () {
-        const result = await deleteBoardComment({
-          variables: {
-            password: password,
-            boardCommentId: comments._id,
-          },
-          refetchQueries: [
-            { query: FETCH_COMMENTS, variables: { boardId: router.query.id } },
-          ],
-        });
-      }, 3000);
-
+      const result = await deleteBoardComment({
+        variables: {
+          password: password,
+          boardCommentId: comments._id,
+        },
+        refetchQueries: [
+          { query: FETCH_COMMENTS, variables: { boardId: router.query.id } },
+        ],
+      });
       setOpen(false);
       alert("성공적으로 삭제하셨습니다.");
       setIsClicked(true);

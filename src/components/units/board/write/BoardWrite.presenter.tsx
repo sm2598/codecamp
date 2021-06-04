@@ -21,14 +21,19 @@ import {
   CancelButton,
   SubmitButton,
   ButtonWrapper,
-  Main
+  Main,
 } from "./BoardWrite.styles";
+import LazyLoad from 'react-lazy-load';
 
 export default function BoardWriteUI({
   isActive,
   onChangeInput,
   onClickRegister,
-  onClickBack
+  onClickBack,
+  onClickUpload,
+  onChangeFile,
+  fileUrl,
+  aaaRef,
 }) {
   return (
     <Main>
@@ -82,21 +87,41 @@ export default function BoardWriteUI({
         </InputWrapper>
         <InputWrapper>
           <Label>유튜브</Label>
-          <Youtube placeholder="링크를 복사해주세요." onChange={onChangeInput}/>
+          <Youtube
+            placeholder="링크를 복사해주세요."
+            onChange={onChangeInput}
+          />
         </InputWrapper>
         <ImageWrapper>
           <Label>사진첨부</Label>
-          <UploadButton>
-            <div>+</div>
-            <div>Upload</div>
+          <LazyLoad>
+            <UploadButton onClick={onClickUpload}>
+              <input
+                ref={aaaRef}
+                type="file"
+                onChange={onChangeFile}
+                style={{ display: "none" }}
+              />
+              <img src={fileUrl} />
           </UploadButton>
-          <UploadButton>
-            <div>+</div>
-            <div>Upload</div>
+          </LazyLoad>
+          <UploadButton onClick={onClickUpload}>
+            <input
+              ref={aaaRef}
+              type="file"
+              onChange={onChangeFile}
+              style={{ display: "none" }}
+            />
+            <img src={fileUrl} />
           </UploadButton>
-          <UploadButton>
-            <div>+</div>
-            <div>Upload</div>
+          <UploadButton onClick={onClickUpload}>
+            <input
+              ref={aaaRef}
+              type="file"
+              onChange={onChangeFile}
+              style={{ display: "none" }}
+            />
+            <img src={fileUrl} />
           </UploadButton>
         </ImageWrapper>
         <OptionWrapper>

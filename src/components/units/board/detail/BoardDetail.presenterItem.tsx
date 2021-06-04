@@ -37,7 +37,6 @@ import {
 import DeleteModal from "../../../../components/commons/modal/modal";
 
 export default function BoardDetailItemUI({ comments, refetch, index }) {
-  console.log(comments);
   const router = useRouter();
 
   const inputsCommentEdit = {
@@ -66,7 +65,6 @@ export default function BoardDetailItemUI({ comments, refetch, index }) {
     showEditComment === false
       ? setShowEditComment(true)
       : setShowEditComment(false);
-    console.log(showEditComment);
   };
   //댓글 수정 -> CommentEdit
   const onClickEditComment = async (event) => {

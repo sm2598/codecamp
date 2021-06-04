@@ -24,12 +24,15 @@ export const WrapperRow = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: 1px solid #BDBDBD;;
+  border: 1px solid #bdbdbd;
   border-top: none;
   border-left: none;
   border-right: none;
-  
-  &:hover {background-color: #F2F2F2; transition: 0.2s}
+
+  &:hover {
+    background-color: #f2f2f2;
+    transition: 0.2s;
+  }
 `;
 export const WrapperRowBestCards = styled.div`
   display: flex;
@@ -65,7 +68,7 @@ export const ID = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: #4F4F4F;
+  color: #4f4f4f;
 `;
 export const Title = styled.div`
   width: 700px;
@@ -74,7 +77,7 @@ export const Title = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: #4F4F4F;
+  color: #4f4f4f;
   cursor: pointer;
 `;
 export const Author = styled.div`
@@ -84,7 +87,7 @@ export const Author = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: #4F4F4F;
+  color: #4f4f4f;
 `;
 export const CreatedAt = styled.div`
   width: 162px;
@@ -93,7 +96,7 @@ export const CreatedAt = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: #4F4F4F;
+  color: #4f4f4f;
 `;
 export const WrapperList = styled.div`
   width: 100%;
@@ -118,21 +121,21 @@ export const WrapperBest = styled.div`
   padding-left: 20px;
   padding-right: 20px;
 
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 
   &:hover {
-    background: #E0E0E0;
+    background: #e0e0e0;
     transition: all 0.3s;
     opacity: 0.9;
     transform: scale(1.05, 1.05);
   }
-`
+`;
 export const BestImg = styled.img`
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-`
+`;
 export const WrapperBestColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -178,13 +181,11 @@ export const Best = styled.div`
   /* Black */
 
   color: #000000;
-  
- 
-`
+`;
 export const BestDate = styled.div`
   color: #828282;
   font-size: 12px;
-`
+`;
 export const LikeIcon = styled.img`
   height: 20px;
   width: 20px;
@@ -192,7 +193,6 @@ export const LikeIcon = styled.img`
   margin-bottom: 6px;
 `;
 export const LikeColor = styled.div`
-  
   color: black;
   font-style: normal;
   font-weight: normal;
@@ -212,13 +212,12 @@ export const WrapperRowBestOfBest = styled.div`
   animation-name: show;
 
   @keyframes show {
-    from{
-        transform: translateY(100px);
-        opacity: 0;
+    from {
+      opacity: 0;
     }
-    to{
+    to {
       transform: translateY(0px);
-        opacity: 1;
+      opacity: 1;
     }
   }
 `;
@@ -238,7 +237,7 @@ export const Search = styled.input`
   width: 488px;
   height: 52px;
 
-  background: #F2F2F2;
+  background: #f2f2f2;
   border-radius: 10px;
   border: none;
 
@@ -246,7 +245,7 @@ export const Search = styled.input`
 
   font-size: 16px;
   outline: none;
-`
+`;
 export const WrapperSearchInputDiv = styled.div`
   max-width: 1200px;
   width: 65%;
@@ -256,17 +255,17 @@ export const WrapperSearchInputDiv = styled.div`
   flex-direction: row;
   align-items: center;
 
-  background: #F2F2F2;
+  background: #f2f2f2;
   border-radius: 10px;
   border: none;
-`
+`;
 export const SearchImg = styled.img`
   width: 17.5px;
   height: 17.5px;
   margin-left: 19px;
 
   cursor: pointer;
-`
+`;
 export const ButtonSearch = styled.button`
   display: flex;
   flex-direction: row;
@@ -287,10 +286,10 @@ export const ButtonSearch = styled.button`
   border: none;
 
   cursor: pointer;
-  &:active{
+  &:active {
     background: lightgrey;
   }
-`
+`;
 export const WrapperRowPagination = styled.div`
   display: flex;
   flex-direction: row;
@@ -307,12 +306,12 @@ interface IProps {
 }
 export const Page = styled.span`
   padding-left: 15px;
-  padding-right: 15px; 
-  cursor: pointer; 
-  
-  color: ${(props: IProps) => props.isActive ? '#FFD600' : 'black'};
-  font-weight: ${(props: IProps) => props.isActive ? 'bold' : 'normal'};
-`
+  padding-right: 15px;
+  cursor: pointer;
+
+  color: ${(props: IProps) => (props.isActive ? "#FFD600" : "black")};
+  font-weight: ${(props: IProps) => (props.isActive ? "bold" : "normal")};
+`;
 export const ButtonWriteNewBoard = styled.button`
   display: flex;
   justify-content: space-around;
@@ -327,17 +326,17 @@ export const ButtonWriteNewBoard = styled.button`
   font-weight: 500;
   font-size: 16px;
 
-  background: #FFFFFF;
+  background: #ffffff;
   /* Gray 6 */
 
-  border: 1px solid #F2F2F2;
+  border: 1px solid #f2f2f2;
   box-sizing: border-box;
   border-radius: 10px;
 
   cursor: pointer;
 
   &:active {
-    background-color: #BDBDBD;
+    background-color: #bdbdbd;
   }
 `;
 export const ButtonFilter = styled.button`
@@ -354,17 +353,17 @@ export const ButtonFilter = styled.button`
   font-weight: 500;
   font-size: 16px;
 
-  background: #FFFFFF;
+  background: #ffffff;
   /* Gray 6 */
 
-  border: 1px solid #F2F2F2;
+  border: 1px solid #f2f2f2;
   box-sizing: border-box;
   border-radius: 10px;
 
   cursor: pointer;
 
   &:active {
-    background-color: #BDBDBD;
+    background-color: #bdbdbd;
   }
 `;
 export const WrapperPaginationButtons = styled.div`
@@ -372,24 +371,24 @@ export const WrapperPaginationButtons = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-`
+`;
 export const WrapperListItems = styled.div`
   height: 580px;
   z-index: 3;
   background-color: white;
-`
+`;
 export const WrapperLoading = styled.div`
   height: 580px;
   z-index: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 export const WrapperRowHashtag = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
+`;
 export const ButtonHashtag = styled.div`
   max-width: 20px;
-`
+`;

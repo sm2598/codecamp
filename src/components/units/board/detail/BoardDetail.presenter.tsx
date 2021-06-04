@@ -37,11 +37,11 @@ import {
   WrapperProfileIcon,
   WrapperLinkMap,
   ImgLink,
-  ImgMap
+  ImgMap,
 } from "./BoardDetail.styles";
-import React from 'react'
-import ReactPlayer from 'react-player/youtube'
-import BoardDetailItemUI from './BoardDetail.presenterItem';
+import React from "react";
+import ReactPlayer from "react-player/youtube";
+import BoardDetailItemUI from "./BoardDetail.presenterItem";
 import { HalfRating } from "../../../commons/star";
 
 export default function BoardDetailUI({
@@ -66,7 +66,10 @@ export default function BoardDetailUI({
             </WrapperProfileIcon>
             <WrapperUserInfoColumn>
               <Name>{data?.fetchBoard.writer}</Name>
-              <DateCreated>Date: {data?.fetchBoard.createdAt.slice(0, 10).replaceAll("-", ".")}</DateCreated>
+              <DateCreated>
+                Date:{" "}
+                {data?.fetchBoard.createdAt.slice(0, 10).replaceAll("-", ".")}
+              </DateCreated>
             </WrapperUserInfoColumn>
             <WrapperLinkMap>
               <ImgLink src="/link.png" />
@@ -84,15 +87,25 @@ export default function BoardDetailUI({
         <WrapperRow>
           <WrapperColumnBoardBottom>
             <WrapperYouTubePlayer>
-              <ReactPlayer controls={true} width={486} height={240} url={data?.fetchBoard.youtubeUrl} />
+              <ReactPlayer
+                controls={true}
+                width={486}
+                height={240}
+                url={data?.fetchBoard.youtubeUrl}
+              />
             </WrapperYouTubePlayer>
             <WrapperCenterLike>
               <WrapperRowLikeButtons>
                 <WrapperColumnLikeButtons>
-                  <LikeIcon src='/likebutton.png' onClick={onClickLike}/><LikeColor>{data?.fetchBoard.likeCount}</LikeColor>
+                  <LikeIcon src="/likebutton.png" onClick={onClickLike} />
+                  <LikeColor>{data?.fetchBoard.likeCount}</LikeColor>
                 </WrapperColumnLikeButtons>
                 <WrapperColumnLikeButtons>
-                  <DislikeIcon src="/dislikebutton.png" onClick={onClickDislike}/><DislikeColor>{data?.fetchBoard.dislikeCount}</DislikeColor>
+                  <DislikeIcon
+                    src="/dislikebutton.png"
+                    onClick={onClickDislike}
+                  />
+                  <DislikeColor>{data?.fetchBoard.dislikeCount}</DislikeColor>
                 </WrapperColumnLikeButtons>
               </WrapperRowLikeButtons>
             </WrapperCenterLike>
@@ -134,7 +147,7 @@ export default function BoardDetailUI({
                   placeholder="비밀번호"
                   onChange={onChangeInput}
                 ></InputCommentPassword>
-                <HalfRating onChangeInput={onChangeInput}/>
+                <HalfRating onChangeInput={onChangeInput} />
               </WrapperRow>
             </WrapperColumn>
             <WrapperColumn>
@@ -155,8 +168,13 @@ export default function BoardDetailUI({
             </WrapperColumn>
           </div>
           <WrapperColumn>
-            {comments?.fetchBoardComments.map((comments,index) => (
-              <BoardDetailItemUI key={comments._id} index={index} comments={comments} refetch={refetch}/>
+            {comments?.fetchBoardComments.map((comments, index) => (
+              <BoardDetailItemUI
+                key={comments._id}
+                index={index}
+                comments={comments}
+                refetch={refetch}
+              />
             ))}
           </WrapperColumn>
         </WrapperColumn>

@@ -1,5 +1,5 @@
-import Carousel  from '../../carousel/carousel'
-import { 
+import Carousel from "../../carousel/carousel";
+import {
   Wrapper,
   WrapperColumn,
   WrapperRowTop,
@@ -8,24 +8,21 @@ import {
   WrapperRowButtonsTop,
   WrapperRow,
   ButtonLogIn,
-  ButtonSignUp
-} from './NavigationTop.styles'
+  ButtonSignUp,
+} from "./NavigationTop.styles";
 import { useRouter } from "next/router";
-import Hi from './Nav'
+import Hi from "./Nav";
 
-
-export default function NavigationTopUI ({onClickToBoard}) {
+export default function NavigationTopUI({ onClickToBoard }) {
   const router = useRouter();
 
- 
-
   return (
-  <>
-    <Wrapper>
-      <WrapperColumn>
+    <>
+      <Wrapper>
+        <WrapperColumn>
           <WrapperRowTop>
             <WrapperRow>
-              <Logo src="/logo.png" onClick={onClickToBoard}/>
+              <Logo src="/logo.png" onClick={onClickToBoard} />
               <WrapperRowButtonsTop>
                 <ButtonLogIn>로그인</ButtonLogIn>
                 <ButtonSignUp>회원가입</ButtonSignUp>
@@ -33,12 +30,11 @@ export default function NavigationTopUI ({onClickToBoard}) {
             </WrapperRow>
           </WrapperRowTop>
           <WrapperRowMiddle>
-            <Carousel/>
+            <Carousel />
           </WrapperRowMiddle>
         </WrapperColumn>
-    </Wrapper>
-    <Hi/>
-  </>
-
-  )
+      </Wrapper>
+      <Hi />
+    </>
+  );
 }

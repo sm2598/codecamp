@@ -1,12 +1,13 @@
 import BoardWriteUI from "./BoardWrite.presenter";
-import { CREATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 import { useRouter } from "next/router";
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState, useRef } from "react";
 import { useMutation } from "@apollo/client";
 import {
   IMutation,
   IMutationCreateBoardArgs,
 } from "../../../../commons/types/generated/types.s";
+import { getStorageUrl } from "../../../commons/libraries/utils";
 
 const inputsInit = {
   writer: "",
@@ -21,8 +22,33 @@ export default function BoardWrite() {
   const router = useRouter();
   const [inputs, setInputs] = useState(inputsInit);
   const [isActive, setIsActive] = useState(false);
-  const [createBoard] =
-    useMutation<IMutation, IMutationCreateBoardArgs>(CREATE_BOARD);
+  const [createBoard] = useMutation(CREATE_BOARD);
+
+  const [fileUrl, setFileUrl] = useState<string>();
+  const [uploadFile] = useMutation(UPLOAD_FILE);
+  const aaaRef = useRef<HTMLInputElement>();
+
+  const onChangeFile = async (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+      setFileUrl(String(event.target.result));
+    };
+
+    // try {
+    //   const { data } = await uploadFile({ variables: { file: file } });
+    //   setFileUrl(getStorageUrl(data.uploadFile.url));
+    // } catch (error) {
+    //   alert(error.message);
+    // }
+  };
+
+  const onClickUpload = () => {
+    aaaRef.current.click();
+  };
 
   // Input했을떄 값 -> state저장 | input required된게 채워졌을 경우 버튼 활성화
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -60,15 +86,19 @@ export default function BoardWrite() {
     }
   };
   const onClickBack = (event: MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    router.back()
-  }
+    router.back();
+  };
 
   return (
     <BoardWriteUI
       isActive={isActive}
+      fileUrl={fileUrl}
+      aaaRef={aaaRef}
+      onChangeFile={onChangeFile}
       onChangeInput={onChangeInput}
       onClickRegister={onClickRegister}
       onClickBack={onClickBack}
+      onClickUpload={onClickUpload}
     />
   );
 }

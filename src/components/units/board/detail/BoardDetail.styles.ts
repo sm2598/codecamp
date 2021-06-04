@@ -309,7 +309,7 @@ export const WrapperColumnComment = styled.div`
   ${({ index }: IProps) =>
     index === 0
       ? `
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-name: show;
 
     @keyframes show {
@@ -327,7 +327,7 @@ export const WrapperColumnComment = styled.div`
   ${({ isClicked }: IProps) =>
     isClicked
       ? `
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-name: delete;
 
     @keyframes delete {
@@ -336,7 +336,7 @@ export const WrapperColumnComment = styled.div`
         opacity: 1;
       }
       to{
-        transform: translateX(300px);
+        transform: translateX(1000%);
         opacity: 0;
       }
     }

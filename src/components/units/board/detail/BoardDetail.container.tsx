@@ -16,6 +16,7 @@ export default function BoardDetail() {
   const inputsComment = {
     writer: "",
     contents: "",
+    password: "",
     rating: 0,
   };
   // Stating state variables
@@ -37,6 +38,14 @@ export default function BoardDetail() {
     variables: { boardId: router.query.id },
   });
 
+  // Input값들을 state상태에 set
+  const onChangeInput = (event) => {
+    const newInputs = { ...inputs, [event.target.name]: event.target.value };
+    setCharacterCount(event.target.value.length);
+    setInputs({ ...newInputs, rating: Number(newInputs.rating) });
+    console.log(inputs);
+  };
+
   // 댓글 PUSH -> mutation
   const onClickRegister = async (event) => {
     try {
@@ -46,17 +55,11 @@ export default function BoardDetail() {
           boardId: router.query.id,
         },
       });
+      console.log(result);
       refetch();
     } catch (error) {
       alert(error.message);
     }
-  };
-
-  // Input값들을 state상태에 set
-  const onChangeInput = (event) => {
-    const newInputs = { ...inputs, [event.target.name]: event.target.value };
-    setCharacterCount(event.target.value.length);
-    setInputs({ ...newInputs, rating: Number(newInputs.rating) });
   };
 
   // 목록보기 Router -> BoardList

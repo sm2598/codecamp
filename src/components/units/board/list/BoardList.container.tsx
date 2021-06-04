@@ -56,11 +56,11 @@ export default function BoardList() {
   });
 
   // Pagination constants
-  const result = boardscount?.fetchBoardsCount; // ex: 1364
-  const result2 = Math.ceil(result / 10); // ex. 137
-  const basiclist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const result = boardscount?.fetchBoardsCount; // ex: 1393
+  const result2 = Number(String(result/10).slice(0,2))*10; // ex. 139
+  const basiclist = [1,10];
   const firsttwo = Math.floor(result2 / 10) * 10; // ex. 130
-  const [holder, setHolder] = useState(1);
+  const [holder, setHolder] = useState<number>(1);
   const [pageArr, setPageArr] = useState(basiclist);
 
   // Pagination buttons
@@ -73,11 +73,11 @@ export default function BoardList() {
     setHolder(holder - 10);
     let newArr = pageArr.map((data) => data - 10);
     setPageArr(newArr);
-    setCurrentPage(newArr[9]);
+    setCurrentPage(newArr[1]);
   };
   const onRightArrowClick = () => {
-    if (holder >= firsttwo && currentPage === result2) return;
-    if (holder >= firsttwo && currentPage !== result2) {
+    if (holder + 9 >= firsttwo && currentPage === result2) return;
+    if (holder + 9 >= firsttwo && currentPage !== result2) {
       setCurrentPage(result2);
       return;
     }
@@ -85,7 +85,6 @@ export default function BoardList() {
     let newArr = pageArr.map((data) => data + 10);
     setPageArr(newArr);
     setCurrentPage(newArr[0]);
-    console.log(newArr[0]);
   };
   const onLeftFirstArrowClick = () => {
     setHolder(1);
@@ -94,17 +93,16 @@ export default function BoardList() {
   };
   const onRightLastArrowClick = () => {
     const holderSetter = firsttwo;
-    setHolder(holderSetter + 1);
+    setHolder(holderSetter+1);
+    
     let newArr = basiclist.map((data) => data + holderSetter);
-    console.log(newArr);
     setPageArr(newArr);
     setCurrentPage(result2);
-    console.log(result2);
   };
+  console.log(holder)
   const onClickPage = (event) => {
     setCurrentPage(Number(event.target.id));
   };
-  console.log(result);
   ///////////////////////////////////////////////////////////
 
   return (

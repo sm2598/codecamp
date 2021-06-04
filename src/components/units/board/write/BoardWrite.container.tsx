@@ -24,6 +24,7 @@ export default function BoardWrite() {
   const [isActive, setIsActive] = useState(false);
   const [createBoard] = useMutation(CREATE_BOARD);
 
+  // file upload
   const [fileUrl, setFileUrl] = useState<string>();
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const aaaRef = useRef<HTMLInputElement>();

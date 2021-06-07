@@ -54,6 +54,7 @@ export const ButtonLogIn = styled.button`
   font-weight: bold;
   font-size: 16px;
   border-radius: 10px;
+  cursor: pointer;
   &:hover {
     background: lightgrey;
     transition: 0.3s;
@@ -74,7 +75,7 @@ export const ButtonSignUp = styled.button`
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-
+  cursor: pointer;
   &:hover {
     background: lightgrey;
     transition: 0.3s;

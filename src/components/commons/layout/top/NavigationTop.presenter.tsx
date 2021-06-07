@@ -15,6 +15,13 @@ import Hi from "./Nav";
 
 export default function NavigationTopUI({ onClickToBoard }) {
   const router = useRouter();
+  const onClickToLogin = () => {
+    router.push('/login')
+  }
+  const onClickToRegister = () => {
+    router.push('/signup')
+  }
+
 
   return (
     <>
@@ -24,8 +31,8 @@ export default function NavigationTopUI({ onClickToBoard }) {
             <WrapperRow>
               <Logo src="/logo.png" onClick={onClickToBoard} />
               <WrapperRowButtonsTop>
-                <ButtonLogIn>로그인</ButtonLogIn>
-                <ButtonSignUp>회원가입</ButtonSignUp>
+                <ButtonLogIn onClick={onClickToLogin}>로그인</ButtonLogIn>
+                <ButtonSignUp onClick={onClickToRegister}>회원가입</ButtonSignUp>
               </WrapperRowButtonsTop>
             </WrapperRow>
           </WrapperRowTop>

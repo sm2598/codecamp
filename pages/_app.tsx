@@ -5,8 +5,7 @@ import {
   ApolloLink,
 } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
-import { Footer } from "../src/components/commons/footer/Footer.container";
-import NavigationTop from "../src/components/commons/navigation/top/NavigationTop.container";
+import Layout from "../src/components/commons/layout/index"
 import GlobalStyles from "../src/commons/styles/globalStyles";
 
 function MyApp({ Component, pageProps }) {
@@ -21,10 +20,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ApolloProvider client={client}>
-      <NavigationTop />
-      <GlobalStyles />
-      <Component {...pageProps} />
-      <Footer />
+      <Layout>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   );
 }

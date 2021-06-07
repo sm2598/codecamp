@@ -58,6 +58,7 @@ export default function BoardList() {
   // Pagination constants
   const result = boardscount?.fetchBoardsCount; // ex: 1393
   const result2 = Number(String(result/10).slice(0,2))*10; // ex. 139
+  const lastpage = Math.ceil(result/10)
   const basiclist = [1,10];
   const firsttwo = Math.floor(result2 / 10) * 10; // ex. 130
   const [holder, setHolder] = useState<number>(1);
@@ -97,9 +98,8 @@ export default function BoardList() {
     
     let newArr = basiclist.map((data) => data + holderSetter);
     setPageArr(newArr);
-    setCurrentPage(result2);
+    setCurrentPage(lastpage);
   };
-  console.log(holder)
   const onClickPage = (event) => {
     setCurrentPage(Number(event.target.id));
   };

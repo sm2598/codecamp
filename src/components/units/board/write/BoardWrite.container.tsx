@@ -7,7 +7,6 @@ import {
   IMutation,
   IMutationCreateBoardArgs,
 } from "../../../../commons/types/generated/types.s";
-import { getStorageUrl } from "../../../commons/libraries/utils";
 
 const inputsInit = {
   writer: "",
@@ -26,11 +25,12 @@ export default function BoardWrite() {
 
   // file upload
   const [fileUrl, setFileUrl] = useState<string>();
+  const [file, setFile] = useState();
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const aaaRef = useRef<HTMLInputElement>();
 
   const onChangeFile = async (event) => {
-    const file = event.target.files[0];
+    setFile(event.target.files[0]);
     console.log(file);
 
     const reader = new FileReader();

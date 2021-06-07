@@ -4,13 +4,13 @@ import { useRouter } from "next/router";
 
 export const WrapperRowBottom = styled.div`
   position: sticky;
-  top:0px;
+  top: 0px;
   width: 100%;
   height: 64px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top:-6px;
+  margin-top: -6px;
   background-color: #FFD600;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
   margin-bottom: 80px;
@@ -75,6 +75,7 @@ export const ButtonWrite = styled.button`
 
   cursor: pointer;
   z-index: 0;
+  margin-top: 0px;
 
   transform: ${(props: IProps) => props.isHover ? 'translateY(100%)' : 'translateY(0)' };
 `

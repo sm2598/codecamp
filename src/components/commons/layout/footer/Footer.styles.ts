@@ -4,13 +4,16 @@ export const Wrapper = styled.div`
   background: #f2f2f2;
   height: 285px;
   width: 100%;
+  z-index: 2;
 `;
 export const WrapperColumn = styled.div`
-  width: 1200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  z-index: 2;
 `;
 export const WrapperRowTop = styled.div`
   width: 100%;
@@ -22,12 +25,17 @@ export const WrapperRowTop = styled.div`
 
   font-size: 18px;
   color: #828282;
+
+  z-index: 2;
 `;
 export const WrapperRowMiddle = styled.div`
   width: 100%;
   height: 100px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+
+  z-index: 2;
 `;
 export const WrapperRowBottom = styled.div`
   width: 100%;
@@ -38,6 +46,7 @@ export const WrapperRowBottom = styled.div`
   align-items: center;
 
   color: #bdbdbd;
+  z-index: 2;
 `;
 export const Logo = styled.img`
   width: 210px;

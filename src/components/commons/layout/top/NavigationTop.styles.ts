@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-
+  width: 100%;
 `;
 export const WrapperColumn = styled.div`
   width: 100%;

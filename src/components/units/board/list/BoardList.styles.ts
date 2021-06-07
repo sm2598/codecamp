@@ -79,6 +79,7 @@ export const Title = styled.div`
   justify-content: center;
   color: #4f4f4f;
   cursor: pointer;
+  overflow-x: hidden;
 `;
 export const Author = styled.div`
   width: 224px;
@@ -213,10 +214,11 @@ export const WrapperRowBestOfBest = styled.div`
 
   @keyframes show {
     from {
+      transform: translateX(00px);
       opacity: 0;
     }
     to {
-      transform: translateY(0px);
+      transform: translateX(00px);
       opacity: 1;
     }
   }

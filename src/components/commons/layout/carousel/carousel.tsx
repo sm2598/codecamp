@@ -21,7 +21,7 @@ export default function Carousel() {
   return (
     <SlideWrapper>
       <Slider {...settings}>
-        <SLIDEIMG src="/banner.png"></SLIDEIMG>
+        {/* <SLIDEIMG src="/banner.png"></SLIDEIMG> */}
         <SLIDEIMG src="/banner2.png"></SLIDEIMG>
       </Slider>
     </SlideWrapper>

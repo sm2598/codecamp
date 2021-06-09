@@ -336,7 +336,7 @@ export const WrapperColumnComment = styled.div`
         opacity: 1;
       }
       to{
-        transform: translateX(1000%);
+        transform: translateX(200%);
         opacity: 0;
       }
     }

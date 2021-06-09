@@ -176,7 +176,6 @@ export const Best = styled.div`
   font-style: normal;
   font-weight: bold;
   font-size: 36px;
-  line-height: 42px;
   text-align: center;
   margin-bottom: 40px;
   /* Black */

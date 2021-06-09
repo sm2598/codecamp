@@ -30,13 +30,15 @@ const Signup = () => {
         alert("Only 8~16 characters, number, special characters are allowed.")
         return false
 
+    } else if(inputs.password !== inputs.confirmpassword) {
+        alert("Your password does not match.")
     } else {
-        alert("You have successfully logged in.")
+        alert("You have successfully signed up.")
         return true
     }
   } 
 
-  const onClickSignIn = () => {
+  const onClickSignup = () => {
     validation(inputs.email, inputs.password)
   }
 
@@ -48,7 +50,7 @@ const Signup = () => {
     <SignupUI 
       isActive={isActive}
       onChangeInput={onChangeInput}
-      onClickSignIn={onClickSignIn}
+      onClickSignup={onClickSignup}
     />
   )
 }

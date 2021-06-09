@@ -13,6 +13,7 @@ export const BackgroundIMG = styled.img`
   opacity: 0.3;
   width: 100%;
   height: 100vh;
+  object-fit: cover;
   position: absolute;
   user-select: none;
 `
@@ -27,6 +28,20 @@ export const WrapperColumn = styled.div`
   height: 510px;
 
   z-index: 1;
+
+  animation-duration: 1s;
+  animation-name: show;
+
+  @keyframes show {
+    from {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
 `
 export const WrapperRow = styled.div`
   display: flex;

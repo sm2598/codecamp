@@ -88,20 +88,20 @@ export default function Hi () {
   const [isHover, setIsHover] = useState(false)
 
   const router = useRouter();
-  // onClick Router-to-BoardWrite
+  
   const onClickRouterToNewBoard = (event) => {
     router.push('/boards/new')
   }
-  // OnClick Router-to-Board
   const onClickToBoard = (event) => {
     router.push(`/boards/list`)
-
   }
-  const onmouseenter = (index) => {
+  const onClickToMarket = () => {
+    router.push('/market/list')
+  }
+  const onmouseenter = () => {
     setIsHover(true);
   };
-
-  const onmouseleave = (event) => {
+  const onmouseleave = () => {
     setIsHover(false);
   };
 
@@ -111,7 +111,7 @@ export default function Hi () {
         <ButtonBoard onClick={onClickToBoard}>자유게시판</ButtonBoard>
         <ButtonWrite isHover={isHover} onClick={onClickRouterToNewBoard}>게시물 작성</ButtonWrite>
       </WrapperColumn>
-      <Button>중고마켓</Button>
+      <Button onClick={onClickToMarket}>중고마켓</Button>
       <Button>마이페이지</Button>
     </WrapperRowBottom>
   )

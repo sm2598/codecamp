@@ -89,6 +89,7 @@ export default function DeleteModal({ comments, isClicked, setIsClicked }) {
               name="password"
               placeholder="비밀번호"
               onChange={onChangePassword}
+              style={{width: "227px", margin: "0px"}}
             ></InputCommentPassword>
           </DialogContentText>
         </DialogContent>

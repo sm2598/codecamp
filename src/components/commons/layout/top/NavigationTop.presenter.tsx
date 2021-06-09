@@ -22,7 +22,6 @@ export default function NavigationTopUI({ onClickToBoard }) {
     router.push('/signup')
   }
 
-
   return (
     <>
       <Wrapper>

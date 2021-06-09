@@ -13,6 +13,7 @@ export const BackgroundIMG = styled.img`
   opacity: 0.3;
   width: 100%;
   height: 100vh;
+  object-fit: cover;
   position: absolute;
   user-select: none;
 `
@@ -54,6 +55,7 @@ export const WrapperRowRemember = styled.div`
   margin-bottom: 40px;
 `
 export const Label = styled.div`
+  margin-top: 10px;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -95,7 +97,7 @@ export const InputUserEmailPassword = styled.input`
   opacity: 0.6;
 
   padding-left: 16px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 
   outline: none;
 `
@@ -173,4 +175,17 @@ export const ButtonMap = styled.button`
   &:active {
     color: grey;
   }
+`
+
+interface IProps {
+  isEntered: boolean;
+}
+export const Requirement = styled.div`
+  padding-top:20px;
+  font-size: 14px;
+  color: #FFFFFF;
+  transition: 0.3s;
+  transition-timing-function: ease-in-out;
+  opacity: ${(props: IProps) => props.isEntered ? '1' : '0' };
+  height: ${(props: IProps) => props.isEntered ? '50px' : '0' };
 `

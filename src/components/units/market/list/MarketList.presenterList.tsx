@@ -1,6 +1,8 @@
 import { ItemsListContent, ItemsListHashtag, ItemsListImg, ItemsListPrice, ItemsListTitle, ItemsListUser, ItemsListUserIcon, WrapperColumnItemsList, WrapperItems, WrapperRow, WrapperRowItemsList, WrapperRowItemsListChild, WrapperRowUser } from "./MarketList.styles"
 
 const MarketListListUI = ({usedItems}) => {
+
+
   return (
     <WrapperColumnItemsList>
     {usedItems?.fetchUseditems.map((data) =>

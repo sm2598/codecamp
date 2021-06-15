@@ -11,8 +11,8 @@ export const FETCH_USEDITEMSBEST = gql`
   }
 `
 export const FETCH_USEDITEMS = gql`
-  query fetchUseditems {
-    fetchUseditems {
+  query fetchUseditems ($search: String, $page: Int) {
+    fetchUseditems (search: $search, page: $page) {
       _id
       name
       contents

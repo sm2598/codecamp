@@ -1,5 +1,7 @@
 import SignupUI from './Signup.presenter'
 import { useState } from 'react'
+import { useMutation } from '@apollo/client';
+import { CREATE_USER } from './Signup.queries';
 
 const inputsInit = {
   email: "",
@@ -13,11 +15,12 @@ const Signup = () => {
   const [showEmail, setShowEmail] = useState<boolean>(false)
   const [isActive, setIsActive] = useState(false);
   const [inputs, setInputs] = useState(inputsInit);
+  const [createUser] = useMutation(CREATE_USER)
 
   const onChangeInput = (event) => {
-    const newInputs = { ...inputs, [event.target.name]: event.target.value };
+    const newInputs = { ...inputs, [event.target.id]: event.target.value };
     setInputs(newInputs);
-    newInputs.email && newInputs.password && newInputs.confirmpassword !== "" ? setIsActive(true) : setIsActive(false);
+    newInputs.email && newInputs.name && newInputs.password && newInputs.confirmpassword !== "" ? setIsActive(true) : setIsActive(false);
   };
   
   // Sign In validation
@@ -38,12 +41,20 @@ const Signup = () => {
     }
   } 
 
-  const onClickSignup = () => {
-    validation(inputs.email, inputs.password)
-  }
-
-  const onClickEmail = (event) => {
-    return event.target.value
+  const onClickSignup = async () => {
+    if(!validation(inputs.email, inputs.password)) return; 
+    try { const result = await createUser({
+      variables: {
+        createUserInput: {
+          email: inputs.email,
+          password: inputs.password,
+          name: inputs.name
+        }
+      }
+    })
+    } catch(error) {
+      alert(error.message)
+    }
   }
 
   return (

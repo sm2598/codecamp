@@ -7,6 +7,12 @@ export const Wrapper = styled.div`
   background: black;
   height: 100vh;
   z-index: 5;
+  overflow-y: hidden;
+`
+export const FixedButton = styled.img`
+  position: fixed;
+  left: 1816px;
+  top: 79px;
 `
 export const BackgroundIMG = styled.img`
   z-index: 0;

@@ -71,11 +71,6 @@ export const WrapperRowItemsList = styled.div`
 
   &:hover {
     background: #fafafa;
-    transition: all 0.5s ease-out;
-    transform: scale(1.1, 1.1);
-    border-bottom: 0;
-    padding-left: 100px;
-    padding-right: 100px;
   }
 `
 export const WrapperRowItemsListChild = styled.div`
@@ -190,6 +185,23 @@ export const ButtonSelling = styled.button`
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
+
+  border:none;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  color: ${(props: IProps) => (props.isActive ? "#FFD600" : "black")};
+
+  &:hover {
+    transition: 0.3s;
+    color: #FFD600;
+  }
+`
+export const ButtonShowType = styled.button`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
 
   border:none;
   background-color: transparent;
@@ -329,3 +341,55 @@ export const ButtonCreateItem = styled.button`
     background-color: #f2f2f2;
   }
 `
+export const ButtonFilter = styled.button`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 16px;
+
+  width: 171px;
+  height: 52px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+
+  background: #ffffff;
+  /* Gray 6 */
+
+  border: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  &:active {
+    background-color: #bdbdbd;
+  }
+`;
+export const WrapperPaginationButtons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+export const WrapperRowPagination = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1200px;
+  width: 100%;
+
+  margin-bottom: 450px;
+`;
+export const Page = styled.span`
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+
+  color: ${(props: IProps) => (props.isActive ? "#FFD600" : "black")};
+  font-weight: ${(props: IProps) => (props.isActive ? "bold" : "normal")};
+`;

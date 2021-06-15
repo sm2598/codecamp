@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ButtonUserLogin, Requirement, WrapperColumnInputs, BackgroundIMG, Title, Label, InputUserEmailPassword, Wrapper, WrapperColumn } from './Signup.styles'
+import { ButtonUserLogin, Requirement, WrapperColumnInputs, BackgroundIMG, Title, Label, InputUserEmailPassword, Wrapper, WrapperColumn, FixedButton } from './Signup.styles'
 
 const SignupUI = ({ isActive, onChangeInput, onClickSignup }) => {
 
@@ -41,6 +41,7 @@ const SignupUI = ({ isActive, onChangeInput, onClickSignup }) => {
         </WrapperColumnInputs>
         <ButtonUserLogin disabled={!isActive} onClick={onClickSignup}>회원가입하기</ButtonUserLogin>
       </WrapperColumn>
+      <FixedButton src="/cancel.svg" />
     </Wrapper>
   )
 }

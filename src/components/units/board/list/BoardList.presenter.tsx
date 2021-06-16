@@ -80,7 +80,7 @@ export default function BoardListUI({
             <WrapperRowBestCards>
               <WrapperBest>
                 <WrapperBestColumn>
-                  <BestImg src="/temp.png" />
+                  <BestImg src={"/temp.png"} />
                 </WrapperBestColumn>
                 <WrapperBestColumn>
                   <WrapperTitle>

@@ -1,7 +1,11 @@
+import { useRouter } from "next/router"
 import { ItemsListContent, ItemsListHashtag, ItemsListImg, ItemsListPrice, ItemsListTitle, ItemsListUser, ItemsListUserIcon, WrapperColumnItemsList, WrapperItems, WrapperRow, WrapperRowItemsList, WrapperRowItemsListChild, WrapperRowUser } from "./MarketList.styles"
 
 const MarketListListUI = ({usedItems}) => {
-
+  const router = useRouter();
+  const onClickRoutDetail = (event) => {
+    router.push(`/market/${event.target.id}`)
+  }
 
   return (
     <WrapperColumnItemsList>
@@ -13,7 +17,7 @@ const MarketListListUI = ({usedItems}) => {
                 <ItemsListImg src="/loginbackground.png" />
               </WrapperItems>
               <WrapperItems>
-                <ItemsListTitle>{data.name}</ItemsListTitle>
+                <ItemsListTitle id={data._id} onClick={onClickRoutDetail}>{data.name}</ItemsListTitle>
                 <ItemsListContent>{data.contents}</ItemsListContent>
                 <ItemsListHashtag>{data.tags}</ItemsListHashtag>
                 <WrapperRowUser>

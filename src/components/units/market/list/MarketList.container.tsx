@@ -9,6 +9,7 @@ const MarketList = () => {
 
   
   const { data: bestItems } = useQuery(FETCH_USEDITEMSBEST)
+  console.log(bestItems)
   ///////////////////////////////////////////////////////////
 
   // Search Items

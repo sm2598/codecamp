@@ -1,7 +1,9 @@
 import LoginUI from './Login.presenter'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from './Login.queries';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../../../../pages/_app';
 
 const inputsInit = {
   email: "",
@@ -10,11 +12,13 @@ const inputsInit = {
 
 const Login = () => {
 
-  const [showEmail, setShowEmail] = useState<boolean>(false)
+  const router = useRouter()
+
   const [isActive, setIsActive] = useState<boolean>(false);
   const [inputs, setInputs] = useState(inputsInit);
 
   const [loginUser] = useMutation(LOGIN_USER)
+  const { setAccessToken } = useContext(GlobalContext);
 
   const onChangeInput = (event: any) => {
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
@@ -33,15 +37,16 @@ const Login = () => {
     } else return true
   } 
 
-  const onClickSignIn = async () => {
+  const onClickSignIn = async (event) => {
+    event.preventDefault();
     if(!validation(inputs.email, inputs.password)) return;
     try {
-      const result = await loginUser({
-        variables: {
-          ...inputs
-        }
+      const { data } = await loginUser({
+        variables: {...inputs}
       });
+      setAccessToken(data?.loginUser.accessToken);
       alert("로그인을 성공적으로 하셨습니다.")
+      router.push("/market/list")
     } catch(error) {
       alert(error.message)
     }

@@ -56,6 +56,8 @@ export default function BoardDetailUI({
   onClickDislike,
   refetch,
 }) {
+
+  console.log(data?.fetchBoard.images)
   return (
     <Wrapper>
       <WrapperContent>
@@ -80,6 +82,7 @@ export default function BoardDetailUI({
         <WrapperRow>
           <WrapperColumn>
             <PostTitle>{data?.fetchBoard.title}</PostTitle>
+            <img src={data?.fetchBoard.images[0]} />
             <PostContent>{data?.fetchBoard.contents}</PostContent>
             <Video src={data?.fetchBoard.video}></Video>
           </WrapperColumn>

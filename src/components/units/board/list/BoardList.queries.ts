@@ -7,6 +7,7 @@ export const FETCH_BOARDS = gql`
       writer
       title
       createdAt
+      images
     }
   }
 `;
@@ -18,6 +19,7 @@ export const FETCH_BOARDSOFTHEBEST = gql`
       title
       likeCount
       createdAt
+      images
     }
   }
 `

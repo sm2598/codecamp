@@ -1,7 +1,7 @@
 import LoginUI from './Login.presenter'
 import { useContext, useState } from 'react'
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from './Login.queries';
+import { useApolloClient, useMutation } from '@apollo/client';
+import { LOGIN_USER, FETCH_USER_LOGGED_IN } from './Login.queries';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../../../../pages/_app';
 
@@ -18,7 +18,9 @@ const Login = () => {
   const [inputs, setInputs] = useState(inputsInit);
 
   const [loginUser] = useMutation(LOGIN_USER)
-  const { setAccessToken } = useContext(GlobalContext);
+  const { setAccessToken, setUserInfo } = useContext(GlobalContext);
+
+  const client = useApolloClient()
 
   const onChangeInput = (event: any) => {
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
@@ -45,6 +47,13 @@ const Login = () => {
         variables: {...inputs}
       });
       setAccessToken(data?.loginUser.accessToken);
+      const userInfo = await client.query({
+        query: FETCH_USER_LOGGED_IN,
+        context: {
+          headers: { authorization: data?.loginUser.accessToken }
+        },
+      });
+      setUserInfo(userInfo.data.fetchUserLoggedIn)
       alert("로그인을 성공적으로 하셨습니다.")
       router.push("/market/list")
     } catch(error) {

@@ -13,17 +13,26 @@ import axios from "axios";
 
 export const GlobalContext = createContext({
   accessToken: "",
+  userInfo: {
+    email:'',
+    name:'',
+    userPoint: {
+      amount: 0
+    }
+  },
+  setUserInfo: (_: string) => {},
   setAccessToken: (_: string) => {},
 });
 
 function MyApp({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState("");
+  const [userInfo, setUserInfo] = useState({});
   const uploadLink = createUploadLink({
     uri: "http://backend.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });
-
+  console.log(userInfo)
   const client = new ApolloClient({
     link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
@@ -69,7 +78,7 @@ function MyApp({ Component, pageProps }) {
   // });
 
   return (
-    <GlobalContext.Provider value={{accessToken,setAccessToken}}>
+    <GlobalContext.Provider value={{userInfo, accessToken, setAccessToken, setUserInfo}}>
       <ApolloProvider client={client}>
         <Layout>
           <GlobalStyles />

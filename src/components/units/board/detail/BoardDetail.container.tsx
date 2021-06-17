@@ -10,15 +10,16 @@ import { useQuery, useMutation } from "@apollo/client";
 import BoardDetailUI from "./BoardDetail.presenter";
 import { useState } from "react";
 
+const inputsComment = {
+  writer: "",
+  contents: "",
+  password: "",
+  rating: 0,
+};
+
 export default function BoardDetail() {
   const router = useRouter();
 
-  const inputsComment = {
-    writer: "",
-    contents: "",
-    password: "",
-    rating: 0,
-  };
   // Stating state variables
   const [inputs, setInputs] = useState(inputsComment);
   const [characterCount, setCharacterCount] = useState(0);

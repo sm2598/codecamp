@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { BestCardsContent, BestCardsIMG, BestCardsPrice, BestCardsTitle, BestCardsTopHalf, ItemsListHashtag, WrapperColumn, WrapperColumnBestCards, WrapperColumnBestCardsChild, WrapperColumnBestCardsContent, WrapperColumnBestContentInner, WrapperRowBest, WrapperRowBestCards } from "./MarketList.styles"
+import { BestCardsContent, Credit, BestCardsIMG, BestCardsPrice, BestCardsTitle, BestCardsTopHalf, ItemsListHashtag, WrapperColumn, WrapperColumnBestCards, WrapperColumnBestCardsChild, WrapperColumnBestCardsContent, WrapperColumnBestContentInner, WrapperRowBest, WrapperRowBestCards } from "./MarketList.styles"
 
 const MarketListCardUI = ({usedItems}) => {
   const router = useRouter();
@@ -15,15 +15,15 @@ const MarketListCardUI = ({usedItems}) => {
               <WrapperColumnBestCards>
                 <WrapperColumnBestCardsChild>
                   <BestCardsTopHalf>
-                  <BestCardsIMG src="/loginbackground.png"/>
+                  <BestCardsIMG src="/keyboard.png"/>
                   </BestCardsTopHalf>
                   <WrapperColumnBestCardsContent>
                     <BestCardsTitle id={data._id} onClick={onClickRoutDetail}>{data.name}</BestCardsTitle>
                     <WrapperRowBestCards>
                       <WrapperColumnBestContentInner>
-                        <BestCardsContent>{data.contents}</BestCardsContent>
+                        <BestCardsContent>{data.contents.substring(0,20)}</BestCardsContent>
                         <ItemsListHashtag>{data.tags}</ItemsListHashtag>
-                        <BestCardsPrice>{data.price}원</BestCardsPrice>
+                        <BestCardsPrice><Credit src="/credit.svg" />{data.price}원</BestCardsPrice>
                       </WrapperColumnBestContentInner>
                       <WrapperColumnBestContentInner>
                         <img src="/heartyellow.png" style={{display: "flex", justifyContent: "center", width: "20px", height: "20px"}}/>

@@ -14,10 +14,11 @@ import { useRouter } from "next/router";
 import Hi from "./Nav";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 export default function NavigationTopUI({ onClickToBoard }) {
 
-  const { accessToken } = useContext(GlobalContext);
+  const { accessToken, userInfo } = useContext(GlobalContext);
   const router = useRouter();
   const onClickToLogin = () => {
     router.push('/login')
@@ -39,7 +40,9 @@ export default function NavigationTopUI({ onClickToBoard }) {
                   <ButtonLogIn onClick={onClickToLogin}>로그인</ButtonLogIn>
                   <ButtonSignUp onClick={onClickToRegister}>회원가입</ButtonSignUp> 
                 </>
-                : "로그인됨" }
+                : <>
+                    <img src="/ProfileIcon.png" style={{width:"48px",height:"48px",marginRight:"28px"}} /><ArrowDropDownIcon />
+                  </> }
               </WrapperRowButtonsTop>
             </WrapperRow>
           </WrapperRowTop>

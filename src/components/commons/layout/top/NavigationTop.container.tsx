@@ -12,26 +12,23 @@ export default function NavigationTop () {
 
   }
   const [a, setA] = useState(0)
-  useEffect(function mount() {
-    function onScroll() {
+  // useEffect(function mount() {
+  //   function onScroll() {
    
-      setA(scrollY)
-      if(a> 480){
-        console.log(true)
-      }
-    }
+  //     setA(scrollY)
+  //     if(a> 480){
+  //       console.log(true)
+  //     }
+  //   }
 
-    window.addEventListener("scroll", onScroll);
+  //   window.addEventListener("scroll", onScroll);
 
-    return function unMount() {
-      window.removeEventListener("scroll", onScroll);
-    };
-  });
+  //   return function unMount() {
+  //     window.removeEventListener("scroll", onScroll);
+  //   };
+  // });
 
   
-
- 
-
   return ( 
     <NavigationTopUI 
       onClickToBoard={onClickToBoard}

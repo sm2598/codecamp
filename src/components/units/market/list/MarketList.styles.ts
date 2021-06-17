@@ -119,10 +119,11 @@ export const WrapperColumnBestCards = styled.div`
   height: 391px;
 
   margin-bottom: 20px;
+  transition-duration: 0.3s;
 
   &:hover {
-    background: #e0e0e0;
-    transition: all 0.3s;
+    background: #F2F2F2;
+    transition-duration: 0.3s;
     opacity: 0.9;
     transform: scale(1.05, 1.05);
   }
@@ -134,7 +135,7 @@ export const WrapperColumnBestCardsChild = styled.div`
   padding: 20px;
 `
 export const BestCardsTopHalf = styled.div`
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 10px 0px;
 `
 
 export const BestCardsIMG = styled.img`
@@ -177,6 +178,9 @@ export const BestCardsPrice = styled.div`
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
+
+  display: flex;
+  align-items: center;
 `
 interface IProps {
   isActive: boolean;
@@ -293,7 +297,7 @@ export const ItemsListHashtag = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  color: crimson;
+  color: #828282;
 `
 export const ItemsListPrice = styled.div`
   font-style: normal;
@@ -393,3 +397,8 @@ export const Page = styled.span`
   color: ${(props: IProps) => (props.isActive ? "#FFD600" : "black")};
   font-weight: ${(props: IProps) => (props.isActive ? "bold" : "normal")};
 `;
+export const Credit = styled.img`
+  max-width: 18px;
+  width: 100%;
+  margin-right: 11px;
+`

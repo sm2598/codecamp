@@ -23,7 +23,8 @@ export const WrapperContent = styled.div`
   box-shadow: 0px 0px 10px gray;
 `;
 export const WrapperComments = styled.div`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: auto;
   margin-bottom: 100px;
 `;
@@ -65,7 +66,6 @@ export const WrapperRowCommentNew = styled.div`
   display: flex;
   flex-direction: row;
 `;
-
 export const WrapperColumnButton = styled.div`
   width: 100%;
   max-width: 1200px;

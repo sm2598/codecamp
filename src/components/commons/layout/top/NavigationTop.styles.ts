@@ -20,6 +20,7 @@ export const WrapperRowTop = styled.div`
   background-color: white;
 `;
 export const WrapperRowMiddle = styled.div`
+  height: 400px;
 `;
 export const WrapperRow = styled.div`
   width: 100%;

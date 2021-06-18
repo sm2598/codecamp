@@ -1,34 +1,40 @@
-import { useMutation } from "@apollo/client"
-import { useState } from "react"
-import MarketWriteUI from "./MarketWrite.presenter"
-import { CREATE_USEDITEM } from "./MarketWrite.queries"
+import { useMutation } from "@apollo/client";
+import { useState } from "react";
+import MarketWriteUI from "./MarketWrite.presenter";
+import { CREATE_USEDITEM } from "./MarketWrite.queries";
+import { EditorState } from "draft-js";
+import draftToHtml from "draftjs-to-html";
 
 const initinput = {
   name: "",
   remarks: "",
   contents: "",
   price: 0,
-  tags: []
-}
-
+  tags: [],
+};
 const MarketWrite = () => {
+  const [inputs, setInputs] = useState(initinput);
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [createUseditem] = useMutation(CREATE_USEDITEM);
 
-  const [inputs, setInputs] = useState(initinput)
-  const [createUseditem] = useMutation(CREATE_USEDITEM)
-
+  console.log(draftToHtml(editorState));
+  console.log(editorState);
   const onChangeInput = (event) => {
-    let result = {...inputs, [event.target.id]: event.target.value}
-    setInputs(result)
-  }
+    let result = {
+      ...inputs,
+      contents: draftToHtml(editorState),
+      [event.target.id]: event.target.value,
+    };
+    setInputs(result);
+  };
 
-  const onClickRegister = async (
-  ) => {
+  const onClickRegister = async () => {
     try {
       const result = await createUseditem({
         variables: {
           createUseditemInput: {
             ...inputs,
-            price: Number(inputs.price)
+            price: Number(inputs.price),
           },
         },
       });
@@ -39,11 +45,13 @@ const MarketWrite = () => {
   };
 
   return (
-    <MarketWriteUI 
+    <MarketWriteUI
       onClickRegister={onClickRegister}
       onChangeInput={onChangeInput}
+      editorState={editorState}
+      setEditorState={setEditorState}
     />
-  )
-}
+  );
+};
 
-export default MarketWrite
+export default MarketWrite;

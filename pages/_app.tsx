@@ -23,11 +23,15 @@ export const GlobalContext = createContext({
   },
   setUserInfo: (_: string) => {},
   setAccessToken: (_: string) => {},
+  createMarkup: (input: string) => {},
 });
 
 function MyApp({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState("");
   const [userInfo, setUserInfo] = useState({});
+  const createMarkup = (input) => {
+    return { __html: input };
+  };
   const uploadLink = createUploadLink({
     uri: "http://backend.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${accessToken}` },
@@ -79,7 +83,14 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <GlobalContext.Provider
-      value={{ userInfo, accessToken, setAccessToken, setUserInfo }}
+      value={{
+        //@ts-ignore
+        userInfo,
+        accessToken,
+        createMarkup,
+        setAccessToken,
+        setUserInfo,
+      }}
     >
       <ApolloProvider client={client}>
         <Layout>

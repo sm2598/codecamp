@@ -34,6 +34,8 @@ import {
   Linebreak,
 } from "./MarketDetail.styles";
 import MarketDetailItemUI from "./MarketDetail.presenterItem";
+import { useContext } from "react";
+import { GlobalContext } from "../../../../../pages/_app";
 
 const MarketDetailUI = ({
   data,
@@ -43,6 +45,7 @@ const MarketDetailUI = ({
   characterCount,
   comments,
 }) => {
+  const { createMarkup } = useContext(GlobalContext);
   console.log(comments?.fetchUseditemQuestions);
 
   return (
@@ -92,7 +95,12 @@ const MarketDetailUI = ({
             <WrapperCenter>
               <Holder src="/holder.png" />
             </WrapperCenter>
-            <PostContent>{data?.fetchUseditem.contents}</PostContent>
+            <PostContent
+              //@ts-ignore
+              dangerouslySetInnerHTML={createMarkup(
+                data?.fetchUseditem.contents
+              )}
+            />
             <PostTags>{data?.fetchUseditem.tags}</PostTags>
             <Linebreak style={{ marginBottom: "80px" }} />
             <WrapperCenter>

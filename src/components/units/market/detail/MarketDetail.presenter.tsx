@@ -43,6 +43,8 @@ const MarketDetailUI = ({
   characterCount,
   comments,
 }) => {
+  console.log(comments?.fetchUseditemQuestions);
+
   return (
     <Wrapper>
       <WrapperContent>
@@ -127,7 +129,7 @@ const MarketDetailUI = ({
           marginBottom: "80px",
         }}
       />
-      <WrapperComments>
+      <WrapperComments style={{ borderBottom: "1px solid #BDBDBD" }}>
         <WrapperColumn>
           <WrapperColumn>
             <WrapperRow>

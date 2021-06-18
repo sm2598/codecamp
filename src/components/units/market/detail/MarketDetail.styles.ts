@@ -310,11 +310,10 @@ export const WrapperColumnComment = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #bdbdbd;
   border-top: none;
   border-left: none;
   border-right: none;
-  padding-top: 10px;
+  padding-top: 20px;
 
   ${({ index }: IProps) =>
     index === 0
@@ -398,7 +397,8 @@ export const WrapperCommentEditDelete = styled.div`
   width: 100%;
 `;
 export const InputCommentTextEdit = styled.textarea`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 64px;
   /* White */
 

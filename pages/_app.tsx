@@ -5,7 +5,7 @@ import {
   ApolloLink,
 } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
-import Layout from "../src/components/commons/layout/index"
+import Layout from "../src/components/commons/layout/index";
 import GlobalStyles from "../src/commons/styles/globalStyles";
 import { useState, createContext } from "react";
 import { onError } from "@apollo/client/link/error";
@@ -14,11 +14,12 @@ import axios from "axios";
 export const GlobalContext = createContext({
   accessToken: "",
   userInfo: {
-    email:'',
-    name:'',
+    _id: "",
+    email: "",
+    name: "",
     userPoint: {
-      amount: 0
-    }
+      amount: 0,
+    },
   },
   setUserInfo: (_: string) => {},
   setAccessToken: (_: string) => {},
@@ -32,7 +33,6 @@ function MyApp({ Component, pageProps }) {
     headers: { authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });
-  console.log(userInfo)
   const client = new ApolloClient({
     link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
@@ -78,7 +78,9 @@ function MyApp({ Component, pageProps }) {
   // });
 
   return (
-    <GlobalContext.Provider value={{userInfo, accessToken, setAccessToken, setUserInfo}}>
+    <GlobalContext.Provider
+      value={{ userInfo, accessToken, setAccessToken, setUserInfo }}
+    >
       <ApolloProvider client={client}>
         <Layout>
           <GlobalStyles />

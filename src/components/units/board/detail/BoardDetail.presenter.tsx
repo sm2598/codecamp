@@ -56,8 +56,7 @@ export default function BoardDetailUI({
   onClickDislike,
   refetch,
 }) {
-
-  console.log(data?.fetchBoard.images)
+  console.log(data?.fetchBoard.images);
   return (
     <Wrapper>
       <WrapperContent>

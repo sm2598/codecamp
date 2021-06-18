@@ -1,20 +1,19 @@
-import NavigationTopUI from './NavigationTop.presenter'
+import NavigationTopUI from "./NavigationTop.presenter";
 import { useRouter } from "next/router";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-export default function NavigationTop () {
-
+export default function NavigationTop() {
   const router = useRouter();
 
   // OnClick Router-to-Board
   const onClickToBoard = (event) => {
-    router.push(`/boards/list`)
+    router.push(`/boards/list`);
+  };
 
-  }
-  const [a, setA] = useState(0)
+  const [a, setA] = useState(0);
   // useEffect(function mount() {
   //   function onScroll() {
-   
+
   //     setA(scrollY)
   //     if(a> 480){
   //       console.log(true)
@@ -28,10 +27,5 @@ export default function NavigationTop () {
   //   };
   // });
 
-  
-  return ( 
-    <NavigationTopUI 
-      onClickToBoard={onClickToBoard}
-    />
-  )
+  return <NavigationTopUI onClickToBoard={onClickToBoard} />;
 }

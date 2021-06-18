@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "@emotion/styled";
 
 export default function Carousel() {
-  var settings = {
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -15,49 +15,42 @@ export default function Carousel() {
     arrows: true,
   };
 
-
   const SliderStyle = styled(Slider)`
-    .slick-dots
-    {
-        position: absolute;
-        bottom: 30px;
+    .slick-dots {
+      position: absolute;
+      bottom: 30px;
 
-        display: block;
+      display: block;
 
-        width: 100%;
-        padding: 0;
-        margin: 0;
+      width: 100%;
+      padding: 0;
+      margin: 0;
 
-        list-style: none;
+      list-style: none;
 
-        text-align: center;
+      text-align: center;
     }
-    .slick-dots li.slick-active button:before
-    {
-        opacity: .75;
-        color: white;
+    .slick-dots li.slick-active button:before {
+      opacity: 0.75;
+      color: white;
     }
   `;
 
   const SLIDEIMG = styled.img`
     object-fit: cover;
-    width: 100%;
+    width: 99%;
     height: 400px;
     overflow: hidden;
   `;
-  const SlideWrapper = styled.div`
-  `;
+  const SlideWrapper = styled.div``;
   const Title = styled.div`
     font-size: 48px;
-  `
-
+  `;
   return (
-    // <SlideWrapper>
-      <SliderStyle {...settings}>
-        <SLIDEIMG src="/banner.png"></SLIDEIMG>
-        <SLIDEIMG src="/peoplewalking.jpg"></SLIDEIMG>
-        <SLIDEIMG src="/banner2.png"></SLIDEIMG>
-      </SliderStyle>
-    // </SlideWrapper>
+    <SliderStyle {...settings}>
+      <SLIDEIMG src="/banner.png"></SLIDEIMG>
+      <SLIDEIMG src="/peoplewalking.jpg"></SLIDEIMG>
+      <SLIDEIMG src="/banner2.png"></SLIDEIMG>
+    </SliderStyle>
   );
 }

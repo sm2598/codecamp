@@ -1,8 +1,49 @@
-import { WrapperContent, CommentText, CommentIcon, InputCommentMaxText, InputCommentText, InputCommentTextButton, WrapperComments, WrapperColumnHeart, WrapperRowContentTop, WrapperCenter, Wrapper, Holder, WrapperLinkMap, PostTitle, PostContent, WrapperProfileIcon, ProfileIcon, WrapperUserInfoColumn, Name, DateCreated, ImgLink, ImgMap, WrapperRowButtons, WrapperRow, WrapperRowBoardCreator, WrapperColumn, WrapperColumnButton, WrapperGoToList, WrapperEditBoard, PostRemarks, PostPrice, PostTags, Linebreak} from './MarketDetail.styles';
-import MarketDetailItemUI from "./MarketDetail.presenterItem"
+import {
+  WrapperContent,
+  CommentText,
+  CommentIcon,
+  InputCommentMaxText,
+  InputCommentText,
+  InputCommentTextButton,
+  WrapperComments,
+  WrapperColumnHeart,
+  WrapperRowContentTop,
+  WrapperCenter,
+  Wrapper,
+  Holder,
+  WrapperLinkMap,
+  PostTitle,
+  PostContent,
+  WrapperProfileIcon,
+  ProfileIcon,
+  WrapperUserInfoColumn,
+  Name,
+  DateCreated,
+  ImgLink,
+  ImgMap,
+  WrapperRowButtons,
+  WrapperRow,
+  WrapperRowBoardCreator,
+  WrapperColumn,
+  WrapperColumnButton,
+  WrapperGoToList,
+  WrapperEditBoard,
+  PostRemarks,
+  PostPrice,
+  PostTags,
+  Linebreak,
+} from "./MarketDetail.styles";
+import MarketDetailItemUI from "./MarketDetail.presenterItem";
 
-const MarketDetailUI = ({ data, onChangeInput, refetch, onClickRegister, characterCount, comments }) => {
-  return ( 
+const MarketDetailUI = ({
+  data,
+  onChangeInput,
+  refetch,
+  onClickRegister,
+  characterCount,
+  comments,
+}) => {
+  return (
     <Wrapper>
       <WrapperContent>
         <WrapperRow>
@@ -14,7 +55,9 @@ const MarketDetailUI = ({ data, onChangeInput, refetch, onClickRegister, charact
               <Name>{data?.fetchUseditem.seller.name}</Name>
               <DateCreated>
                 Date:{" "}
-                {data?.fetchUseditem.createdAt.slice(0, 10).replaceAll("-", ".")}
+                {data?.fetchUseditem.createdAt
+                  .slice(0, 10)
+                  .replaceAll("-", ".")}
               </DateCreated>
             </WrapperUserInfoColumn>
             <WrapperLinkMap>
@@ -31,19 +74,34 @@ const MarketDetailUI = ({ data, onChangeInput, refetch, onClickRegister, charact
                 <PostTitle>{data?.fetchUseditem.name}</PostTitle>
               </WrapperColumn>
               <WrapperColumnHeart>
-                <img src="/heartyellow.png" style={{display: "flex", justifyContent: "center", width: "20px", height: "20px"}}/>
+                <img
+                  src="/heartyellow.png"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    width: "20px",
+                    height: "20px",
+                  }}
+                />
                 <div>20</div>
               </WrapperColumnHeart>
             </WrapperRowContentTop>
             <PostPrice>{data?.fetchUseditem.price}원</PostPrice>
             <WrapperCenter>
-             <Holder src="/holder.png"/>
+              <Holder src="/holder.png" />
             </WrapperCenter>
             <PostContent>{data?.fetchUseditem.contents}</PostContent>
             <PostTags>{data?.fetchUseditem.tags}</PostTags>
-            <Linebreak />
+            <Linebreak style={{ marginBottom: "80px" }} />
             <WrapperCenter>
-              <img src="/mapholder.png" style={{width: "792px", height: "360px", marginBottom: "80px"}} />
+              <img
+                src="/mapholder.png"
+                style={{
+                  width: "792px",
+                  height: "360px",
+                  marginBottom: "80px",
+                }}
+              />
             </WrapperCenter>
             <Linebreak />
           </WrapperColumn>
@@ -60,7 +118,15 @@ const MarketDetailUI = ({ data, onChangeInput, refetch, onClickRegister, charact
           </WrapperEditBoard>
         </WrapperRowButtons>
       </WrapperColumnButton>
-      <hr style={{width: "1200px", height: "1px", background: "#BDBDBD"}}/>
+      <hr
+        style={{
+          maxWidth: "1200px",
+          width: "100%",
+          height: "1px",
+          background: "#BDBDBD",
+          marginBottom: "80px",
+        }}
+      />
       <WrapperComments>
         <WrapperColumn>
           <WrapperColumn>
@@ -82,7 +148,7 @@ const MarketDetailUI = ({ data, onChangeInput, refetch, onClickRegister, charact
               <WrapperRow>
                 <InputCommentMaxText>{characterCount}/100</InputCommentMaxText>
                 <InputCommentTextButton onClick={onClickRegister}>
-                  등록하기
+                  문의하기
                 </InputCommentTextButton>
               </WrapperRow>
             </WrapperColumn>
@@ -100,7 +166,7 @@ const MarketDetailUI = ({ data, onChangeInput, refetch, onClickRegister, charact
         </WrapperColumn>
       </WrapperComments>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default MarketDetailUI;

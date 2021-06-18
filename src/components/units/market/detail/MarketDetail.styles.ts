@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 
 export const WrapperContent = styled.div`
   max-width: 792px;
@@ -41,7 +41,6 @@ export const WrapperColumn = styled.div`
   flex-direction: column;
 `;
 export const WrapperColumnHeart = styled.div`
-
   display: flex;
   flex-direction: column;
   justify-content: right;
@@ -138,7 +137,7 @@ export const PostTitle = styled.div`
   font-weight: bold;
   font-size: 24px;
 
-  color: #4F4F4F;
+  color: #4f4f4f;
 `;
 export const PostContent = styled.div`
   max-width: 996px;
@@ -149,45 +148,44 @@ export const PostContent = styled.div`
   margin-bottom: 40px;
   /* Gray 2 */
 
-  color: #4F4F4F;
+  color: #4f4f4f;
 `;
 export const PostRemarks = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
 
-  color: #BDBDBD;
-`
+  color: #bdbdbd;
+`;
 export const PostPrice = styled.div`
   font-style: normal;
   font-weight: bold;
   font-size: 36px;
-`
+`;
 export const Holder = styled.img`
   height: 482px;
   width: 504px;
-`
+`;
 export const PostTags = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
 
-  color: #BDBDBD;
+  color: #bdbdbd;
   margin-bottom: 40px;
-`
+`;
 export const Linebreak = styled.hr`
   max-width: 792px;
   width: 100%;
   height: 1px;
-  margin-bottom: 80px;
 
-  background: #BDBDBD;
-`
+  background: #bdbdbd;
+`;
 export const WrapperCenter = styled.div`
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 export const WrapperComments = styled.div`
   max-width: 1200px;
   width: 100%;
@@ -242,7 +240,8 @@ export const InputCommentRating = styled.img`
   margin-bottom: 20px;
 `;
 export const InputCommentText = styled.textarea`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 108px;
   /* White */
 

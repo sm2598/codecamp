@@ -14,18 +14,17 @@ import { useRouter } from "next/router";
 import Hi from "./Nav";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 export default function NavigationTopUI({ onClickToBoard }) {
-
   const { accessToken, userInfo } = useContext(GlobalContext);
   const router = useRouter();
   const onClickToLogin = () => {
-    router.push('/login')
-  }
+    router.push("/login");
+  };
   const onClickToRegister = () => {
-    router.push('/signup')
-  }
+    router.push("/signup");
+  };
 
   return (
     <>
@@ -35,14 +34,26 @@ export default function NavigationTopUI({ onClickToBoard }) {
             <WrapperRow>
               <Logo src="/logo.png" onClick={onClickToBoard} />
               <WrapperRowButtonsTop>
-                {accessToken == "" ? 
-                <>
-                  <ButtonLogIn onClick={onClickToLogin}>로그인</ButtonLogIn>
-                  <ButtonSignUp onClick={onClickToRegister}>회원가입</ButtonSignUp> 
-                </>
-                : <>
-                    <img src="/ProfileIcon.png" style={{width:"48px",height:"48px",marginRight:"28px"}} /><ArrowDropDownIcon />
-                  </> }
+                {accessToken == "" ? (
+                  <>
+                    <ButtonLogIn onClick={onClickToLogin}>로그인</ButtonLogIn>
+                    <ButtonSignUp onClick={onClickToRegister}>
+                      회원가입
+                    </ButtonSignUp>
+                  </>
+                ) : (
+                  <>
+                    <img
+                      src="/ProfileIcon.png"
+                      style={{
+                        width: "48px",
+                        height: "48px",
+                        marginRight: "28px",
+                      }}
+                    />
+                    <ArrowDropDownIcon />
+                  </>
+                )}
               </WrapperRowButtonsTop>
             </WrapperRow>
           </WrapperRowTop>

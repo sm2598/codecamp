@@ -39,7 +39,7 @@ export const Logo = styled.img`
   height: 32px;
 
   cursor: pointer;
-`
+`;
 interface IProps {
   isActive: boolean;
 }
@@ -61,7 +61,7 @@ export const ButtonLogIn = styled.button`
     transition: 0.3s;
     opacity: 0.4;
   }
-`
+`;
 export const ButtonSignUp = styled.button`
   display: flex;
   flex-direction: row;
@@ -69,7 +69,7 @@ export const ButtonSignUp = styled.button`
   align-items: center;
   padding: 10px 16px;
 
-  background: #FFD600;
+  background: #ffd600;
   border-radius: 10px;
   border: none;
 
@@ -82,4 +82,4 @@ export const ButtonSignUp = styled.button`
     transition: 0.3s;
     opacity: 0.4;
   }
-`
+`;

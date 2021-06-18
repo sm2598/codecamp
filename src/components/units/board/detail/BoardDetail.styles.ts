@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 export const WrapperContent = styled.div`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 100%;
   border: 1px solid black;
 
@@ -125,14 +126,6 @@ export const DateCreated = styled.div`
   font-size: 16px;
   margin-bottom: 20px;
 `;
-export const Password = styled.input`
-  width: 486px;
-  height: 52px;
-  padding-left: 16px;
-  border: 1px solid #bdbdbd;
-
-  outline: none;
-`;
 export const PostTitle = styled.div`
   font-style: normal;
   font-weight: bold;
@@ -226,7 +219,8 @@ export const InputCommentRating = styled.img`
   margin-bottom: 20px;
 `;
 export const InputCommentText = styled.textarea`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 108px;
   /* White */
 
@@ -254,7 +248,8 @@ export const InputCommentTextButton = styled.button`
 `;
 export const InputCommentMaxText = styled.div`
   height: 52px;
-  width: 1109px;
+  max-width: 1109px;
+  width: 100%;
   border: 1px solid #bdbdbd;
   border-top: none;
   user-select: none;
@@ -451,7 +446,8 @@ export const WrapperProfileIcon = styled.div`
   align-items: center;
 `;
 export const InputCommentTextEdit = styled.textarea`
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 64px;
   /* White */
 

@@ -2,9 +2,9 @@ import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import MarketWriteUI from "./MarketWrite.presenter";
 import { CREATE_USEDITEM } from "./MarketWrite.queries";
-import { EditorState } from "draft-js";
+import { EditorState, convertToRaw, ContentState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-
+import htmlToDraft from "html-to-draftjs";
 const initinput = {
   name: "",
   remarks: "",
@@ -17,16 +17,16 @@ const MarketWrite = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [createUseditem] = useMutation(CREATE_USEDITEM);
 
-  console.log(draftToHtml(editorState));
-  console.log(editorState);
   const onChangeInput = (event) => {
     let result = {
       ...inputs,
-      contents: draftToHtml(editorState),
+      contents: draftToHtml(convertToRaw(editorState.getCurrentContent())),
       [event.target.id]: event.target.value,
     };
     setInputs(result);
   };
+
+  console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
 
   const onClickRegister = async () => {
     try {

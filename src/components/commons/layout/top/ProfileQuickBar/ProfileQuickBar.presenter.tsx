@@ -10,13 +10,14 @@ import {
   ProfileQuickBarInnerColumn,
   ProfileQuickBarName,
   ProfileQuickBarPoints,
+  ProfileContainer,
 } from "./ProfileQuickBar.styles";
 
 const ProfileQuickBarUI = ({ onClickLogout }) => {
   const { userInfo } = useContext(GlobalContext);
 
   return (
-    <>
+    <ProfileContainer>
       <ProfileQuickBarWrapper>
         <ProfileQuickBarColumn>
           <ProfileQuickBarRow>
@@ -45,7 +46,7 @@ const ProfileQuickBarUI = ({ onClickLogout }) => {
           </ProfileQuickBarRow>
         </ProfileQuickBarColumn>
       </ProfileQuickBarWrapper>
-    </>
+    </ProfileContainer>
   );
 };
 

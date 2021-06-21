@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+export const ProfileContainer = styled.div`
+  max-width: 1200px;
+  width: 100%;
+`;
 export const ProfileIcon = styled.img`
   width: 48px;
   height: 48px;
@@ -11,7 +15,7 @@ export const ProfileQuickBarWrapper = styled.div`
   background: #ffffff;
   border-radius: 16px;
   position: absolute;
-  left: 1310px;
+  left: 70%;
   top: 108px;
   z-index: 2;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);

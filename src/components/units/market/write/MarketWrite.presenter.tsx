@@ -64,6 +64,9 @@ const MarketWriteUI = ({
               toolbarClassName="toolbarClassName"
               wrapperClassName="wrapperClassName"
               editorClassName="editorClassName"
+              editorStyle={{ height: "268px", paddingLeft: "16px" }}
+              wrapperStyle={{ border: "1px solid #BDBDBD", fontSize: "14px" }}
+              placeholder="상품을 설명해주세요."
               onEditorStateChange={onEditorStateChange}
             />
           </WrapperColumnInputs>
@@ -85,6 +88,7 @@ const MarketWriteUI = ({
               onChange={onChangeInput}
             />
           </WrapperColumnInputs>
+          <WrapperColumnInputs></WrapperColumnInputs>
           <Submit onClick={onClickRegister}>등록하기</Submit>
         </WrapperColumn>
       </WrapperWrite>

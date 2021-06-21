@@ -46,6 +46,9 @@ export default function Carousel() {
   const Title = styled.div`
     font-size: 48px;
   `;
+
+  if (typeof window === "undefined")
+    return <SLIDEIMG src="/banner.png"></SLIDEIMG>;
   return (
     <SliderStyle {...settings}>
       <SLIDEIMG src="/banner.png"></SLIDEIMG>

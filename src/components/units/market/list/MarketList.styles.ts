@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -18,67 +18,67 @@ export const Wrapper = styled.div`
       opacity: 1;
     }
   }
-`
+`;
 export const WrapperColumn = styled.div`
   display: flex;
   flex-direction: column;
-  max-width:1200px;
+  max-width: 1200px;
   width: 100%;
   align-items: center;
-`
+`;
 export const WrapperColumnItemsList = styled.div`
   display: flex;
   flex-direction: column;
-  max-width:1200px;
+  max-width: 1200px;
   width: 100%;
   align-items: center;
-  border-top: 1px solid #BDBDBD;
+  border-top: 1px solid #bdbdbd;
   margin-bottom: 50px;
-`
+`;
 export const WrapperItems = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`
+`;
 export const WrapperColumnBestContentInner = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 4px;
-`
+`;
 export const WrapperRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`
+`;
 export const WrapperRowUser = styled.div`
   display: flex;
   flex-direction: row;
-`
+`;
 export const WrapperRowButton = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: right;
   margin-bottom: 400px;
-`
+`;
 export const WrapperRowItemsList = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
   padding: 20px 0px 20px 0px;
-  border-bottom: 1px solid #BDBDBD;
+  border-bottom: 1px solid #bdbdbd;
 
   &:hover {
     background: #fafafa;
   }
-`
+`;
 export const WrapperRowItemsListChild = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-`
+`;
 export const WrapperRowButtonInputs = styled.div`
   display: flex;
   flex-direction: row;
@@ -86,7 +86,7 @@ export const WrapperRowButtonInputs = styled.div`
   justify-content: space-between;
   margin-bottom: 52px;
   flex-wrap: wrap;
-`
+`;
 export const WrapperRowBest = styled.div`
   display: flex;
   flex-direction: row;
@@ -97,7 +97,7 @@ export const WrapperRowBest = styled.div`
   margin-bottom: 80px;
   cursor: pointer;
   flex-wrap: wrap;
-`
+`;
 export const WrapperColumnBestCardsTitle = styled.div`
   font-style: normal;
   font-weight: bold;
@@ -107,12 +107,12 @@ export const WrapperColumnBestCardsTitle = styled.div`
   color: #000000;
 
   margin-bottom: 40px;
-`
+`;
 export const WrapperColumnBestCards = styled.div`
   display: flex;
   flex-direction: column;
 
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 
   width: 282px;
@@ -122,21 +122,21 @@ export const WrapperColumnBestCards = styled.div`
   transition-duration: 0.3s;
 
   &:hover {
-    background: #F2F2F2;
+    background: #f2f2f2;
     transition-duration: 0.3s;
     opacity: 0.9;
     transform: scale(1.05, 1.05);
   }
-`
+`;
 export const WrapperColumnBestCardsChild = styled.div`
   display: flex;
   flex-direction: column;
 
   padding: 20px;
-`
+`;
 export const BestCardsTopHalf = styled.div`
   padding: 0px 0px 10px 0px;
-`
+`;
 
 export const BestCardsIMG = styled.img`
   max-width: 242px;
@@ -144,36 +144,36 @@ export const BestCardsIMG = styled.img`
   height: 242px;
 
   object-fit: cover;
-`
+`;
 export const WrapperRowBestCards = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`
+`;
 export const WrapperRowButtonSelling = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   max-width: 200px;
   width: 100%;
-`
+`;
 export const WrapperColumnBestCardsContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-`
+`;
 export const BestCardsTitle = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-`
+`;
 export const BestCardsContent = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   /* Gray 2 */
-  color: #4F4F4F;
-`
+  color: #4f4f4f;
+`;
 export const BestCardsPrice = styled.div`
   font-style: normal;
   font-weight: bold;
@@ -181,7 +181,7 @@ export const BestCardsPrice = styled.div`
 
   display: flex;
   align-items: center;
-`
+`;
 interface IProps {
   isActive: boolean;
 }
@@ -190,7 +190,7 @@ export const ButtonSelling = styled.button`
   font-weight: 500;
   font-size: 18px;
 
-  border:none;
+  border: none;
   background-color: transparent;
 
   cursor: pointer;
@@ -199,15 +199,15 @@ export const ButtonSelling = styled.button`
 
   &:hover {
     transition: 0.3s;
-    color: #FFD600;
+    color: #ffd600;
   }
-`
+`;
 export const ButtonShowType = styled.button`
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
 
-  border:none;
+  border: none;
   background-color: transparent;
 
   cursor: pointer;
@@ -216,9 +216,9 @@ export const ButtonShowType = styled.button`
 
   &:hover {
     transition: 0.3s;
-    color: #FFD600;
+    color: #ffd600;
   }
-`
+`;
 export const Search = styled.input`
   width: 488px;
   height: 52px;
@@ -241,7 +241,8 @@ export const WrapperSearchInputDiv = styled.div`
   flex-direction: row;
   align-items: center;
 
-  background: #f2f2f2;
+  /* background: #f2f2f2; */
+  background-color: #f2f2f2;
   border: none;
 `;
 export const SearchImg = styled.img`
@@ -279,46 +280,46 @@ export const ItemsListImg = styled.img`
   height: 160px;
   object-fit: cover;
   border-radius: 16px;
-`
+`;
 export const ItemsListTitle = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   margin-bottom: 4px;
-`
+`;
 export const ItemsListContent = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   margin-bottom: 8px;
-`
+`;
 export const ItemsListHashtag = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   color: #828282;
-`
+`;
 export const ItemsListPrice = styled.div`
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
   width: 100%;
-`
+`;
 export const ItemsListUser = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-`
+`;
 export const ItemsListUserIcon = styled.img`
   width: 20px;
   height: 20px;
   margin-right: 6px;
-`
+`;
 export const ItemsListLikes = styled.div`
   font-weight: normal;
   font-size: 16px;
-`
+`;
 export const ButtonCreateItem = styled.button`
   display: flex;
   flex-direction: row;
@@ -330,7 +331,7 @@ export const ButtonCreateItem = styled.button`
 
   /* White */
 
-  background: #FFFFFF;
+  background: #ffffff;
   /* Black */
 
   border: 1px solid #000000;
@@ -344,7 +345,7 @@ export const ButtonCreateItem = styled.button`
   &:hover {
     background-color: #f2f2f2;
   }
-`
+`;
 export const ButtonFilter = styled.button`
   display: flex;
   justify-content: space-around;
@@ -401,4 +402,4 @@ export const Credit = styled.img`
   max-width: 18px;
   width: 100%;
   margin-right: 11px;
-`
+`;

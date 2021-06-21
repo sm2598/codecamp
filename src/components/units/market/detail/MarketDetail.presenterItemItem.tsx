@@ -64,14 +64,7 @@ const MarketDetailItemItemUI = ({ comments, refetch, key, index, answers }) => {
         variables: {
           useditemQuestionAnswerId: event.target.id,
         },
-        refetchQueries: [
-          {
-            query: FETCH_USEDITEMANSWERS,
-            variables: { useditemId: router.query.id },
-          },
-        ],
       });
-      alert("성공적으로 댓글을 삭제하셨습니다.");
       refetch();
     } catch (error) {
       alert(error.message);
@@ -85,16 +78,9 @@ const MarketDetailItemItemUI = ({ comments, refetch, key, index, answers }) => {
           updateUseditemQuestionAnswerInput: {
             contents: inputsEdit.contents,
           },
-          useditemQuestionId: event.target.id,
+          useditemQuestionAnswerId: event.target.id,
         },
-        refetchQueries: [
-          {
-            query: FETCH_USEDITEMANSWERS,
-            variables: { useditemId: router.query.id },
-          },
-        ],
       });
-      alert("성공적으로 댓글 수정하셨습니다.");
       setShowEditComment(false);
       refetch();
     } catch (error) {

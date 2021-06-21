@@ -15,6 +15,7 @@ import Hi from "./Nav";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ProfileQuickBar from "./ProfileQuickBar/ProfileQuickBar.container";
 
 export default function NavigationTopUI({ onClickToBoard }) {
   const { accessToken, userInfo } = useContext(GlobalContext);
@@ -52,6 +53,7 @@ export default function NavigationTopUI({ onClickToBoard }) {
                       }}
                     />
                     <ArrowDropDownIcon />
+                    <ProfileQuickBar />
                   </>
                 )}
               </WrapperRowButtonsTop>

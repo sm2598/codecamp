@@ -17,6 +17,7 @@ import {
   WrapperRowCommentNew,
 } from "./MarketDetail.styles";
 import {
+  CREATE_USEDITEMANSWER,
   DELETE_USEDITEMQUESTION,
   FETCH_USEDITEMANSWERS,
   FETCH_USEDITEMQUESTIONS,
@@ -41,10 +42,12 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
   const [inputsEdit, setInputsCommentEdit] = useState(inputsCommentEdit);
   const [characterCount, setCharacterCount] = useState(0);
   const [showEditComment, setShowEditComment] = useState(false);
+  const [showReplyToComment, setShowReplyToComment] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   //Stating gql components
   const [updateUseditemQuestion] = useMutation(UPDATE_USEDITEMQUESTION);
   const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEMQUESTION);
+  const [createUseditemQuestionAnswer] = useMutation(CREATE_USEDITEMANSWER);
   //Input값들을 state상태에 set
   const onChangeInputComment = (event) => {
     const result = { ...inputsEdit, [event.target.name]: event.target.value };
@@ -66,14 +69,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
         variables: {
           useditemQuestionId: event.target.id,
         },
-        refetchQueries: [
-          {
-            query: FETCH_USEDITEMQUESTIONS,
-            variables: { useditemId: router.query.id },
-          },
-        ],
       });
-      alert("성공적으로 댓글을 삭제하셨습니다.");
       refetch();
     } catch (error) {
       alert(error.message);
@@ -89,19 +85,33 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
           },
           useditemQuestionId: event.target.id,
         },
-        refetchQueries: [
-          {
-            query: FETCH_USEDITEMQUESTIONS,
-            variables: { useditemId: router.query.id },
-          },
-        ],
       });
-      alert("성공적으로 댓글 수정하셨습니다.");
       setShowEditComment(false);
       refetch();
     } catch (error) {
       alert(error.message);
     }
+  };
+  const onClickCreateAnswer = async (event) => {
+    try {
+      const result = await createUseditemQuestionAnswer({
+        variables: {
+          createUseditemQuestionAnswerInput: {
+            contents: inputsEdit.contents,
+          },
+          useditemQuestionId: event.target.id,
+        },
+      });
+      setShowReplyToComment(false);
+      refetch();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+  const onClickShowReplyComment = () => {
+    showReplyToComment === false
+      ? setShowReplyToComment(true)
+      : setShowReplyToComment(false);
   };
   const { data: answers } = useQuery(FETCH_USEDITEMANSWERS, {
     variables: {
@@ -129,7 +139,10 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
                   </CommentName>
                 </WrapperNameReview>
                 <WrapperCommentEditDelete>
-                  <CommentEditDelete src="/replyButton.svg" />
+                  <CommentEditDelete
+                    src="/replyButton.svg"
+                    onClick={onClickShowReplyComment}
+                  />
                   {userInfo._id !== comments.user._id ? null : (
                     <>
                       <CommentEditDelete
@@ -161,6 +174,36 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
               index={index}
             />
           ))}
+          {showReplyToComment ? (
+            <WrapperRow
+              style={{ paddingLeft: "65px", borderTop: "1px solid #F2F2F2" }}
+            >
+              <img src="/reply.svg" style={{ paddingRight: "29px" }} />
+              <div style={{ width: "100%" }}>
+                <WrapperColumn>
+                  <InputCommentTextEdit
+                    name="contents"
+                    placeholder="답글을 등록해주세요."
+                    maxLength={100}
+                    onChange={onChangeInputComment}
+                  ></InputCommentTextEdit>
+                </WrapperColumn>
+                <WrapperColumn>
+                  <WrapperRow>
+                    <InputCommentMaxText>
+                      {characterCount}/100
+                    </InputCommentMaxText>
+                    <InputCommentTextButtonEdit
+                      id={comments._id}
+                      onClick={onClickCreateAnswer}
+                    >
+                      답글등록
+                    </InputCommentTextButtonEdit>
+                  </WrapperRow>
+                </WrapperColumn>
+              </div>
+            </WrapperRow>
+          ) : null}
         </>
       )}
       {/* 댓글수정 */}

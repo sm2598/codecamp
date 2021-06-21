@@ -1,57 +1,58 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { CREATE_USEDITEMQUESTION, FETCH_USEDITEM, FETCH_USEDITEMQUESTIONS } from "../detail/MarketDetail.queries";
-import MarketDetailUI from "./MarketDetail.presenter"
-import { useState } from "react"
-
+import {
+  CREATE_USEDITEMQUESTION,
+  FETCH_USEDITEM,
+  FETCH_USEDITEMQUESTIONS,
+} from "../detail/MarketDetail.queries";
+import MarketDetailUI from "./MarketDetail.presenter";
+import { useState } from "react";
 
 const inputsComment = {
   contents: "",
 };
 
 const MarketDetail = () => {
+  const router = useRouter();
 
-  const router = useRouter()
-  
   const [inputs, setInputs] = useState(inputsComment);
   const [characterCount, setCharacterCount] = useState(0);
 
   const [createUseditemQuestion] = useMutation(CREATE_USEDITEMQUESTION);
-  
+
   const onChangeInput = (event) => {
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
     setCharacterCount(event.target.value.length);
-    setInputs({ ...newInputs});
+    setInputs({ ...newInputs });
     console.log(inputs);
   };
   const onClickRegister = async (event) => {
-  try {
-    const result = await createUseditemQuestion({
-      variables: {
-        createUseditemQuestionInput: { ...inputs },
-        useditemId: router.query.id,
-      },
-    });
-    console.log(result);
-    refetch();
+    try {
+      const result = await createUseditemQuestion({
+        variables: {
+          createUseditemQuestionInput: { ...inputs },
+          useditemId: router.query.id,
+        },
+      });
+      refetch();
     } catch (error) {
       alert(error.message);
     }
   };
 
-  const { data: comments, refetch} = useQuery(FETCH_USEDITEMQUESTIONS, {
-    variables: { 
+  const { data: comments, refetch } = useQuery(FETCH_USEDITEMQUESTIONS, {
+    variables: {
       page: 1,
-      useditemId: router.query.id
+      useditemId: router.query.id,
     },
   });
 
   const { data } = useQuery(FETCH_USEDITEM, {
-    variables: { useditemId: router.query.id
-  }})
-  
-  return ( 
-    <MarketDetailUI 
+    variables: { useditemId: router.query.id },
+  });
+
+  return (
+    <MarketDetailUI
       data={data}
       onChangeInput={onChangeInput}
       characterCount={characterCount}
@@ -59,7 +60,7 @@ const MarketDetail = () => {
       comments={comments}
       refetch={refetch}
     />
-  )
-}
+  );
+};
 
 export default MarketDetail;

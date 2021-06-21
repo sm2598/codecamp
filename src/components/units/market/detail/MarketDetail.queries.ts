@@ -92,7 +92,7 @@ export const CREATE_USEDITEMANSWER = gql`
     $useditemQuestionId: ID!
   ) {
     createUseditemQuestionAnswer(
-      createUseditemQuestionAnswerInput: $createUseditemQuestionAnswerinput
+      createUseditemQuestionAnswerInput: $createUseditemQuestionAnswerInput
       useditemQuestionId: $useditemQuestionId
     ) {
       _id

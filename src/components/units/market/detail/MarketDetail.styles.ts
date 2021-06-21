@@ -393,7 +393,7 @@ export const WrapperCommentEditDelete = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  max-width: 44px;
+  max-width: 70px;
   width: 100%;
 `;
 export const InputCommentTextEdit = styled.textarea`

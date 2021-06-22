@@ -36,6 +36,7 @@ const MarketDetailItemItemUI = ({
   key,
   index,
   answers,
+  onClickShowReplyQuestion,
 }) => {
   const router = useRouter();
 
@@ -97,7 +98,7 @@ const MarketDetailItemItemUI = ({
   return (
     <WrapperRow style={{ paddingLeft: "65px", borderTop: "1px solid #F2F2F2" }}>
       <img src="/reply.svg" style={{ paddingRight: "29px" }} />
-      <WrapperColumnComment key={index} index={index} isClicked={isClicked}>
+      <WrapperColumnComment key={index}>
         {showEditComment ? null : (
           <>
             <WrapperRowCommentNew>
@@ -110,7 +111,10 @@ const MarketDetailItemItemUI = ({
                     </CommentName>
                   </WrapperNameReview>
                   <WrapperCommentEditDelete>
-                    <CommentEditDelete src="/replyButton.svg" />
+                    <CommentEditDelete
+                      src="/replyButton.svg"
+                      onClick={onClickShowReplyQuestion}
+                    />
                     {userInfo._id !== answers.user._id ? null : (
                       <>
                         <CommentEditDelete

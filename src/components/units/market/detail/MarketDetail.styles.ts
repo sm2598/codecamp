@@ -165,6 +165,7 @@ export const PostPrice = styled.div`
 export const Holder = styled.img`
   height: 482px;
   width: 504px;
+  margin-bottom: 80px;
 `;
 export const PostTags = styled.div`
   font-style: normal;
@@ -314,43 +315,6 @@ export const WrapperColumnComment = styled.div`
   border-left: none;
   border-right: none;
   padding-top: 20px;
-
-  ${({ index }: IProps) =>
-    index === 0
-      ? `
-    animation-duration: 2s;
-    animation-name: show;
-
-    @keyframes show {
-      from{
-        transform: translateY(-100px);
-        opacity: 0;
-      }
-      to{
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  `
-      : ""}
-  ${({ isClicked }: IProps) =>
-    isClicked
-      ? `
-    animation-duration: 2s;
-    animation-name: delete;
-
-    @keyframes delete {
-      from{
-        transform: translateX(0);
-        opacity: 1;
-      }
-      to{
-        transform: translateX(200%);
-        opacity: 0;
-      }
-    }
-  `
-      : ""}
 `;
 export const CommentContent = styled.div`
   font-size: 16px;

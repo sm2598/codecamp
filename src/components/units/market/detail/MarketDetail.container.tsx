@@ -59,6 +59,7 @@ const MarketDetail = () => {
     variables: { useditemId: router.query.id },
   });
 
+  console.log("ASD");
   return (
     <MarketDetailUI
       data={data}

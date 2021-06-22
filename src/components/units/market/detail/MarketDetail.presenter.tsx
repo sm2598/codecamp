@@ -46,7 +46,6 @@ const MarketDetailUI = ({
   comments,
 }) => {
   const { createMarkup } = useContext(GlobalContext);
-  console.log(comments?.fetchUseditemQuestions);
 
   return (
     <Wrapper>

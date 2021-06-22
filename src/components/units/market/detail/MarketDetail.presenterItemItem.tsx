@@ -19,7 +19,6 @@ import {
 import { useContext, useState } from "react";
 import {
   DELETE_USEDITEMANSWER,
-  FETCH_USEDITEMANSWERS,
   UPDATE_USEDITEMANSWER,
 } from "./MarketDetail.queries";
 import { useMutation, useQuery } from "@apollo/client";
@@ -30,7 +29,14 @@ const inputsCommentEdit = {
   contents: "",
 };
 
-const MarketDetailItemItemUI = ({ comments, refetch, key, index, answers }) => {
+const MarketDetailItemItemUI = ({
+  comments,
+  refetch2,
+  refetch,
+  key,
+  index,
+  answers,
+}) => {
   const router = useRouter();
 
   const { userInfo } = useContext(GlobalContext);
@@ -65,7 +71,7 @@ const MarketDetailItemItemUI = ({ comments, refetch, key, index, answers }) => {
           useditemQuestionAnswerId: event.target.id,
         },
       });
-      refetch();
+      refetch2();
     } catch (error) {
       alert(error.message);
     }
@@ -82,7 +88,7 @@ const MarketDetailItemItemUI = ({ comments, refetch, key, index, answers }) => {
         },
       });
       setShowEditComment(false);
-      refetch();
+      refetch2();
     } catch (error) {
       alert(error.message);
     }

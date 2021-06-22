@@ -44,17 +44,23 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
   const [showEditComment, setShowEditComment] = useState(false);
   const [showReplyToComment, setShowReplyToComment] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  //Stating gql components
+  // Stating gql components
   const [updateUseditemQuestion] = useMutation(UPDATE_USEDITEMQUESTION);
   const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEMQUESTION);
   const [createUseditemQuestionAnswer] = useMutation(CREATE_USEDITEMANSWER);
-  //Input값들을 state상태에 set
+
+  const { data: answers, refetch: refetch2 } = useQuery(FETCH_USEDITEMANSWERS, {
+    variables: {
+      useditemQuestionId: comments._id,
+    },
+  });
+  // Input값들을 state상태에 set
   const onChangeInputComment = (event) => {
     const result = { ...inputsEdit, [event.target.name]: event.target.value };
     setCharacterCount(event.target.value.length);
     setInputsCommentEdit({ ...result });
   };
-  //댓글 수정 div show
+  // 댓글 수정 div show
   const onClickShowEditComment = () => {
     showEditComment === false
       ? setShowEditComment(true)
@@ -75,7 +81,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
       alert(error.message);
     }
   };
-  //댓글 수정 -> CommentEdit
+  // 댓글 수정 -> CommentEdit
   const onClickEditComment = async (event) => {
     try {
       const result = await updateUseditemQuestion({
@@ -86,8 +92,8 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
           useditemQuestionId: event.target.id,
         },
       });
-      setShowEditComment(false);
       refetch();
+      setShowEditComment(false);
     } catch (error) {
       alert(error.message);
     }
@@ -102,8 +108,8 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
           useditemQuestionId: event.target.id,
         },
       });
+      refetch2();
       setShowReplyToComment(false);
-      refetch();
     } catch (error) {
       alert(error.message);
     }
@@ -113,12 +119,6 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
       ? setShowReplyToComment(true)
       : setShowReplyToComment(false);
   };
-  const { data: answers } = useQuery(FETCH_USEDITEMANSWERS, {
-    variables: {
-      page: 1,
-      useditemQuestionId: comments._id,
-    },
-  });
 
   return (
     <WrapperColumnComment
@@ -170,6 +170,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
               comments={comments}
               answers={answers}
               refetch={refetch}
+              refetch2={refetch2}
               key={index}
               index={index}
             />
@@ -243,6 +244,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
                   comments={comments}
                   answers={answers}
                   refetch={refetch}
+                  refetch2={refetch2}
                   key={index}
                   index={index}
                 />

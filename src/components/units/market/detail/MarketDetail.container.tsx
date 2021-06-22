@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery, useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
   CREATE_USEDITEMQUESTION,
@@ -19,6 +19,11 @@ const MarketDetail = () => {
   const [characterCount, setCharacterCount] = useState(0);
 
   const [createUseditemQuestion] = useMutation(CREATE_USEDITEMQUESTION);
+  const { data: comments, refetch } = useQuery(FETCH_USEDITEMQUESTIONS, {
+    variables: {
+      useditemId: router.query.id,
+    },
+  });
 
   const onChangeInput = (event) => {
     const newInputs = { ...inputs, [event.target.name]: event.target.value };
@@ -40,12 +45,15 @@ const MarketDetail = () => {
     }
   };
 
-  const { data: comments, refetch } = useQuery(FETCH_USEDITEMQUESTIONS, {
-    variables: {
-      page: 1,
-      useditemId: router.query.id,
-    },
-  });
+  // const [refetch, { data: commentslazy }] = useLazyQuery(
+  //   FETCH_USEDITEMQUESTIONS,
+  //   {
+  //     variables: {
+  //       page: 1,
+  //       useditemId: router.query.id,
+  //     },
+  //   }
+  // );
 
   const { data } = useQuery(FETCH_USEDITEM, {
     variables: { useditemId: router.query.id },
@@ -54,10 +62,10 @@ const MarketDetail = () => {
   return (
     <MarketDetailUI
       data={data}
-      onChangeInput={onChangeInput}
-      characterCount={characterCount}
-      onClickRegister={onClickRegister}
       comments={comments}
+      characterCount={characterCount}
+      onChangeInput={onChangeInput}
+      onClickRegister={onClickRegister}
       refetch={refetch}
     />
   );

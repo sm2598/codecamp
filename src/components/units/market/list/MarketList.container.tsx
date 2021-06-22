@@ -1,15 +1,13 @@
 import { useQuery } from "@apollo/client";
 import MarketListUI from "./MarketList.presenter";
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 import { FETCH_USEDITEMS, FETCH_USEDITEMSBEST } from "./MarketList.queries";
 import { VolumeDown } from "@material-ui/icons";
+import withAuth from "../../../commons/hoc/withAuth";
 
 const MarketList = () => {
-
-
-  
-  const { data: bestItems } = useQuery(FETCH_USEDITEMSBEST)
-  console.log(bestItems)
+  const { data: bestItems } = useQuery(FETCH_USEDITEMSBEST);
+  console.log(bestItems);
   ///////////////////////////////////////////////////////////
 
   // Search Items
@@ -38,10 +36,10 @@ const MarketList = () => {
   // });
 
   // Pagination constants
-  const result = 1 // ex: 1393
-  const result2 = Number(String(result/10).slice(0,2))*10; // ex. 139
-  const lastpage = Math.ceil(result/10)
-  const basiclist = [1,10];
+  const result = 1; // ex: 1393
+  const result2 = Number(String(result / 10).slice(0, 2)) * 10; // ex. 139
+  const lastpage = Math.ceil(result / 10);
+  const basiclist = [1, 10];
   const firsttwo = Math.floor(result2 / 10) * 10; // ex. 130
   const [holder, setHolder] = useState<number>(1);
   const [pageArr, setPageArr] = useState(basiclist);
@@ -76,8 +74,8 @@ const MarketList = () => {
   };
   const onRightLastArrowClick = () => {
     const holderSetter = firsttwo;
-    setHolder(holderSetter+1);
-    
+    setHolder(holderSetter + 1);
+
     let newArr = basiclist.map((data) => data + holderSetter);
     setPageArr(newArr);
     setCurrentPage(lastpage);
@@ -88,7 +86,7 @@ const MarketList = () => {
   ///////////////////////////////////////////////////////////
 
   return (
-    <MarketListUI 
+    <MarketListUI
       bestItems={bestItems}
       usedItems={usedItems}
       onLeftArrowClick={onLeftArrowClick}
@@ -101,7 +99,7 @@ const MarketList = () => {
       onChangeSearch={onChangeSearch}
       onClickSearch={onClickSearch}
     />
-  )
-}
+  );
+};
 
-export default MarketList
+export default withAuth(MarketList);

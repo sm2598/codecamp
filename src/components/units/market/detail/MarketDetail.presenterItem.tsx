@@ -35,14 +35,14 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
 
   const { userInfo } = useContext(GlobalContext);
 
-  const inputsCommentEdit = {
+  const inputsQuestionEdit = {
     contents: "",
   };
   //Stating state variables
-  const [inputsEdit, setInputsCommentEdit] = useState(inputsCommentEdit);
+  const [inputsEdit, setInputsEdit] = useState(inputsQuestionEdit);
   const [characterCount, setCharacterCount] = useState(0);
-  const [showEditComment, setShowEditComment] = useState(false);
-  const [showReplyToComment, setShowReplyToComment] = useState(false);
+  const [showEditQuestion, setShowEditQuestion] = useState(false);
+  const [showReplyToQuestion, setShowReplyToQuestion] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   // Stating gql components
   const [updateUseditemQuestion] = useMutation(UPDATE_USEDITEMQUESTION);
@@ -55,21 +55,21 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
     },
   });
   // Input값들을 state상태에 set
-  const onChangeInputComment = (event) => {
+  const onChangeInputQuestion = (event) => {
     const result = { ...inputsEdit, [event.target.name]: event.target.value };
     setCharacterCount(event.target.value.length);
-    setInputsCommentEdit({ ...result });
+    setInputsEdit({ ...result });
   };
   // 댓글 수정 div show
-  const onClickShowEditComment = () => {
-    showEditComment === false
-      ? setShowEditComment(true)
-      : setShowEditComment(false);
+  const onClickShowEditQuestion = () => {
+    showEditQuestion === false
+      ? setShowEditQuestion(true)
+      : setShowEditQuestion(false);
   };
-  const onClickHideEditComment = () => {
-    setShowEditComment(false);
+  const onClickHideEditQuestion = () => {
+    setShowEditQuestion(false);
   };
-  const onClickDeleteComment = async (event) => {
+  const onClickDeleteQuestion = async (event) => {
     try {
       const result = await deleteUseditemQuestion({
         variables: {
@@ -82,7 +82,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
     }
   };
   // 댓글 수정 -> CommentEdit
-  const onClickEditComment = async (event) => {
+  const onClickEditQuestion = async (event) => {
     try {
       const result = await updateUseditemQuestion({
         variables: {
@@ -93,7 +93,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
         },
       });
       refetch();
-      setShowEditComment(false);
+      setShowEditQuestion(false);
     } catch (error) {
       alert(error.message);
     }
@@ -109,25 +109,23 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
         },
       });
       refetch2();
-      setShowReplyToComment(false);
+      setShowReplyToQuestion(false);
     } catch (error) {
       alert(error.message);
     }
   };
-  const onClickShowReplyComment = () => {
-    showReplyToComment === false
-      ? setShowReplyToComment(true)
-      : setShowReplyToComment(false);
+  const onClickShowReplyQuestion = () => {
+    showReplyToQuestion === false
+      ? setShowReplyToQuestion(true)
+      : setShowReplyToQuestion(false);
   };
 
   return (
     <WrapperColumnComment
       key={index}
-      index={index}
-      isClicked={isClicked}
       style={{ borderTop: "1px solid #BDBDBD" }}
     >
-      {showEditComment ? null : (
+      {showEditQuestion ? null : (
         <>
           <WrapperRowCommentNew>
             <ProfileIconComment src="/ProfileIcon.png" />
@@ -141,19 +139,19 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
                 <WrapperCommentEditDelete>
                   <CommentEditDelete
                     src="/replyButton.svg"
-                    onClick={onClickShowReplyComment}
+                    onClick={onClickShowReplyQuestion}
                   />
                   {userInfo._id !== comments.user._id ? null : (
                     <>
                       <CommentEditDelete
                         src="/commentedit.png"
                         id={comments._id}
-                        onClick={onClickShowEditComment}
+                        onClick={onClickShowEditQuestion}
                       />
                       <CommentEditDelete
                         src="/commentdelete.png"
                         id={comments._id}
-                        onClick={onClickDeleteComment}
+                        onClick={onClickDeleteQuestion}
                       />
                     </>
                   )}
@@ -165,6 +163,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
               </CommentDate>
             </WrapperColumnCommentTop>
           </WrapperRowCommentNew>
+          {/* 답글들이 여기서 생성됨 */}
           {answers?.fetchUseditemQuestionAnswers.map((answers, index) => (
             <MarketDetailItemItemUI
               comments={comments}
@@ -173,9 +172,10 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
               refetch2={refetch2}
               key={index}
               index={index}
+              onClickShowReplyQuestion={onClickShowReplyQuestion}
             />
           ))}
-          {showReplyToComment ? (
+          {showReplyToQuestion ? (
             <WrapperRow
               style={{ paddingLeft: "65px", borderTop: "1px solid #F2F2F2" }}
             >
@@ -186,7 +186,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
                     name="contents"
                     placeholder="답글을 등록해주세요."
                     maxLength={100}
-                    onChange={onChangeInputComment}
+                    onChange={onChangeInputQuestion}
                   ></InputCommentTextEdit>
                 </WrapperColumn>
                 <WrapperColumn>
@@ -209,7 +209,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
       )}
       {/* 댓글수정 */}
       <WrapperRow>
-        {showEditComment ? (
+        {showEditQuestion ? (
           <div>
             <WrapperColumn>
               <WrapperNameReview>
@@ -218,7 +218,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
                 </CommentName>
                 <CommentEditDelete
                   src="/commentedit.png"
-                  onClick={onClickHideEditComment}
+                  onClick={onClickHideEditQuestion}
                 />
               </WrapperNameReview>
               <InputCommentTextEdit
@@ -226,7 +226,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
                 defaultValue={comments.contents}
                 placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
                 maxLength={100}
-                onChange={onChangeInputComment}
+                onChange={onChangeInputQuestion}
               ></InputCommentTextEdit>
             </WrapperColumn>
             <WrapperColumn>
@@ -234,7 +234,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
                 <InputCommentMaxText>{characterCount}/100</InputCommentMaxText>
                 <InputCommentTextButtonEdit
                   id={comments._id}
-                  onClick={onClickEditComment}
+                  onClick={onClickEditQuestion}
                 >
                   수정하기
                 </InputCommentTextButtonEdit>
@@ -247,6 +247,7 @@ export default function MarketDetailItemUI({ comments, refetch, index }) {
                   refetch2={refetch2}
                   key={index}
                   index={index}
+                  onClickShowReplyQuestion={onClickShowReplyQuestion}
                 />
               ))}
             </WrapperColumn>

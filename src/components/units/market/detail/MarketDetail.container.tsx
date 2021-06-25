@@ -55,6 +55,8 @@ const MarketDetail = () => {
   //   }
   // );
 
+  // test
+
   const { data } = useQuery(FETCH_USEDITEM, {
     variables: { useditemId: router.query.id },
   });

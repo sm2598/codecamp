@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import {useState} from 'react'
+import styled from "@emotion/styled";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 export const WrapperRowBottom = styled.div`
@@ -11,14 +11,14 @@ export const WrapperRowBottom = styled.div`
   flex-direction: row;
   justify-content: center;
   margin-top: -6px;
-  background-color: #FFD600;
+  background-color: #ffd600;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
   margin-bottom: 80px;
   z-index: 10;
 `;
 export const Button = styled.button`
   color: #514400;
-  background-color: #FFD600;
+  background-color: #ffd600;
   border: none;
   font-style: normal;
   font-weight: bold;
@@ -35,10 +35,10 @@ export const Button = styled.button`
   width: 100%;
   max-height: 64px;
   height: 100%;
-`
+`;
 export const ButtonBoard = styled.button`
   color: #514400;
-  background-color: #FFD600;
+  background-color: #ffd600;
   border: none;
   font-style: normal;
   font-weight: bold;
@@ -55,7 +55,7 @@ export const ButtonBoard = styled.button`
   width: 100%;
   height: 100%;
   position: absolute;
-`
+`;
 interface IProps {
   isHover: boolean;
 }
@@ -77,27 +77,31 @@ export const ButtonWrite = styled.button`
   z-index: 0;
   margin-top: 0px;
 
-  transform: ${(props: IProps) => props.isHover ? 'translateY(100%)' : 'translateY(0)' };
-`
+  transform: ${(props: IProps) =>
+    props.isHover ? "translateY(100%)" : "translateY(0)"};
+`;
 const WrapperColumn = styled.div`
   position: relative;
   display: flex;
-`
+`;
 
-export default function Hi () {
-  const [isHover, setIsHover] = useState(false)
+export default function Hi() {
+  const [isHover, setIsHover] = useState(false);
 
   const router = useRouter();
-  
+
   const onClickRouterToNewBoard = (event) => {
-    router.push('/boards/new')
-  }
+    router.push("/boards/new");
+  };
   const onClickToBoard = (event) => {
-    router.push(`/boards/list`)
-  }
+    router.push(`/boards/list`);
+  };
   const onClickToMarket = () => {
-    router.push('/market/list')
-  }
+    router.push("/market/list");
+  };
+  const onClickToMyPage = () => {
+    router.push("/mypage");
+  };
   const onmouseenter = () => {
     setIsHover(true);
   };
@@ -108,11 +112,13 @@ export default function Hi () {
   return (
     <WrapperRowBottom>
       <WrapperColumn onMouseEnter={onmouseenter} onMouseLeave={onmouseleave}>
-        <ButtonBoard onClick={onClickToBoard}>자유게시판</ButtonBoard>
-        <ButtonWrite isHover={isHover} onClick={onClickRouterToNewBoard}>게시물 작성</ButtonWrite>
+        <ButtonBoard onClick={onClickToBoard}>Forum</ButtonBoard>
+        <ButtonWrite isHover={isHover} onClick={onClickRouterToNewBoard}>
+          Write a Post
+        </ButtonWrite>
       </WrapperColumn>
-      <Button onClick={onClickToMarket}>중고마켓</Button>
-      <Button>마이페이지</Button>
+      <Button onClick={onClickToMarket}>Buy/Sell</Button>
+      <Button onClick={onClickToMyPage}>My Page</Button>
     </WrapperRowBottom>
-  )
+  );
 }

@@ -39,7 +39,18 @@ export default function withAuth(Component) {
       restoreAccessToken();
     }, []);
 
-    if (!accessToken) return <></>;
+    if (!accessToken)
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "80px",
+          }}
+        >
+          Please log in to continue.
+        </div>
+      );
 
     return <Component {...props} />; // 컴포넌트 리턴
   };

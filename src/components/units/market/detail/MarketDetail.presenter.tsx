@@ -33,9 +33,21 @@ import {
   PostTags,
   Linebreak,
 } from "./MarketDetail.styles";
+import React from "react";
 import MarketDetailItemUI from "./MarketDetail.presenterItem";
-import { useContext } from "react";
+import { useContext, useState, useCallback } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+
+const center = {
+  lat: 37.532,
+  lng: 127.024,
+};
+const containerStyle = {
+  width: "792px",
+  height: "360px",
+  marginBottom: "80px",
+};
 
 const MarketDetailUI = ({
   data,
@@ -46,6 +58,20 @@ const MarketDetailUI = ({
   comments,
 }) => {
   const { createMarkup } = useContext(GlobalContext);
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: "AIzaSyAR4c-ZUUmMQYyPbbRHcvUoA_zt802U7P8",
+  });
+  const [map, setMap] = useState();
+  const onLoad = useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds();
+    map.fitBounds(bounds);
+    setMap(map);
+  }, []);
+  const onUnmount = useCallback(function callback(map) {
+    setMap(null);
+  }, []);
 
   return (
     <Wrapper>
@@ -103,14 +129,19 @@ const MarketDetailUI = ({
             <PostTags>{data?.fetchUseditem.tags}</PostTags>
             <Linebreak style={{ marginBottom: "80px" }} />
             <WrapperCenter>
-              <img
-                src="/mapholder.png"
-                style={{
-                  width: "792px",
-                  height: "360px",
-                  marginBottom: "80px",
-                }}
-              />
+              {isLoaded ? (
+                <GoogleMap
+                  mapContainerStyle={containerStyle}
+                  center={center}
+                  zoom={10}
+                  onLoad={onLoad}
+                  onUnmount={onUnmount}
+                >
+                  <></>
+                </GoogleMap>
+              ) : (
+                <></>
+              )}
             </WrapperCenter>
             <Linebreak />
           </WrapperColumn>

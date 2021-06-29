@@ -37,9 +37,9 @@ export default function NavigationTopUI({ onClickToBoard }) {
               <WrapperRowButtonsTop>
                 {accessToken == "" ? (
                   <>
-                    <ButtonLogIn onClick={onClickToLogin}>로그인</ButtonLogIn>
+                    <ButtonLogIn onClick={onClickToLogin}>Log In</ButtonLogIn>
                     <ButtonSignUp onClick={onClickToRegister}>
-                      회원가입
+                      Sign Up
                     </ButtonSignUp>
                   </>
                 ) : (

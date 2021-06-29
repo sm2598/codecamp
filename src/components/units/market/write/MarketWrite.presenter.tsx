@@ -7,15 +7,15 @@ import {
   Wrapper,
   WrapperColumn,
   WrapperColumnInputs,
+  WrapperRow,
   WrapperWrite,
+  WrapperColumnMaps,
 } from "./MarketWrite.styles";
 import DaumPostcode from "react-daum-postcode";
-import withAuth from "../../../commons/hoc/withAuth";
-
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { useState } from "react";
-import draftToHtml from "draftjs-to-html";
+import { useContext, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 
 const Editor = dynamic(
   () => {
@@ -30,10 +30,38 @@ const MarketWriteUI = ({
   editorState,
   setEditorState,
 }) => {
+  // Google Maps API
+  const center = {
+    lat: 37.532,
+    lng: 127.024,
+  };
+  const containerStyle = {
+    width: "384px",
+    height: "252px",
+  };
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: "AIzaSyAR4c-ZUUmMQYyPbbRHcvUoA_zt802U7P8",
+  });
+  const [map, setMap] = useState();
+  const onLoad = useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds();
+    map.fitBounds(bounds);
+    setMap(map);
+  }, []);
+  const onUnmount = useCallback(function callback(map) {
+    setMap(null);
+  }, []);
+
+  // WebEditor
+
   const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
     setEditorState(editorState);
   };
+
+  // Daum Postcode
 
   const handleComplete = (data) => {
     let fullAddress = data.address;
@@ -110,6 +138,27 @@ const MarketWriteUI = ({
           </WrapperColumnInputs>
           <WrapperColumnInputs>
             <Label>거래위치</Label>
+            <WrapperRow>
+              <WrapperColumnMaps>
+                {isLoaded ? (
+                  <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={center}
+                    zoom={10}
+                    onLoad={onLoad}
+                    onUnmount={onUnmount}
+                  >
+                    <></>
+                  </GoogleMap>
+                ) : (
+                  <></>
+                )}
+              </WrapperColumnMaps>
+              <WrapperColumnMaps>
+                <WrapperColumnMaps></WrapperColumnMaps>
+                <WrapperColumnMaps></WrapperColumnMaps>
+              </WrapperColumnMaps>
+            </WrapperRow>
             <DaumPostcode
               onComplete={handleComplete}
               autoClose={true}

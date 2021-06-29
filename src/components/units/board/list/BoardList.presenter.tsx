@@ -72,7 +72,7 @@ export default function BoardListUI({
     <Wrapper>
       {/* 베스트 게시물 4개 */}
       <WrapperBestText>
-        <Best>베스트 게시글</Best>
+        <Best>Top Posts</Best>
       </WrapperBestText>
       <WrapperRowBestOfBest>
         {best?.fetchBoardsOfTheBest.map((best) => (
@@ -121,7 +121,7 @@ export default function BoardListUI({
               onKeyDown={handleKeyDown}
             ></Search>
           </WrapperSearchInputDiv>
-          <ButtonSearch onClick={onClickSearch}>검색하기</ButtonSearch>
+          <ButtonSearch onClick={onClickSearch}>Search</ButtonSearch>
         </WrapperRowSearch>
       </WrapperSearch>
       {/* 게시판 목록 */}
@@ -131,16 +131,16 @@ export default function BoardListUI({
             <WrapperRow>
               <HeaderRow>
                 <ID>
-                  <strong>번호</strong>
+                  <strong>Number</strong>
                 </ID>
                 <Title>
-                  <strong>제목</strong>
+                  <strong>Title</strong>
                 </Title>
                 <Author>
-                  <strong>작성자</strong>
+                  <strong>Writer</strong>
                 </Author>
                 <CreatedAt>
-                  <strong>날짜</strong>
+                  <strong>Date</strong>
                 </CreatedAt>
               </HeaderRow>
             </WrapperRow>
@@ -174,7 +174,7 @@ export default function BoardListUI({
         <WrapperRowPagination>
           <ButtonFilter>
             <img src="/filter.png" style={{ height: 18, width: 18 }} />
-            정렬
+            Filter
           </ButtonFilter>
           <WrapperPaginationButtons>
             <FirstPageRoundedIcon onClick={onLeftFirstArrowClick} />
@@ -200,7 +200,7 @@ export default function BoardListUI({
           </WrapperPaginationButtons>
           <ButtonWriteNewBoard onClick={onClickRouterToNewBoard}>
             <img src="/writeNew.png" style={{ height: 18, width: 18 }} />
-            게시물 등록하기
+            Write a Post
           </ButtonWriteNewBoard>
         </WrapperRowPagination>
       </WrapperColumn>

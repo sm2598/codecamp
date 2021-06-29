@@ -18,6 +18,11 @@ export const WrapperColumn = styled.div`
   flex-direction: column;
   padding: 80px 118px 80px 118px;
 `;
+export const WrapperColumnMaps = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 export const WrapperColumnInputs = styled.div`
   width: 100%;
   display: flex;

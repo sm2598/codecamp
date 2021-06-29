@@ -43,6 +43,7 @@ import FirstPageRoundedIcon from "@material-ui/icons/FirstPageRounded";
 import LastPageRoundedIcon from "@material-ui/icons/LastPageRounded";
 import ChevronLeftRoundedIcon from "@material-ui/icons/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@material-ui/icons/ChevronRightRounded";
+import Head from "next/head";
 
 export default function BoardListUI({
   result,

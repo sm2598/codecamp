@@ -15,9 +15,6 @@ export const FETCH_USEDITEM = gql`
         lat
         lng
       }
-      buyer {
-        name
-      }
       seller {
         name
       }

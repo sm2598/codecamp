@@ -111,7 +111,9 @@ const MarketListUI = ({
       {/* Best Items */}
       <WrapperColumn>
         <WrapperColumn>
-          <WrapperColumnBestCardsTitle>베스트 상품</WrapperColumnBestCardsTitle>
+          <WrapperColumnBestCardsTitle>
+            Best Products
+          </WrapperColumnBestCardsTitle>
           <WrapperRowBest>
             {bestItems?.fetchUseditemsOfTheBest.map((data) => (
               <WrapperColumnBestCards>
@@ -150,17 +152,17 @@ const MarketListUI = ({
           <WrapperRowButtonInputs>
             <WrapperRowButtonSelling>
               <ButtonSelling isActive={selltype} onClick={onClickSellType}>
-                판매중 상품
+                Products Being Traded
               </ButtonSelling>
               <ButtonSelling isActive={!selltype} onClick={onClickSellType}>
-                판매된 상품
+                Products Traded
               </ButtonSelling>
             </WrapperRowButtonSelling>
             <WrapperSearchInputDiv>
               <SearchImg src="/search.png" onClick={onClickSearch} />
               <Search
                 type="input"
-                placeholder="제품을 검색해주세요"
+                placeholder="Please enter the product name."
                 onChange={onChangeSearch}
                 onKeyDown={handleKeyDown}
               />
@@ -172,32 +174,32 @@ const MarketListUI = ({
                 isActive={showtype.recent}
                 onClick={onClickShowType}
               >
-                최신순
+                Newly Listed
               </ButtonShowType>
               <ButtonShowType
                 id="hprice"
                 isActive={showtype.hprice}
                 onClick={onClickShowType}
               >
-                높은가격순
+                Price: highest
               </ButtonShowType>
               <ButtonShowType
                 id="lprice"
                 isActive={showtype.lprice}
                 onClick={onClickShowType}
               >
-                낮은가격순
+                Price: lowest
               </ButtonShowType>
               <ButtonShowType
                 id="rating"
                 isActive={showtype.rating}
                 onClick={onClickShowType}
               >
-                평점순
+                Rating: highest
               </ButtonShowType>
             </WrapperRow>
             <WrapperRow>
-              변경하기:
+              Change View:
               {showDisplayChoice ? (
                 <ViewAgendaIcon
                   style={{ cursor: "pointer" }}
@@ -221,7 +223,7 @@ const MarketListUI = ({
         <WrapperRowPagination>
           <ButtonFilter>
             <img src="/filter.png" style={{ height: 18, width: 18 }} />
-            정렬
+            Filter
           </ButtonFilter>
           <WrapperPaginationButtons>
             <FirstPageRoundedIcon onClick={onLeftFirstArrowClick} />
@@ -242,7 +244,7 @@ const MarketListUI = ({
             <LastPageRoundedIcon onClick={onRightLastArrowClick} />
           </WrapperPaginationButtons>
           <ButtonCreateItem onClick={onClickRoutWrite}>
-            상품 등록하기
+            Register a product
           </ButtonCreateItem>
         </WrapperRowPagination>
       </WrapperColumn>

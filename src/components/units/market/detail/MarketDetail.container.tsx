@@ -55,11 +55,12 @@ const MarketDetail = () => {
   //   }
   // );
 
+  // test
+
   const { data } = useQuery(FETCH_USEDITEM, {
     variables: { useditemId: router.query.id },
   });
 
-  console.log("ASD");
   return (
     <MarketDetailUI
       data={data}

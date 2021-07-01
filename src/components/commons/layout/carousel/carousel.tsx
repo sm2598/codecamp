@@ -34,6 +34,23 @@ export default function Carousel() {
       opacity: 0.75;
       color: white;
     }
+
+    .slick-prev {
+      height: 48px;
+      z-index: 1;
+      top: 50%;
+      left: 5%;
+    }
+    .slick-next {
+      height: 48px;
+      z-index: 1;
+      top: 50%;
+      right: 5%;
+    }
+    .slick-prev::before,
+    .slick-next::before {
+      font-size: 48px;
+    }
   `;
 
   const SLIDEIMG = styled.img`

@@ -46,6 +46,8 @@ export default function withAuth(Component) {
             display: "flex",
             justifyContent: "center",
             marginBottom: "80px",
+            height: "500px",
+            alignItems: "center",
           }}
         >
           Please log in to continue.

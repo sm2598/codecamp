@@ -38,6 +38,7 @@ import MarketDetailItemUI from "./MarketDetail.presenterItem";
 import { useContext, useState, useCallback } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import MarketDetailSlick from "./MarketDetail.Slick";
 
 const center = {
   lat: 37.532,
@@ -118,7 +119,7 @@ const MarketDetailUI = ({
             </WrapperRowContentTop>
             <PostPrice>{data?.fetchUseditem.price}원</PostPrice>
             <WrapperCenter>
-              <Holder src="/holder.png" />
+              <MarketDetailSlick data={data} />
             </WrapperCenter>
             <PostContent
               //@ts-ignore

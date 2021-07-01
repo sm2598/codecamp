@@ -34,7 +34,7 @@ const MarketListCardUI = ({ usedItems }) => {
             <WrapperColumnBestCards>
               <WrapperColumnBestCardsChild>
                 <BestCardsTopHalf>
-                  <BestCardsIMG src="/keyboard.png" />
+                  <BestCardsIMG src={data.images[0]} />
                 </BestCardsTopHalf>
                 <WrapperColumnBestCardsContent>
                   <BestCardsTitle id={data._id} onClick={onClickRoutDetail}>

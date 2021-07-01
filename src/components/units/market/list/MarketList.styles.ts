@@ -113,7 +113,6 @@ export const WrapperColumnBestCards = styled.div`
   flex-direction: column;
 
   background: #ffffff;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 
   width: 282px;
   height: 391px;
@@ -122,9 +121,8 @@ export const WrapperColumnBestCards = styled.div`
   transition-duration: 0.3s;
 
   &:hover {
-    background: #f2f2f2;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     transition-duration: 0.3s;
-    opacity: 0.9;
     transform: scale(1.05, 1.05);
   }
 `;
@@ -178,6 +176,7 @@ export const BestCardsPrice = styled.div`
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
+  color: #ae0000;
 
   display: flex;
   align-items: center;

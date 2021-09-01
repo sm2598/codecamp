@@ -31,6 +31,7 @@ const MarketDetailSlick = ({ data }) => {
       list-style: none;
       text-align: center;
     }
+
     .slick-dots li.slick-active button:before {
       opacity: 0.75;
     }

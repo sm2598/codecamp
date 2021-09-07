@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
     return { __html: input };
   };
   const uploadLink = createUploadLink({
-    uri: "https://backend.codebootcamp.co.kr/graphql",
+    uri: "https://backend.codebootcamp.co.kr/graphql02 ",
     headers: { authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });
@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
         if (err.extensions.code === "UNAUTHENTICATED") {
           // 만료된 토큰을 재발급 받기
           const response = await axios.post(
-            "https://backend.codebootcamp.co.kr/graphql",
+            "https://backend.codebootcamp.co.kr/graphql02",
             {
               query: `
                 mutation restoreAccessToken {

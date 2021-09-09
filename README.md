@@ -1,3 +1,6 @@
+You can also see a preview of the platform here:
+https://example1-code.web.app/boards/list/
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -8,6 +8,9 @@ export const WrapperColumn = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const ButtonHome = styled.div`
+  font-size: "64px";
+`;
 export const WrapperRowTop = styled.div`
   width: 100%;
   height: 152px;
@@ -32,11 +35,12 @@ export const WrapperRow = styled.div`
 export const WrapperRowButtonsTop = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 export const Logo = styled.img`
   width: 210px;
-  height: 32px;
+  height: 100px;
 
   cursor: pointer;
 `;
@@ -56,6 +60,7 @@ export const ButtonLogIn = styled.button`
   font-size: 16px;
   border-radius: 10px;
   cursor: pointer;
+  height: 62px;
   &:hover {
     background: lightgrey;
     transition: 0.3s;
@@ -73,6 +78,7 @@ export const ButtonSignUp = styled.button`
   border-radius: 10px;
   border: none;
 
+  height: 62px;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
